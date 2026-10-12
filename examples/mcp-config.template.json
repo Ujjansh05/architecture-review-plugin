@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "architecture-review": {
+      "command": "/ABSOLUTE/PATH/TO/.venv/bin/python",
+      "args": ["-m", "arch_review", "mcp"],
+      "env": {
+        "ARCH_REVIEW_HOME": "/ABSOLUTE/PATH/TO/architecture-review-plugin/.runtime"
+      }
+    }
+  }
+}

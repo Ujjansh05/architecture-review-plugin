@@ -1,0 +1,70 @@
+{
+  "messaging": {
+    "case_studies": [
+      "discord-storage",
+      "whatsapp-devices",
+      "slack-messaging"
+    ],
+    "lessons": 30,
+    "expert_reviewed": false,
+    "automated_review_scope": "three messaging checks"
+  },
+  "social_feeds": {
+    "case_studies": [
+      "meta-tao"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "media_delivery": {
+    "case_studies": [
+      "netflix-openconnect"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "commerce": {
+    "case_studies": [
+      "amazon-dynamo",
+      "google-spanner",
+      "shopify-modules"
+    ],
+    "lessons": 12,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "payments": {
+    "case_studies": [
+      "stripe-idempotency"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "search": {
+    "case_studies": [
+      "elastic-refresh"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "analytics": {
+    "case_studies": [
+      "uber-tiered"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  },
+  "multi_tenant": {
+    "case_studies": [
+      "salesforce-tenants"
+    ],
+    "lessons": 3,
+    "expert_reviewed": false,
+    "automated_review_scope": "reference_only"
+  }
+}

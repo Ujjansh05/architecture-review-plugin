@@ -1,0 +1,13 @@
+include README.md CHANGELOG.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md
+include requirements.windows.lock.txt
+recursive-include src/arch_review/data *.json *.jsonl
+recursive-include docs *.md *.txt *.json
+recursive-include examples *.json
+recursive-include scripts *.py *.ps1
+recursive-include tests *.py
+global-exclude *.local.json *.pyc
+prune .runtime
+prune .venv
+prune models
+prune reports
+prune training

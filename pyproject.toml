@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "architecture-review-plugin"
+version = "0.1.0"
+description = "Local, evidence-backed messaging architecture reviews over MCP"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
+dependencies = [
+  "pydantic==2.14.1", "fastapi==0.143.0", "uvicorn==0.54.0",
+  "httpx==0.28.1", "mcp==2.3.0", "filelock>=3.20,<4", "psutil>=7,<8"
+]
+
+[project.optional-dependencies]
+model = ["laya==0.4.6", "torch==2.6.0", "transformers==4.57.3", "safetensors==0.7.0",
+         "numpy==1.26.4", "huggingface-hub==0.36.2"]
+dev = ["pytest==9.1.1", "pytest-asyncio>=1,<2", "build>=1,<2", "ruff>=0.14,<1"]
+
+[project.scripts]
+arch-review = "arch_review.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Ujjansh05/architecture-review-plugin"
+Issues = "https://github.com/Ujjansh05/architecture-review-plugin/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+arch_review = ["data/*.json", "data/*.jsonl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

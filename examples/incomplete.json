@@ -1,0 +1,12 @@
+{
+  "requirements": {},
+  "design": {
+    "components": [
+      "API",
+      "Queue",
+      "Database"
+    ]
+  },
+  "workload": {},
+  "deployment": {}
+}

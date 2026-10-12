@@ -1,0 +1,40 @@
+{
+  "version": "pilot-1",
+  "family_splits": {
+    "ledger": "train",
+    "inventory": "train",
+    "webhook": "train",
+    "expiry": "development",
+    "concurrent-workers": "train",
+    "billing-events": "test",
+    "notification": "calibration",
+    "consumer-batch": "train",
+    "publisher-acceptance": "train",
+    "host-loss": "development",
+    "consumer-completion": "train",
+    "zone-loss": "test",
+    "durable-queue": "train",
+    "failover": "calibration",
+    "worker-overload": "train",
+    "accepted-loss": "development",
+    "hot-channel": "train",
+    "tenant-burst": "test",
+    "retry-amplification": "train",
+    "consumer-prefetch": "train"
+  },
+  "status": "draft_pending_expert",
+  "note": "Variants share a split. These are synthetic pilot candidates, not validated final-test evidence.",
+  "counts": {
+    "train": 60,
+    "development": 15,
+    "calibration": 10,
+    "test": 15
+  },
+  "company_holdouts": {
+    "planned": [
+      "stripe-idempotency",
+      "salesforce-tenants"
+    ],
+    "status": "not_implemented_in_synthetic_pilot; commission independently authored company cases before release"
+  }
+}

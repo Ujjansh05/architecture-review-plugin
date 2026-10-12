@@ -1,0 +1,518 @@
+{
+  "schema_version": "1.0",
+  "review_status": "partial",
+  "review_mode": "rules_only",
+  "checks": [
+    {
+      "check_id": "retry_safety",
+      "verdict": "supported",
+      "rule_verdict": "supported",
+      "reason": "Enforced atomic deduplication covers the declared retry window and effect boundaries.",
+      "facts": {
+        "prevent_duplicate_effects": true,
+        "redelivery_possible": true,
+        "all_effects_intrinsically_idempotent": false,
+        "stable_message_id": true,
+        "dedup_enforced": true,
+        "dedup_atomic_with_effect": true,
+        "dedup_retention_seconds": 172800.0,
+        "max_redelivery_age_seconds": 86400.0,
+        "external_effects": false,
+        "notes": ""
+      },
+      "risk": {
+        "severity": "conditional",
+        "consequence": "Duplicate business writes or external effects.",
+        "trigger": "Enforced atomic deduplication covers the declared retry window and effect boundaries.",
+        "production_failure_probability": null
+      },
+      "missing_information": [],
+      "evidence_ids": [
+        "sqs-redelivery-1",
+        "sqs-redelivery-3",
+        "stripe-idempotency-3"
+      ],
+      "verification_steps": [
+        "Crash the worker immediately after the business effect and before queue acknowledgement; redeliver.",
+        "Deliver the same ID concurrently and again at the maximum retry age; count durable business effects.",
+        "Repeat the failure injection at every external API boundary, including its idempotency expiry."
+      ],
+      "model_decision": null,
+      "conflict": false
+    },
+    {
+      "check_id": "ack_durability",
+      "verdict": "supported",
+      "rule_verdict": "supported",
+      "reason": "Acknowledgement follows durable commit covering each explicitly required failure domain.",
+      "facts": {
+        "required_operation": "message_accepted",
+        "required_failures": [
+          "process_crash",
+          "host_loss"
+        ],
+        "acknowledged_operation": "message_accepted",
+        "after_durable_commit": true,
+        "survives_failures": [
+          "process_crash",
+          "host_loss"
+        ],
+        "notes": "Acceptance follows a durable quorum commit on independent hosts; failover preserves committed messages."
+      },
+      "risk": {
+        "severity": "conditional",
+        "consequence": "Loss of an operation already reported as successful.",
+        "trigger": "Acknowledgement follows durable commit covering each explicitly required failure domain.",
+        "production_failure_probability": null
+      },
+      "missing_information": [],
+      "evidence_ids": [
+        "rabbit-queues-1",
+        "rabbit-quorum-1",
+        "aws-outbox-1"
+      ],
+      "verification_steps": [
+        "Record successful acknowledgements, inject each required failure, and reconcile recovered messages.",
+        "Verify commit, replication and failover configuration for the exact acknowledged operation."
+      ],
+      "model_decision": null,
+      "conflict": false
+    },
+    {
+      "check_id": "queue_overload",
+      "verdict": "supported",
+      "rule_verdict": "supported",
+      "reason": "The stated queue and admission policies address the declared loss and queue-bound requirements; latency requires testing.",
+      "facts": {
+        "preserve_accepted_messages": true,
+        "bounded_queue_required": true,
+        "max_messages": 10000,
+        "policy": "reject_before_accept",
+        "admission_before_accept": true,
+        "preserves_accepted_messages": true,
+        "retry_backoff": true,
+        "notes": "At capacity return a retryable rejection before success; retry clients use bounded exponential backoff with jitter."
+      },
+      "risk": {
+        "severity": "conditional",
+        "consequence": "Unbounded resource use, rejected traffic, or loss of accepted messages.",
+        "trigger": "The stated queue and admission policies address the declared loss and queue-bound requirements; latency requires testing.",
+        "production_failure_probability": null
+      },
+      "missing_information": [],
+      "evidence_ids": [
+        "google-overload-3",
+        "discord-storage-1",
+        "aws-retries-2"
+      ],
+      "verification_steps": [
+        "Sustain arrivals above measured service rate; record queue size, memory, rejection rate and latency.",
+        "Verify that accepted messages survive overload and clients back off after rejected submissions.",
+        "Recover from overload and verify bounded drain time and absence of retry amplification."
+      ],
+      "model_decision": null,
+      "conflict": false
+    }
+  ],
+  "workload_estimates": {
+    "estimates": {
+      "peak_messages": {
+        "value": 500.0,
+        "unit": "messages/second",
+        "formula": "average_rate * peak_factor",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "peak_factor": 5.0
+        }
+      },
+      "average_deliveries": {
+        "value": 300.0,
+        "unit": "deliveries/second",
+        "formula": "average_rate * recipients",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "average_recipients": 3.0
+        }
+      },
+      "peak_deliveries": {
+        "value": 1500.0,
+        "unit": "deliveries/second",
+        "formula": "average_rate * recipients * peak_factor",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "average_recipients": 3.0,
+          "peak_factor": 5.0
+        }
+      },
+      "daily_payload": {
+        "value": 8847360000.0,
+        "unit": "bytes/day",
+        "formula": "average_rate * 86400 * message_bytes",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "message_bytes": 1024
+        }
+      },
+      "retained_storage": {
+        "value": 955514880000.0,
+        "unit": "bytes",
+        "formula": "average_rate * 86400 * message_bytes * retention_days * stored_copies * replication * overhead",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "message_bytes": 1024,
+          "retention_days": 30.0,
+          "storage_copies_per_message": 1.0,
+          "replication_factor": 3,
+          "storage_overhead_factor": 1.2
+        }
+      },
+      "projected_average_messages": {
+        "value": 177.1561000000001,
+        "unit": "messages/second",
+        "formula": "average_rate * (1 + monthly_growth_fraction) ** horizon_months",
+        "assumptions": {
+          "average_messages_per_second": 100.0,
+          "monthly_growth_fraction": 0.1,
+          "growth_horizon_months": 6
+        }
+      }
+    },
+    "missing_inputs": [],
+    "notes": [
+      "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+      "Retained storage assumes steady arrivals across the retention window.",
+      "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+    ]
+  },
+  "capacity": {
+    "evidence_status": "unknown",
+    "supported_capacity": null,
+    "headroom_ratio": null,
+    "latency_slo_status": "unknown",
+    "missing_evidence": [
+      "A benchmark with workload, configuration, latency, errors and duration."
+    ],
+    "required_tests": [
+      "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+      "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+    ]
+  },
+  "evidence": [
+    {
+      "id": "sqs-redelivery-1",
+      "source_id": "sqs-redelivery",
+      "problem": "Duplicate delivery",
+      "conditions": [
+        "SQS standard queue consumption"
+      ],
+      "lesson": "Design the consumer to handle the same message again.",
+      "tradeoffs": [
+        "Consumers need duplicate-safe effects."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "A stored copy can be received more than once."
+      },
+      "source_url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "retry_safety",
+        "sqs",
+        "redelivery"
+      ],
+      "checks": [
+        "retry_safety"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "sqs-redelivery-3",
+      "source_id": "sqs-redelivery",
+      "problem": "Broker reliability mistaken for business uniqueness",
+      "conditions": [
+        "A worker produces non-idempotent effects"
+      ],
+      "lesson": "Check application effect semantics separately from delivery reliability.",
+      "tradeoffs": [
+        "Application guarantees require additional mechanisms."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "AWS recommends idempotent processing for standard queues."
+      },
+      "source_url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "retry_safety",
+        "sqs",
+        "redelivery"
+      ],
+      "checks": [
+        "retry_safety"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "stripe-idempotency-3",
+      "source_id": "stripe-idempotency",
+      "problem": "Key reused for a different operation",
+      "conditions": [
+        "API v1 requests have changed parameters"
+      ],
+      "lesson": "Keep request identity and parameters consistent across retries.",
+      "tradeoffs": [
+        "New operations need distinct keys."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "The idempotency layer checks parameters for mismatch."
+      },
+      "source_url": "https://docs.stripe.com/api/idempotent_requests",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "payments",
+        "retry_safety",
+        "stripe",
+        "idempotency"
+      ],
+      "checks": [
+        "retry_safety"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "rabbit-queues-1",
+      "source_id": "rabbit-queues",
+      "problem": "Queue metadata mistaken for message persistence",
+      "conditions": [
+        "Restart survival is required"
+      ],
+      "lesson": "Specify durable queues and persistent messages separately.",
+      "tradeoffs": [
+        "Transient workloads may not need persistence."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "Transient messages can be lost from durable queues on recovery."
+      },
+      "source_url": "https://www.rabbitmq.com/docs/queues",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "ack_durability",
+        "rabbit",
+        "queues"
+      ],
+      "checks": [
+        "ack_durability"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "rabbit-quorum-1",
+      "source_id": "rabbit-quorum",
+      "problem": "Replica count mistaken for unlimited fault tolerance",
+      "conditions": [
+        "A replicated queue requires a majority"
+      ],
+      "lesson": "State the number and placement of failures that remain tolerable.",
+      "tradeoffs": [
+        "More replicas increase resource use."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "A three-node quorum tolerates one node failure."
+      },
+      "source_url": "https://www.rabbitmq.com/docs/quorum-queues",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "ack_durability",
+        "rabbit",
+        "quorum"
+      ],
+      "checks": [
+        "ack_durability"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "aws-outbox-1",
+      "source_id": "aws-outbox",
+      "problem": "Database and event diverge",
+      "conditions": [
+        "A transaction also needs to publish an event"
+      ],
+      "lesson": "Commit the business change and outbox record together.",
+      "tradeoffs": [
+        "A relay and outbox lifecycle must be operated."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "A single transaction stores the business row and event."
+      },
+      "source_url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "commerce",
+        "ack_durability",
+        "aws",
+        "outbox"
+      ],
+      "checks": [
+        "ack_durability"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "google-overload-3",
+      "source_id": "google-overload",
+      "problem": "Rejecting traffic still overloads the server",
+      "conditions": [
+        "Rejection processing consumes significant resources"
+      ],
+      "lesson": "Add client-side throttling.",
+      "tradeoffs": [
+        "Client behaviour becomes part of protection."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "Clients can reduce attempted traffic when rejections rise."
+      },
+      "source_url": "https://sre.google/sre-book/handling-overload/",
+      "publication_date": "2016",
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "queue_overload",
+        "google",
+        "overload"
+      ],
+      "checks": [
+        "queue_overload"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "discord-storage-1",
+      "source_id": "discord-storage",
+      "problem": "Hot partition cascades latency",
+      "conditions": [
+        "Message traffic is concentrated in a channel and time bucket"
+      ],
+      "lesson": "Evaluate skew as well as total message rate.",
+      "tradeoffs": [
+        "Partition balancing cannot assume uniform activity."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "Hot partitions degraded latency across the cluster."
+      },
+      "source_url": "https://discord.com/blog/how-discord-stores-trillions-of-messages",
+      "publication_date": "2023-03-06",
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "queue_overload",
+        "discord",
+        "storage"
+      ],
+      "checks": [
+        "queue_overload"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    },
+    {
+      "id": "aws-retries-2",
+      "source_id": "aws-retries",
+      "problem": "Synchronized retry bursts",
+      "conditions": [
+        "Many clients retry together"
+      ],
+      "lesson": "Use jitter to spread retry timing.",
+      "tradeoffs": [
+        "Individual retry delays vary."
+      ],
+      "supporting_passage": {
+        "kind": "paraphrase",
+        "text": "Jitter disperses correlated retries."
+      },
+      "source_url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+      "publication_date": null,
+      "accessed_at": "2026-10-13",
+      "tags": [
+        "messaging",
+        "queue_overload",
+        "aws",
+        "retries"
+      ],
+      "checks": [
+        "queue_overload"
+      ],
+      "review_status": "pending_expert",
+      "reviewer": null,
+      "lesson_kind": "conditional_engineering_inference",
+      "limitation": "Public subsystem snapshot; not a complete or current private company architecture.",
+      "relationship": "background_lesson_not_deployment_proof"
+    }
+  ],
+  "warnings": [
+    "Experimental decision support; supported means conditional on supplied facts.",
+    "Retrieved lessons are background evidence, not verification of this deployment.",
+    "Model probabilities are not production failure probabilities.",
+    "Retrieved source summaries await independent expert review.",
+    "No specialized architecture checkpoint is active."
+  ],
+  "versions": {
+    "service": "0.1.0",
+    "evidence": "ee7279815f09f325",
+    "checkpoint": null,
+    "model_metadata": {
+      "role": "unconfigured",
+      "calibration_status": "unvalidated"
+    },
+    "definitions": "1.0",
+    "dataset": "pilot-1"
+  },
+  "elapsed_ms": 2.415
+}

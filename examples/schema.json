@@ -1,0 +1,917 @@
+{
+  "input": {
+    "$defs": {
+      "AckDesign": {
+        "additionalProperties": false,
+        "properties": {
+          "acknowledged_operation": {
+            "anyOf": [
+              {
+                "maxLength": 8000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Acknowledged Operation"
+          },
+          "after_durable_commit": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "After Durable Commit"
+          },
+          "survives_failures": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "process_crash",
+                    "host_loss",
+                    "zone_loss",
+                    "region_loss"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Survives Failures"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "title": "AckDesign",
+        "type": "object"
+      },
+      "Benchmark": {
+        "additionalProperties": false,
+        "properties": {
+          "provenance": {
+            "enum": [
+              "direct_measurement",
+              "comparable_reference"
+            ],
+            "title": "Provenance",
+            "type": "string"
+          },
+          "source": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Source",
+            "type": "string"
+          },
+          "measured_messages_per_second": {
+            "exclusiveMinimum": 0,
+            "title": "Measured Messages Per Second",
+            "type": "number"
+          },
+          "p95_latency_ms": {
+            "exclusiveMinimum": 0,
+            "title": "P95 Latency Ms",
+            "type": "number"
+          },
+          "error_fraction": {
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Error Fraction",
+            "type": "number"
+          },
+          "duration_seconds": {
+            "exclusiveMinimum": 0,
+            "title": "Duration Seconds",
+            "type": "number"
+          },
+          "workload_matches": {
+            "title": "Workload Matches",
+            "type": "boolean"
+          },
+          "configuration_matches": {
+            "title": "Configuration Matches",
+            "type": "boolean"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provenance",
+          "source",
+          "measured_messages_per_second",
+          "p95_latency_ms",
+          "error_fraction",
+          "duration_seconds",
+          "workload_matches",
+          "configuration_matches"
+        ],
+        "title": "Benchmark",
+        "type": "object"
+      },
+      "Deployment": {
+        "additionalProperties": false,
+        "properties": {
+          "hardware": {
+            "anyOf": [
+              {
+                "maxLength": 8000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hardware"
+          },
+          "topology": {
+            "anyOf": [
+              {
+                "maxLength": 8000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Topology"
+          },
+          "configuration": {
+            "anyOf": [
+              {
+                "maxLength": 8000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Configuration"
+          },
+          "usable_storage_bytes": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Usable Storage Bytes"
+          },
+          "benchmark": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Benchmark"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "title": "Deployment",
+        "type": "object"
+      },
+      "Design": {
+        "additionalProperties": false,
+        "properties": {
+          "components": {
+            "items": {
+              "maxLength": 8000,
+              "type": "string"
+            },
+            "maxItems": 50,
+            "title": "Components",
+            "type": "array"
+          },
+          "flows": {
+            "items": {
+              "maxLength": 8000,
+              "type": "string"
+            },
+            "maxItems": 50,
+            "title": "Flows",
+            "type": "array"
+          },
+          "retry": {
+            "$ref": "#/$defs/RetryDesign"
+          },
+          "acknowledgement": {
+            "$ref": "#/$defs/AckDesign"
+          },
+          "queue": {
+            "$ref": "#/$defs/QueueDesign"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "title": "Design",
+        "type": "object"
+      },
+      "QueueDesign": {
+        "additionalProperties": false,
+        "properties": {
+          "max_messages": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Max Messages"
+          },
+          "policy": {
+            "anyOf": [
+              {
+                "enum": [
+                  "backpressure",
+                  "reject_before_accept",
+                  "drop",
+                  "unbounded"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Policy"
+          },
+          "admission_before_accept": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Admission Before Accept"
+          },
+          "preserves_accepted_messages": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Preserves Accepted Messages"
+          },
+          "retry_backoff": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Retry Backoff"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "title": "QueueDesign",
+        "type": "object"
+      },
+      "Requirements": {
+        "additionalProperties": false,
+        "properties": {
+          "features": {
+            "items": {
+              "maxLength": 8000,
+              "type": "string"
+            },
+            "maxItems": 30,
+            "title": "Features",
+            "type": "array"
+          },
+          "prevent_duplicate_effects": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Prevent Duplicate Effects"
+          },
+          "acknowledged_operation": {
+            "anyOf": [
+              {
+                "maxLength": 8000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Acknowledged Operation"
+          },
+          "survive_failures": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "process_crash",
+                    "host_loss",
+                    "zone_loss",
+                    "region_loss"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Survive Failures"
+          },
+          "preserve_accepted_messages": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Preserve Accepted Messages"
+          },
+          "bounded_queue_required": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bounded Queue Required"
+          },
+          "latency_target_ms": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Latency Target Ms"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "title": "Requirements",
+        "type": "object"
+      },
+      "RetryDesign": {
+        "additionalProperties": false,
+        "properties": {
+          "redelivery_possible": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Redelivery Possible"
+          },
+          "all_effects_intrinsically_idempotent": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "All Effects Intrinsically Idempotent"
+          },
+          "stable_message_id": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Stable Message Id"
+          },
+          "dedup_enforced": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dedup Enforced"
+          },
+          "dedup_atomic_with_effect": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dedup Atomic With Effect"
+          },
+          "dedup_retention_seconds": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dedup Retention Seconds"
+          },
+          "max_redelivery_age_seconds": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Max Redelivery Age Seconds"
+          },
+          "external_effects": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "External Effects"
+          },
+          "external_effects_idempotent": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "External Effects Idempotent"
+          },
+          "notes": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Notes",
+            "type": "string"
+          }
+        },
+        "title": "RetryDesign",
+        "type": "object"
+      },
+      "Workload": {
+        "additionalProperties": false,
+        "properties": {
+          "average_messages_per_second": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Average Messages Per Second"
+          },
+          "peak_factor": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Peak Factor"
+          },
+          "message_bytes": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Message Bytes"
+          },
+          "average_recipients": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Average Recipients"
+          },
+          "retention_days": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Retention Days"
+          },
+          "storage_copies_per_message": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Storage Copies Per Message"
+          },
+          "replication_factor": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Replication Factor"
+          },
+          "storage_overhead_factor": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Storage Overhead Factor"
+          },
+          "monthly_growth_fraction": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Monthly Growth Fraction"
+          },
+          "growth_horizon_months": {
+            "anyOf": [
+              {
+                "maximum": 120,
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Growth Horizon Months"
+          }
+        },
+        "title": "Workload",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "requirements": {
+        "$ref": "#/$defs/Requirements"
+      },
+      "design": {
+        "$ref": "#/$defs/Design"
+      },
+      "workload": {
+        "$ref": "#/$defs/Workload"
+      },
+      "deployment": {
+        "$ref": "#/$defs/Deployment"
+      }
+    },
+    "required": [
+      "requirements",
+      "design"
+    ],
+    "title": "ReviewRequest",
+    "type": "object"
+  },
+  "output": {
+    "$defs": {
+      "Finding": {
+        "additionalProperties": false,
+        "properties": {
+          "check_id": {
+            "enum": [
+              "retry_safety",
+              "ack_durability",
+              "queue_overload"
+            ],
+            "title": "Check Id",
+            "type": "string"
+          },
+          "verdict": {
+            "$ref": "#/$defs/Verdict"
+          },
+          "rule_verdict": {
+            "$ref": "#/$defs/Verdict"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "facts": {
+            "additionalProperties": true,
+            "title": "Facts",
+            "type": "object"
+          },
+          "risk": {
+            "additionalProperties": true,
+            "title": "Risk",
+            "type": "object"
+          },
+          "missing_information": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Information",
+            "type": "array"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence Ids",
+            "type": "array"
+          },
+          "verification_steps": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Verification Steps",
+            "type": "array"
+          },
+          "model_decision": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ModelDecision"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "conflict": {
+            "default": false,
+            "title": "Conflict",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "check_id",
+          "verdict",
+          "rule_verdict",
+          "reason",
+          "risk"
+        ],
+        "title": "Finding",
+        "type": "object"
+      },
+      "ModelDecision": {
+        "additionalProperties": false,
+        "properties": {
+          "verdict": {
+            "$ref": "#/$defs/Verdict"
+          },
+          "probabilities": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "propertyNames": {
+              "$ref": "#/$defs/Verdict"
+            },
+            "title": "Probabilities",
+            "type": "object"
+          },
+          "calibration_status": {
+            "default": "unvalidated",
+            "enum": [
+              "unvalidated",
+              "fitted_unvalidated",
+              "validated"
+            ],
+            "title": "Calibration Status",
+            "type": "string"
+          },
+          "checkpoint": {
+            "title": "Checkpoint",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verdict",
+          "checkpoint"
+        ],
+        "title": "ModelDecision",
+        "type": "object"
+      },
+      "Verdict": {
+        "enum": [
+          "supported",
+          "contradicted",
+          "insufficient_information"
+        ],
+        "title": "Verdict",
+        "type": "string"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "default": "1.0",
+        "title": "Schema Version",
+        "type": "string"
+      },
+      "review_status": {
+        "enum": [
+          "complete",
+          "partial"
+        ],
+        "title": "Review Status",
+        "type": "string"
+      },
+      "review_mode": {
+        "enum": [
+          "rules_only",
+          "laya_assisted"
+        ],
+        "title": "Review Mode",
+        "type": "string"
+      },
+      "checks": {
+        "items": {
+          "$ref": "#/$defs/Finding"
+        },
+        "title": "Checks",
+        "type": "array"
+      },
+      "workload_estimates": {
+        "additionalProperties": true,
+        "title": "Workload Estimates",
+        "type": "object"
+      },
+      "capacity": {
+        "additionalProperties": true,
+        "title": "Capacity",
+        "type": "object"
+      },
+      "evidence": {
+        "items": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "title": "Evidence",
+        "type": "array"
+      },
+      "warnings": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Warnings",
+        "type": "array"
+      },
+      "versions": {
+        "additionalProperties": true,
+        "title": "Versions",
+        "type": "object"
+      },
+      "elapsed_ms": {
+        "title": "Elapsed Ms",
+        "type": "number"
+      }
+    },
+    "required": [
+      "review_status",
+      "review_mode",
+      "checks",
+      "workload_estimates",
+      "capacity",
+      "evidence",
+      "warnings",
+      "versions",
+      "elapsed_ms"
+    ],
+    "title": "ReviewResponse",
+    "type": "object"
+  }
+}
