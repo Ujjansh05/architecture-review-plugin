@@ -1,5 +1,7 @@
 # Local validation — 2026-10-13
 
+**Historical first-run report.** Later package downloads, dataset screening, general-AI baselines, and head-only training are recorded in [the research validation update](research-validation-2026-10-13.md). The measurements below describe the earlier 100-case pilot and predate that experiment.
+
 The local MCP service works with the real, unmodified Laya multilingual checkpoint. This is an experimental software implementation. Specialist training, independent label review, and product-quality validation remain unfinished.
 
 ## Software and protocol

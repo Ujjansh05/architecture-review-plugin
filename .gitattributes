@@ -3,6 +3,9 @@
 *.json text eol=lf
 *.jsonl text eol=lf
 *.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+MANIFEST.in text eol=lf
 *.yml text eol=lf
 *.toml text eol=lf
 *.sh text eol=lf

@@ -24,7 +24,7 @@ def expert_reviewed(row):
 
 
 def validate_cases(rows):
-    identifiers, families, inputs = set(), {}, {}
+    identifiers, families, inputs, source_groups = set(), {}, {}, {}
     for row in rows:
         if row["id"] in identifiers:
             raise ValueError(f"Duplicate case ID: {row['id']}")
@@ -34,6 +34,13 @@ def validate_cases(rows):
         family = row["scenario_family"]
         if families.setdefault(family, row["split"]) != row["split"]:
             raise ValueError(f"Scenario family crosses splits: {family}")
+        if row.get("source_group") and source_groups.setdefault(row["source_group"], row["split"]) != row["split"]:
+            raise ValueError("Source document crosses scenario splits")
+        for record in row.get("background_evidence", []):
+            if (set(record) != {"id", "conditions", "lesson"} or not isinstance(record["id"], str)
+                    or not isinstance(record["lesson"], str) or not isinstance(record["conditions"], list)
+                    or not all(isinstance(value, str) for value in record["conditions"])):
+                raise ValueError("Background evidence must contain only id, conditions, and lesson")
         request = ReviewRequest.model_validate(row["request"])
         if not row["expected"]:
             raise ValueError("Every labeled case needs at least one decision")
@@ -53,7 +60,7 @@ def validate_cases(rows):
 def render_case(row, store):
     req = ReviewRequest.model_validate(row["request"])
     for check, expected in row["expected"].items():
-        records = store.search(check, req.design.model_dump_json())
+        records = (row.get("background_evidence", []) + store.search(check, req.design.model_dump_json()))[:3]
         yield {"id": row["id"], "scenario_family": row["scenario_family"],
                "state": build_state(req, check, records), "questions": question(check),
                "expected": {check: expected}, "evidence_ids": [r["id"] for r in records]}
@@ -66,6 +73,7 @@ def export_dataset(destination: Path, source: Path | None = None, allow_unreview
     destination.mkdir(parents=True, exist_ok=True)
     store = EvidenceStore()
     manifest = {"version": "export-1", "evidence_version": store.version,
+                "source_cases_sha256": hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest(),
                 "expert_reviewed": all(expert_reviewed(row) for row in rows),
                 "experimental": not all(expert_reviewed(row) for row in rows), "files": {},
                 "family_splits": {row["scenario_family"]: row["split"] for row in rows}}

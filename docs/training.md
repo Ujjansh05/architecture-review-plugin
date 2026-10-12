@@ -1,5 +1,9 @@
 # Training and evaluation handoff
 
+The [October 13 research experiment](research-validation-2026-10-13.md) adds 45 source-linked cases and a real CPU head-only training run. It did not improve development accuracy. The production checkpoint remains the unmodified base model. The original full-checkpoint training workflow below remains available; the new diagnostic is a separate, explicitly experimental path.
+
+To reproduce the combined preparation, run `python scripts/prepare_research_experiment.py`. Its output has 78 train, 24 development, 19 calibration, and 24 untouched test cases, all with draft labels. Use `scripts/run_codex_baseline.py` for blind development predictions and `scripts/train_head_diagnostic.py` for the bounded head-only experiment. The latter saves approximately 60 MB of non-encoder weights and verifies that the original checkpoint and frozen encoder are unchanged. Its artifact is not a standalone plugin checkpoint and is not release-approved.
+
 ## Current artifacts
 
 The shipped dataset is a synthetic pilot, not expert-reviewed training truth. It has 20 scenario families and 100 cases, with 60/15/10/15 cases assigned to train/development/calibration/test. Variants stay with their families. Ten known development regressions are separate and never count as independent final-test evidence.

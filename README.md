@@ -2,9 +2,11 @@
 
 A local MCP tool that reviews messaging designs drafted by an existing AI assistant. It checks retry safety, acknowledgement durability and queue overload, retrieves source-backed lessons, and calculates workload/storage in code.
 
-**Status: experimental implementation.** The included 100 synthetic labels and 60 evidence summaries await independent expert review. The downloadable Laya checkpoint is the unmodified base model. No specialized, calibrated, release-approved checkpoint is bundled, and no paid GPU job has been launched. See `docs/validation.md` for measured results and remaining work.
+**Status: experimental implementation.** The runtime includes 100 synthetic cases and 60 draft evidence summaries. A separate [research dataset](datasets/README.md) adds 18 licensed human-origin references, 372 text chunks, and 45 source-linked hypothetical cases. All decision labels await independent expert review. The downloadable checkpoint remains base Laya: a small CPU head-training experiment did not improve decision accuracy. No trained weights are bundled. See the [latest experiment report](docs/research-validation-2026-10-13.md).
 
 The project's original code, documentation and synthetic examples use the [MIT License](LICENSE). Dependencies, downloaded model weights and cited source materials retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
+
+The separate reference corpus and source-linked adaptations retain CC BY attribution licenses, as recorded per item. They are not part of the MIT software grant.
 
 ## Quick start
 

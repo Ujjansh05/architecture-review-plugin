@@ -1,5 +1,7 @@
 # Dataset and company architecture coverage
 
+The [open reference collection](../datasets/README.md) now adds 18 licensed documents, 372 attributed chunks, 15 draft lessons, 45 source-linked cases, and a blank human-review packet. The [screening audit](../datasets/source-screening.json) records why downloaded Kaggle/Hugging Face samples were kept out of gold evaluation data. See the [experiment report](research-validation-2026-10-13.md) for actual baseline and training results.
+
 The dataset describes dated, publicly documented subsystems and their trade-offs. It does not claim to reproduce a company's entire private architecture or a universally perfect design.
 
 | Family | Included references | Example learning goal |

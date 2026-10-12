@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — research dataset and validation
+
+- Add 18 pinned, licensed human-origin architecture references, 372 attributed chunks, 15 draft lessons, 45 hypothetical decision cases, and a blind reviewer packet.
+- Record screening of 11 source candidates, including actual Kaggle/Hugging Face sample audits; exclude samples with unverified label provenance.
+- Enforce source-document split grouping and validate optional background evidence in dataset exports.
+- Add reproducible published-wheel/MCP/AI-host checks, blind general-AI baselines, and a bounded CPU head-training diagnostic.
+- Report no accuracy improvement from the small head-training experiment; retain base Laya as the default and keep trained weights undistributed.
+
 ## 0.1.1 — MIT-licensed experimental preview
 
 - Add the owner-selected MIT license to the repository, wheel and source distribution.

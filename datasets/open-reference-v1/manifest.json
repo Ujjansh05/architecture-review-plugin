@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "documents": 18,
+  "chunks": 372,
+  "collections": [
+    "primer",
+    "aosa"
+  ],
+  "expert_reviewed_decision_labels": 0,
+  "date": "2026-10-12",
+  "files": {
+    "sources.json": "d1f94a2ad838e29e321229404e005b6cb52f7c61e6dc92e3e379ef2afb953084",
+    "chunks.jsonl": "06cc955d5ee6047cdf1284fbf3bc810bd864ee6b8b71e27ed31d6b3370d017a0",
+    "licenses/aosa.txt": "5e7523bb9f45d3d6cb13ff2150ff8caf164329abb984906059fdf50234988561",
+    "licenses/primer.txt": "9a7492f956e845e14e04f42e3f6cdd971460a231eeb04317af9e6aace1470876"
+  }
+}

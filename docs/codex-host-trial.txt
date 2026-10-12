@@ -1,0 +1,18 @@
+Integration succeeded: called `architecture_review.review_architecture` exactly once per example, with inputs unchanged.
+
+| Example | Review status | Retry safety | Acknowledgement durability | Queue overload |
+|---|---|---|---|---|
+| complete | complete | supported | supported | supported |
+| flawed | partial | contradicted | contradicted | contradicted |
+| incomplete | partial | insufficient_information | insufficient_information | insufficient_information |
+
+The model returned **supported for every check**. It agreed with all three complete-example verdicts and disagreed with all three verdicts in both other examples. The flawed example explicitly lacks enforced atomic deduplication, acknowledges before durable commit, and allows unbounded queue growth; those facts support the returned contradictions.
+
+Missing evidence:
+
+- **Complete and flawed:** no missing inputs for the three rule checks, but no benchmark covering workload, configuration, latency, errors, and duration.
+- **Incomplete:** missing duplicate-effect requirements, acknowledgement boundary and failure requirements, message-preservation and queue-bound requirements, all ten workload inputs, and benchmark evidence. The tool also requests resolution of each rule/model disagreement.
+
+Capacity, headroom, and latency compliance remain **unknown for all examples**. “Supported” is conditional on supplied facts, not a proven capacity or deployment guarantee. The model is an unmodified base checkpoint with unvalidated calibration; its probabilities are not production failure probabilities. Retrieved lessons are background evidence, await expert review, and describe public subsystem snapshots rather than verifying this deployment.
+
+Revise the flawed architecture to enforce stable-ID deduplication atomically with every business effect, retaining records for 172,800 seconds across the 86,400-second retry window. Acknowledge `message_accepted` only after a durable quorum commit on independent hosts. Bound the queue at 10,000 messages and reject before acceptance at capacity, preserving accepted messages and using bounded exponential backoff with jitter. Validate crash recovery, redelivery, overload behavior, and the 500 ms latency target through measurement.

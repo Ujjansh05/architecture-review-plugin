@@ -1,0 +1,176 @@
+{
+  "screened_at": "2026-10-13",
+  "candidate_count": 11,
+  "candidates": [
+    {
+      "id": "system-design-primer",
+      "platform": "GitHub",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "decision": "accepted_reference_text",
+      "license": "CC-BY-4.0",
+      "authorship": "Donne Martin and named contributors; human-origin work, later edits not individually audited",
+      "reason": "Pinned explicit content license; concepts and hypothetical exercises are distinguished from real company implementations."
+    },
+    {
+      "id": "aosabook",
+      "platform": "GitHub / publisher",
+      "url": "https://aosabook.org/en/",
+      "decision": "accepted_reference_text",
+      "license": "CC-BY-3.0",
+      "authorship": "Named chapter authors",
+      "reason": "Publisher and pinned repository state the content license; historical engineering accounts with named authors."
+    },
+    {
+      "id": "geeksforgeeks-system-design",
+      "platform": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/system-design/system-design-tutorial/",
+      "terms_url": "https://www.geeksforgeeks.org/legal/terms-of-use/",
+      "decision": "permission_required_not_collected",
+      "license": null,
+      "authorship": "Editorial content; not independently reviewed by this project",
+      "reason": "Terms prohibit systematic collection/database creation and automated extraction without written permission. No bulk scrape was performed."
+    },
+    {
+      "id": "mixu/distsysbook",
+      "platform": "GitHub",
+      "url": "https://github.com/mixu/distsysbook",
+      "terms_url": "https://github.com/mixu/distsysbook/blob/4c86e54b1e601790c7d5fcbb34da6bf1188740d8/readme.md",
+      "decision": "permission_required_not_collected",
+      "license": null,
+      "authorship": "Named author, historical human-origin book",
+      "reason": "The README reserves republication permission for the book. The CC-BY notices refer to icons and a logo, not the book text."
+    },
+    {
+      "id": "ajibawa-2023/Software-Architecture",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/ajibawa-2023/Software-Architecture",
+      "authorship_evidence_url": "https://huggingface.co/posts/ajibawa-2023/798128872483893",
+      "decision": "excluded_from_human_gold",
+      "license": "Apache-2.0 (dataset card)",
+      "authorship": "Synthetic, explicitly confirmed by uploader",
+      "reason": "Large instruction data is not an independent human-labeled decision benchmark."
+    },
+    {
+      "id": "devpkprajapati/ai-system-design-instruct",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/devpkprajapati/ai-system-design-instruct",
+      "decision": "quarantined_sample",
+      "license": "MIT (dataset card)",
+      "authorship": "Undocumented",
+      "reason": "Downloaded 60 records. Card lacks collection and human-review documentation; records are broad design completions, not labels for the three checks."
+    },
+    {
+      "id": "devpkprajapati/llm-system-design-guide-basic",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/devpkprajapati/llm-system-design-guide-basic",
+      "decision": "excluded_pending_provenance",
+      "license": "MIT (dataset card)",
+      "authorship": "Undocumented",
+      "reason": "README contains only a license declaration; no documented human authorship or label-review procedure."
+    },
+    {
+      "id": "SaffalPoosh/system_design",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/SaffalPoosh/system_design",
+      "decision": "excluded_pending_license_and_provenance",
+      "license": null,
+      "authorship": "Unknown",
+      "reason": "Search API did not expose a content license or review provenance; not downloaded for training."
+    },
+    {
+      "id": "ml-system-design/ml-design-doc-reviewer-data",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/ml-system-design/ml-design-doc-reviewer-data",
+      "decision": "not_downloaded_gated",
+      "license": "Apache-2.0 (dataset card)",
+      "authorship": "Not verified",
+      "reason": "Gated dataset; no gate or additional terms were accepted on the user's behalf."
+    },
+    {
+      "id": "ArchSIBench/ArchSIBench",
+      "platform": "Hugging Face",
+      "url": "https://huggingface.co/datasets/ArchSIBench/ArchSIBench",
+      "decision": "excluded_wrong_domain",
+      "license": "Apache-2.0 (dataset card)",
+      "authorship": "Research benchmark; human-label provenance not assessed",
+      "reason": "Architectural spatial intelligence concerns physical rooms/buildings, not software-system durability or queue semantics."
+    },
+    {
+      "id": "syedmharis/software-engineering-interview-questions-dataset",
+      "platform": "Kaggle",
+      "url": "https://www.kaggle.com/datasets/syedmharis/software-engineering-interview-questions-dataset",
+      "decision": "quarantined_sample",
+      "license": "MIT (Kaggle metadata)",
+      "authorship": "Undocumented",
+      "reason": "Downloaded archive has 200 rows, including 24 System Design and 5 Distributed Systems rows; description advertises 250. Answers have no source citations or independent reviewer metadata. CSV required CP1252 decoding."
+    }
+  ],
+  "downloaded_sample_audits": [
+    {
+      "platform": "hugging_face",
+      "id": "devpkprajapati/ai-system-design-instruct",
+      "revision": "6d58a98c9729706100d47995e6634b1400ff4d52",
+      "sha256": "dcd01b64f7d81a595490838058f15a18cda82bdbb497e5d32cbed2e40a33d3f8",
+      "rows": 60,
+      "fields": [
+        "instruction",
+        "context",
+        "question",
+        "completion",
+        "id",
+        "source_file"
+      ],
+      "source_files": {
+        "ai_sysdesign_e2e.jsonl": 20,
+        "ai_sysdesign_e2e_v2.jsonl": 20,
+        "ai_sysdesign_e2e_v3.jsonl": 20
+      },
+      "decision": "quarantine_no_documented_human_authorship_or_review_labels"
+    },
+    {
+      "platform": "kaggle",
+      "id": "syedmharis/software-engineering-interview-questions-dataset",
+      "sha256": "ad4c16956664112800806ce24e2a79e72cb7a59621c96b013d6e52cabf6eebae",
+      "files": [
+        {
+          "name": "Software Questions.csv",
+          "encoding": "cp1252",
+          "rows": 200,
+          "columns": [
+            "Question Number",
+            "Question",
+            "Answer",
+            "Category",
+            "Difficulty"
+          ],
+          "categories": {
+            "General Programming": 9,
+            "General Program": 1,
+            "Data Structures": 11,
+            "Languages and Frameworks": 10,
+            "Database and SQL": 10,
+            "Web Development": 10,
+            "Software Testing": 10,
+            "Version Control": 10,
+            "System Design": 24,
+            "Security": 13,
+            "DevOps": 21,
+            "Front-end": 17,
+            "Back-end": 14,
+            "Full-stack": 8,
+            "Algorithms": 10,
+            "Machine Learning": 5,
+            "Distributed Systems": 5,
+            "Networking": 3,
+            "Low-level Systems": 3,
+            "Database Systems": 3,
+            "Data Engineering": 2,
+            "Artificial Intelligence": 1
+          }
+        }
+      ],
+      "decision": "quarantine_no_documented_human_authorship_or_review_labels"
+    }
+  ],
+  "qualification": "This is a targeted screening, not an exhaustive search of either platform. No downloaded platform sample was accepted as human gold labels."
+}

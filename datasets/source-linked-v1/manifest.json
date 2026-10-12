@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "cases": 45,
+  "families": 15,
+  "splits": {
+    "train": 18,
+    "development": 9,
+    "calibration": 9,
+    "test": 9
+  },
+  "expert_reviewed": 0,
+  "source_groups": {
+    "aosa-hdfs": "train",
+    "aosa-zeromq": "train",
+    "primer-mint": "train",
+    "primer-twitter": "train",
+    "primer-scaling_aws": "train",
+    "aosa-graphite": "train",
+    "primer-sales_rank": "development",
+    "aosa-riak": "development",
+    "aosa-distsys": "development",
+    "primer-pastebin": "calibration",
+    "primer-web_crawler": "calibration",
+    "aosa-nginx": "calibration",
+    "aosa-mediawiki": "test",
+    "aosa-nosql": "test",
+    "primer-social_graph": "test"
+  },
+  "labels": {
+    "supported": 15,
+    "contradicted": 15,
+    "insufficient_information": 15
+  },
+  "origin": "AI-authored draft labels, grounded in human-origin references; not human gold labels",
+  "test_status": "frozen_not_evaluated",
+  "source_corpus_manifest_sha256": "2db6c6b986707c856aa0a81b14d83c806ffeea589707eb1a97ec81f94454e6ec",
+  "files": {
+    "cases.jsonl": "7b572f295616b16a6a13fe95306b97fabfd4d62b4b1cf3b3798c472a43ecbedf",
+    "lessons.jsonl": "325caf67626126379504a08848eb37c0c1cfc591cf3041d93cab2d534ec55fba"
+  }
+}

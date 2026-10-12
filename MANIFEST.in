@@ -5,6 +5,7 @@ recursive-include docs *.md *.txt *.json
 recursive-include examples *.json
 recursive-include scripts *.py *.ps1
 recursive-include tests *.py
+recursive-include datasets *.json *.jsonl *.md *.txt *.csv
 global-exclude *.local.json *.pyc
 prune .runtime
 prune .venv
