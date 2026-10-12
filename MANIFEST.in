@@ -1,4 +1,4 @@
-include README.md CHANGELOG.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md
+include README.md CHANGELOG.md CONTRIBUTING.md LICENSE THIRD_PARTY_NOTICES.md
 include requirements.windows.lock.txt
 recursive-include src/arch_review/data *.json *.jsonl
 recursive-include docs *.md *.txt *.json

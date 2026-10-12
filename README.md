@@ -4,6 +4,8 @@ A local MCP tool that reviews messaging designs drafted by an existing AI assist
 
 **Status: experimental implementation.** The included 100 synthetic labels and 60 evidence summaries await independent expert review. The downloadable Laya checkpoint is the unmodified base model. No specialized, calibrated, release-approved checkpoint is bundled, and no paid GPU job has been launched. See `docs/validation.md` for measured results and remaining work.
 
+The project's original code, documentation and synthetic examples use the [MIT License](LICENSE). Dependencies, downloaded model weights and cited source materials retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
+
 ## Quick start
 
 Clone the project with Python 3.11 or 3.12 installed. On Windows PowerShell:

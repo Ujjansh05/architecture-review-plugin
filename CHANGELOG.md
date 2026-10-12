@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — MIT-licensed experimental preview
+
+- Add the owner-selected MIT license to the repository, wheel and source distribution.
+- Declare license metadata and preserve third-party notices.
+- Supersede the initial 0.1.0 preview with licensed downloads; runtime behavior is unchanged.
+
 ## 0.1.0 — experimental
 
 - Local MCP tool, authenticated loopback review API and CLI.
