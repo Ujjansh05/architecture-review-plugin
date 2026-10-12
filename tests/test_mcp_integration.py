@@ -83,24 +83,46 @@ async def test_two_mcp_clients_use_one_service_and_preserve_unknowns(daemon):
     assert state["max_active"] == 1
 
 
-def test_stdio_accepts_raw_jsonrpc_initialize_and_tool_listing(tmp_path):
+async def test_stdio_accepts_raw_jsonrpc_initialize_and_tool_listing(tmp_path):
     # An independent raw JSON-RPC client verifies stdout has no non-protocol text.
     flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
-    process = subprocess.Popen([sys.executable, "-m", "arch_review", "mcp"],
-        env=dict(os.environ, ARCH_REVIEW_HOME=str(tmp_path)), stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, creationflags=flags)
+    process = await asyncio.create_subprocess_exec(sys.executable, "-m", "arch_review", "mcp",
+        env=dict(os.environ, ARCH_REVIEW_HOME=str(tmp_path)), stdin=asyncio.subprocess.PIPE,
+        stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE, creationflags=flags)
     messages = [
         {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-06-18",
             "capabilities": {}, "clientInfo": {"name": "raw-integration-client", "version": "1.0"}}},
         {"jsonrpc": "2.0", "method": "notifications/initialized"},
         {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}},
     ]
+    async def send(message):
+        process.stdin.write((json.dumps(message) + "\n").encode())
+        await process.stdin.drain()
+
+    async def receive(identifier):
+        while True:
+            line = await process.stdout.readline()
+            assert line, "MCP process ended before replying"
+            message = json.loads(line)
+            if message.get("id") == identifier:
+                return message
+
     try:
-        stdout, stderr = process.communicate("".join(json.dumps(m) + "\n" for m in messages), timeout=30)
-    except subprocess.TimeoutExpired:
-        process.kill()
-        process.communicate()
-        raise
-    output = [json.loads(line) for line in stdout.splitlines() if line.strip()]
-    assert any(message.get("id") == 1 and "result" in message for message in output), stderr
-    assert any(message.get("id") == 2 and message.get("result", {}).get("tools") for message in output), stderr
+        # Keep stdin open until responses arrive; EOF can cancel pending requests.
+        await send(messages[0])
+        initialized = await asyncio.wait_for(receive(1), timeout=30)
+        assert "result" in initialized
+        await send(messages[1])
+        await send(messages[2])
+        listing = await asyncio.wait_for(receive(2), timeout=30)
+        assert [tool["name"] for tool in listing.get("result", {}).get("tools", [])] == ["review_architecture"]
+        process.stdin.close()
+        stdout, stderr = await asyncio.wait_for(process.communicate(), timeout=10)
+        for line in stdout.splitlines():
+            if line.strip():
+                json.loads(line)
+        assert process.returncode == 0, stderr.decode(errors="replace")
+    finally:
+        if process.returncode is None:
+            process.kill()
+            await process.wait()
