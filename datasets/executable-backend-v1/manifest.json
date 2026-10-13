@@ -1,0 +1,24 @@
+{
+  "version": "executable-local-regressions-1",
+  "split": "development_regression",
+  "cases": 12,
+  "measured_runs": 8,
+  "information_removal_controls": 4,
+  "source": "scripts/build_executable_cases.py",
+  "source_sha256": "75557a037bb7bddfc9edb5f0ea028453dc4d85a3875d17f1ea5048fc80c29b10",
+  "files": {
+    "cases.jsonl": "54bd7d683fff2a5fd15b8767123d1c9f5c03e80d2316862cbc4d4d5684d7a511",
+    "observations.jsonl": "59ad5c9b048092a808c93ed62a6914941e2e448a290309bfe76e8788727065b7",
+    "README.md": "e7fe017b9575d58dd091c2370b1d1806631a1e31704fe2741f8702b82f525dea"
+  },
+  "runtime": {
+    "python": "3.12.4",
+    "sqlite": "3.45.3",
+    "platform": "Windows"
+  },
+  "subprocess_timeout_seconds": 5,
+  "expert_reviewed": false,
+  "training_eligible": false,
+  "final_test_eligible": false,
+  "production_quality_claim": false
+}

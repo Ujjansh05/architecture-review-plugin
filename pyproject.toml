@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "architecture-review-plugin"
-version = "0.1.1"
-description = "ArchRivet: local, evidence-backed messaging architecture reviews over MCP"
+version = "0.2.0a1"
+description = "ArchRivet: local, evidence-backed backend architecture reviews over MCP"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

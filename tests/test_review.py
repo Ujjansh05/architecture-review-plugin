@@ -169,7 +169,6 @@ def test_scenario_variants_cannot_cross_splits():
 def test_budget_reserves_overhead_and_rejects_overspend(tmp_path):
     first = reserve_budget(10, 3600, tmp_path)
     assert first["maximum_compute_usd"] == 10
-    reserve_budget(10, 3600, tmp_path)
     with pytest.raises(ValueError, match="exceed"):
         reserve_budget(.4, 3600, tmp_path)
 

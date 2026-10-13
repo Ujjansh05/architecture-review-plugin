@@ -10,3 +10,5 @@ MANIFEST.in text eol=lf
 *.toml text eol=lf
 *.sh text eol=lf
 *.ps1 text eol=crlf
+# Frozen experiment inputs retain their exact recorded bytes across checkouts.
+datasets/backend-diagnostics-v1/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

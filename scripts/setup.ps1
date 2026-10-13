@@ -25,7 +25,7 @@ try {
         if (-not $ModelDirectory) { $ModelDirectory = Join-Path $projectRoot 'models\laya-multilingual' }
         & $pythonExe -m arch_review download-model --destination $ModelDirectory
         if ($LASTEXITCODE -ne 0) { throw 'Checkpoint download failed.' }
-        & $pythonExe -m arch_review configure --checkpoint $ModelDirectory
+        & $pythonExe -m arch_review configure --backend laya --checkpoint $ModelDirectory --device cpu --context-tokens 1024
         if ($LASTEXITCODE -ne 0) { throw 'Checkpoint configuration failed. Stop the local daemon first.' }
     }
     & $pythonExe -m arch_review mcp-config

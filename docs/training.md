@@ -48,7 +48,7 @@ No paid job has been launched. This project does not silently upload local files
 
 Use one 16 GB T4-class worker initially. Check the provider's live rate before launching. Stage the package, exported dataset and base model in that environment; run the command above there. Set the provider's own hard job timeout to cover installation, download, training and evaluation.
 
-The local runner reserves the ceiling cost of its training timeout at the supplied hourly rate, rounded to billed minutes and cents. Reservations are cumulative in `training-budget.json`. They may total at most USD 20; USD 5 remains reserved within the USD 25 cap. Reservations are not refunded automatically. Actual provider charges remain unknown until reconciled with billing.
+The local runner reserves the ceiling cost of its training timeout at the supplied hourly rate, rounded to billed minutes and cents. Reservations are cumulative in `training-budget.json`. They may total at most USD 10; USD 5 remains reserved within the owner's current USD 15 cap, including for older ledgers created under a higher limit. Reservations are not refunded automatically. Actual provider charges remain unknown until reconciled with billing.
 
 Stopping a training subprocess does not terminate a provider VM. The provider job timeout is therefore required for the overall cap. Include setup time, evaluation time, storage, transfer and taxes in the reservation before launching; shorten the training allocation if necessary. Never start a job if total maximum charges cannot fit the cap.
 

@@ -47,8 +47,13 @@ def _worker(connection, settings_dict):
             checkpoint = Path(settings.checkpoint).resolve()
             if not checkpoint.is_dir():
                 raise FileNotFoundError("Configured local checkpoint directory does not exist.")
-            agent = laya.load(str(checkpoint), device="cpu")
-            connection.send({"ready": True})
+            device = settings.device
+            if device == "auto":
+                device = "cuda" if torch.cuda.is_available() else "cpu"
+            if device == "cuda" and not torch.cuda.is_available():
+                raise RuntimeError("CUDA was requested but this PyTorch environment has no available CUDA device")
+            agent = laya.load(str(checkpoint), device=device)
+            connection.send({"ready": True, "device": device})
             while True:
                 if not connection.poll(settings.idle_seconds):
                     break
@@ -58,15 +63,17 @@ def _worker(connection, settings_dict):
                 results = {}
                 for key, payload in payloads.items():
                     try:
-                        result = agent.predict(payload["state"], payload["questions"], max_len=1024, head_max_len=256)
+                        result = agent.predict(payload["state"], payload["questions"],
+                                               max_len=settings.model_context_tokens, head_max_len=256)
                         usage = result.get("usage", {})
                         if usage.get("truncated") or usage.get("state_tokens_dropped", 0) > 0:
                             raise ValueError("Model context overflow: narrow the design; no truncated verdict was used.")
                         if key in usage.get("options", {}) and usage["options"][key]["distinct"] < 3:
                             raise ValueError("Decision labels collapsed in the model context.")
                         answer = result["answers"][key]
-                        label = Verdict(answer["choice"])
-                        probabilities = answer["probabilities"]
+                        label_map = payload.get("label_map", {})
+                        label = Verdict(label_map.get(answer["choice"], answer["choice"]))
+                        probabilities = {label_map.get(key, key): value for key, value in answer["probabilities"].items()}
                         if set(probabilities) != {v.value for v in Verdict}:
                             raise ValueError("Model returned an unexpected label set.")
                         if any(not math.isfinite(p) or p < 0 or p > 1 for p in probabilities.values()):
@@ -137,6 +144,7 @@ class ModelWorker:
                     ready = self._receive(deadline)
                     if not ready.get("ready"):
                         raise RuntimeError(ready.get("error", "Model failed to initialize."))
+                    self.metadata["active_device"] = ready.get("device", "unknown")
                 self.connection.send(payloads)
                 raw = self._receive(deadline)
             except (OSError, EOFError, RuntimeError, TimeoutError) as exc:

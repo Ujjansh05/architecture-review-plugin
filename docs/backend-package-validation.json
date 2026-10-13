@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0a1",
+  "wheel_sha256": "a1fc7952829af40fff4a1e04a039305a93fbd2be595a3d312451d10dc54f6028",
+  "fresh_package_import_verified": true,
+  "dependency_isolation": "shared_existing_dependencies",
+  "schema_decisions": 8,
+  "example_checks": 8,
+  "expected_verdicts_verified": true,
+  "capacity_unknown_preserved": true,
+  "model_loaded": false,
+  "status": "passed"
+}

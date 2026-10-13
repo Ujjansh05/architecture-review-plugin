@@ -1,0 +1,23 @@
+{
+  "host": "Codex CLI",
+  "model": "host_default_identifier_not_emitted",
+  "cases": 36,
+  "elapsed_seconds": 31.82799999997951,
+  "gold_labels_sent": false,
+  "case_ids_anonymized": true,
+  "case_order_seed": 17,
+  "case_context": "All development cases in one batch; Laya sees one case per call.",
+  "tools_used": false,
+  "prompt_sha256": "531b08bd41844b2bac2cd3da536ab42451e0dcc520601ffd75bc3cc21b98a374",
+  "scope": "experimental_development_only",
+  "version": "codex-cli 0.162.1",
+  "usage": [
+    {
+      "input_tokens": 22439,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 799,
+      "reasoning_output_tokens": 31
+    }
+  ]
+}

@@ -32,6 +32,20 @@ def main():
     review.add_argument("input", type=Path)
     review.add_argument("--output", type=Path)
     review.add_argument("--rules-only", action="store_true", help="Explicit diagnostic baseline; returns an incomplete rules-only review")
+    design = sub.add_parser("review-design", help="Review V2 structured checks or submit a document review job")
+    design.add_argument("input", type=Path)
+    design.add_argument("--output", type=Path)
+    design.add_argument("--local", action="store_true", help="Run synchronously in this process without the shared service")
+    design.add_argument("--wait", action="store_true", help="Poll a submitted job until completion")
+    get_job = sub.add_parser("get-review")
+    get_job.add_argument("job_id")
+    cancel_job = sub.add_parser("cancel-review")
+    cancel_job.add_argument("job_id")
+    schema_v2 = sub.add_parser("schema-v2")
+    schema_v2.add_argument("--output", type=Path)
+    preflight = sub.add_parser("preflight", help="Read-only hardware/storage inspection; does not install or download")
+    preflight.add_argument("--workspace", type=Path, default=Path.cwd())
+    preflight.add_argument("--output", type=Path)
     sub.add_parser("start", help="Start the shared service before connecting Windows MCP clients")
     sub.add_parser("serve", help="Run the shared service in the foreground")
     sub.add_parser("stop")
@@ -44,6 +58,13 @@ def main():
     config.add_argument("--checkpoint", type=Path)
     config.add_argument("--port", type=int)
     config.add_argument("--idle-seconds", type=int)
+    config.add_argument("--backend", choices=["rules", "laya", "llama_cpp"])
+    config.add_argument("--device", choices=["auto", "cpu", "cuda"])
+    config.add_argument("--context-tokens", type=int)
+    config.add_argument("--llama-endpoint")
+    config.add_argument("--llama-server", type=Path)
+    config.add_argument("--gguf", type=Path)
+    config.add_argument("--evidence", type=Path)
     download = sub.add_parser("download-model")
     download.add_argument("--destination", required=True, type=Path)
     dataset = sub.add_parser("dataset")
@@ -77,7 +98,49 @@ def main():
     train.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     try:
-        if args.command == "review":
+        if args.command == "preflight":
+            from .preflight import inspect_hardware
+            emit(inspect_hardware(args.workspace), args.output)
+        elif args.command == "schema-v2":
+            from .registry import definitions
+            from .schema_v2 import DesignReviewRequest, DesignReviewResponse
+            emit({"input": DesignReviewRequest.model_json_schema(), "output": DesignReviewResponse.model_json_schema(),
+                  "decisions": definitions()}, args.output)
+        elif args.command in {"get-review", "cancel-review"}:
+            from .client import design_job
+            emit(design_job("GET" if args.command == "get-review" else "DELETE", job_id=args.job_id))
+        elif args.command == "review-design":
+            from .schema_v2 import DesignReviewRequest
+            req = DesignReviewRequest.model_validate_json(args.input.read_text(encoding="utf-8-sig"))
+            if args.local:
+                from .backends import make_backend
+                from .evidence_v2 import PersistentEvidence
+                from .review_v2 import DesignReviewer
+                settings = load_settings()
+                backend = make_backend(settings)
+                try:
+                    import time
+                    deadline = time.monotonic() + settings.review_timeout_seconds
+                    def cancelled():
+                        if time.monotonic() >= deadline:
+                            raise TimeoutError("Review exceeded its overall time budget")
+                        return False
+                    result = DesignReviewer(backend, PersistentEvidence(runtime_dir() / "evidence-index", settings.evidence_path)).review(req, cancelled=cancelled)
+                    emit(result.model_dump(mode="json"), args.output)
+                finally:
+                    backend.close()
+            else:
+                import time
+
+                from .client import design_job
+                job = design_job("POST", request=req)
+                while args.wait and job["status"] in {"queued", "running", "cancelling"}:
+                    time.sleep(1)
+                    job = design_job("GET", job_id=job["job_id"])
+                emit(job, args.output)
+                if job["status"] in {"failed", "cancelled"}:
+                    raise SystemExit(2)
+        elif args.command == "review":
             req = ReviewRequest.model_validate_json(args.input.read_text(encoding="utf-8-sig"))
             if args.rules_only:
                 from .service import ReviewService
@@ -162,6 +225,12 @@ def main():
                 values["port"] = args.port
             if args.idle_seconds is not None:
                 values["idle_seconds"] = args.idle_seconds
+            for option, field in [("backend", "backend"), ("device", "device"), ("context_tokens", "model_context_tokens"),
+                                  ("llama_endpoint", "llama_endpoint"), ("llama_server", "llama_server_path"),
+                                  ("gguf", "gguf_path"), ("evidence", "evidence_path")]:
+                value = getattr(args, option)
+                if value is not None:
+                    values[field] = str(value.resolve()) if isinstance(value, Path) else value
             # Avoid a silently stale daemon after settings are changed.
             from filelock import FileLock
             with FileLock(str(runtime_dir() / "serve.lock"), timeout=0):

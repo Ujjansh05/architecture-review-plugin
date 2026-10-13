@@ -2,6 +2,7 @@ import json
 import os
 import secrets
 from pathlib import Path
+from typing import Literal
 
 from filelock import FileLock
 from pydantic import Field
@@ -16,6 +17,14 @@ class Settings(StrictModel):
     idle_seconds: int = Field(default=300, ge=1)
     inference_timeout_seconds: int = Field(default=180, ge=1)
     threads: int = Field(default=4, ge=1, le=32)
+    backend: Literal["rules", "laya", "llama_cpp"] = "rules"
+    device: Literal["auto", "cpu", "cuda"] = "auto"
+    model_context_tokens: int = Field(default=1024, ge=512, le=8192)
+    llama_endpoint: str = "http://127.0.0.1:8766"
+    llama_server_path: str | None = None
+    gguf_path: str | None = None
+    evidence_path: str | None = None
+    review_timeout_seconds: int = Field(default=1800, ge=1, le=7200)
 
 
 def runtime_dir() -> Path:

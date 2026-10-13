@@ -1,0 +1,185 @@
+{
+  "cases": 240,
+  "families": 80,
+  "coverage": {
+    "train": {
+      "retry_safety": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "ack_durability": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "queue_overload": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "transaction_atomicity": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "replica_consistency": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "cache_freshness": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "failover_safety": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      },
+      "dependency_resilience": {
+        "supported": 5,
+        "contradicted": 5,
+        "insufficient_information": 5
+      }
+    },
+    "development": {
+      "retry_safety": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "ack_durability": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "queue_overload": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "transaction_atomicity": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "replica_consistency": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "cache_freshness": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "failover_safety": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "dependency_resilience": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      }
+    },
+    "calibration": {
+      "retry_safety": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "ack_durability": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "queue_overload": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "transaction_atomicity": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "replica_consistency": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "cache_freshness": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "failover_safety": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "dependency_resilience": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      }
+    },
+    "test": {
+      "retry_safety": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "ack_durability": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "queue_overload": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "transaction_atomicity": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "replica_consistency": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "cache_freshness": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "failover_safety": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "dependency_resilience": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      }
+    }
+  },
+  "split_counts": {
+    "train": 120,
+    "development": 36,
+    "calibration": 36,
+    "test": 48
+  },
+  "near_duplicate_pairs": [],
+  "independently_reviewed": false,
+  "final_test_minimum_counts_met": false,
+  "release_eligible": false,
+  "notice": "Template diagnostics expose implementation errors; high agreement is not independent accuracy."
+}

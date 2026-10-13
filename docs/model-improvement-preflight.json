@@ -1,0 +1,21 @@
+{
+  "workspace": "local development checkout (path omitted)",
+  "free_disk_bytes": 3004416000,
+  "required_workspace_bytes": 32212254720,
+  "large_model_storage_ready": false,
+  "ram_bytes": 16802590720,
+  "available_ram_bytes": 3218022400,
+  "gpus": [
+    {
+      "name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+      "total_vram_mib": 6144,
+      "free_vram_mib": 6001,
+      "driver": "592.27"
+    }
+  ],
+  "gpu_probe_error": null,
+  "cuda_runtime_tested": false,
+  "rental_budget_usd": 15,
+  "next_action": "Provide a workspace with at least 30 GiB free before downloading larger models or training.",
+  "notice": "Hardware availability does not prove a model or training run fits. No files were removed or compute rented."
+}

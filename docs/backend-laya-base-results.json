@@ -1,0 +1,955 @@
+{
+  "per_check": {
+    "retry_safety": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.26666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.31201666666666666,
+      "multiclass_brier": 0.8770552500000001,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.26666666666666666
+      ],
+      "independent_family_count": 2,
+      "inference_failures": 0,
+      "critical_false_supported": 1,
+      "perturbation_cases": 6,
+      "changed_fraction": 0.0
+    },
+    "ack_durability": {
+      "count": 3,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.2222222222222222,
+      "per_label": {
+        "supported": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        }
+      },
+      "false_supported": 1,
+      "ece_10_bins": 0.3341666666666666,
+      "multiclass_brier": 0.85862609,
+      "scored_items": 3,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "independent_family_count": 1,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 3,
+      "changed_fraction": 1.0
+    },
+    "queue_overload": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": 0.33881666666666665,
+      "multiclass_brier": 0.8360698516666667,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "independent_family_count": 2,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 6,
+      "changed_fraction": 0.0
+    },
+    "transaction_atomicity": {
+      "count": 3,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.5169333333333332,
+      "multiclass_brier": 1.0474010733333332,
+      "scored_items": 3,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "independent_family_count": 1,
+      "inference_failures": 0,
+      "critical_false_supported": 1,
+      "perturbation_cases": 3,
+      "changed_fraction": 0.0
+    },
+    "replica_consistency": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": 0.39421666666666666,
+      "multiclass_brier": 0.9419877783333334,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "independent_family_count": 2,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 6,
+      "changed_fraction": 0.0
+    },
+    "cache_freshness": {
+      "count": 3,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_label": {
+        "supported": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        }
+      },
+      "false_supported": 1,
+      "ece_10_bins": 0.863,
+      "multiclass_brier": 1.5988843433333333,
+      "scored_items": 3,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "independent_family_count": 1,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 3,
+      "changed_fraction": 0.0
+    },
+    "failover_safety": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.26666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.30318333333333336,
+      "multiclass_brier": 0.8592638883333333,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.26666666666666666
+      ],
+      "independent_family_count": 2,
+      "inference_failures": 0,
+      "critical_false_supported": 1,
+      "perturbation_cases": 6,
+      "changed_fraction": 0.3333333333333333
+    },
+    "dependency_resilience": {
+      "count": 3,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 1
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.4215666666666667,
+      "multiclass_brier": 0.9417215266666666,
+      "scored_items": 3,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "independent_family_count": 1,
+      "inference_failures": 0,
+      "critical_false_supported": 1,
+      "perturbation_cases": 3,
+      "changed_fraction": 0.0
+    }
+  },
+  "overall": {
+    "count": 36,
+    "accuracy": 0.3055555555555556,
+    "macro_f1": 0.2483974358974359,
+    "per_label": {
+      "supported": {
+        "precision": 0.2857142857142857,
+        "recall": 0.3333333333333333,
+        "f1": 0.30769230769230765,
+        "support": 12
+      },
+      "contradicted": {
+        "precision": 0.35,
+        "recall": 0.5833333333333334,
+        "f1": 0.4375,
+        "support": 12
+      },
+      "insufficient_information": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "support": 12
+      }
+    },
+    "false_supported": 10,
+    "ece_10_bins": 0.40267777777777775,
+    "multiclass_brier": 0.9562822141666667,
+    "scored_items": 36,
+    "missing_labels": []
+  },
+  "numeric_gates": {
+    "retry_safety": false,
+    "ack_durability": false,
+    "queue_overload": false,
+    "transaction_atomicity": false,
+    "replica_consistency": false,
+    "cache_freshness": false,
+    "failover_safety": false,
+    "dependency_resilience": false
+  },
+  "independent_quality_release_approved": false,
+  "eligibility": {
+    "independently_reviewed": false,
+    "final_test_minimum_counts_met": false,
+    "release_eligible": false
+  },
+  "results": [
+    {
+      "id": "diagnostic-retry_safety-05-supported",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2896,
+        "contradicted": 0.682,
+        "insufficient_information": 0.0284
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-retry_safety-05-contradicted",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2849,
+        "contradicted": 0.6874,
+        "insufficient_information": 0.0276
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-retry_safety-05-insufficient_information",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2207,
+        "contradicted": 0.7613,
+        "insufficient_information": 0.018
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-retry_safety-06-supported",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.6085,
+        "contradicted": 0.3594,
+        "insufficient_information": 0.0321
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-retry_safety-06-contradicted",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.6114,
+        "contradicted": 0.3573,
+        "insufficient_information": 0.0313
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-retry_safety-06-insufficient_information",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.5215,
+        "contradicted": 0.4605,
+        "insufficient_information": 0.0181
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-ack_durability-05-supported",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2566,
+        "contradicted": 0.71,
+        "insufficient_information": 0.0333
+      },
+      "changed": true,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-ack_durability-05-contradicted",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2518,
+        "contradicted": 0.7101,
+        "insufficient_information": 0.0382
+      },
+      "changed": true,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-ack_durability-05-insufficient_information",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.5824,
+        "contradicted": 0.3646,
+        "insufficient_information": 0.0529
+      },
+      "changed": true,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-05-supported",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.3177,
+        "contradicted": 0.6034,
+        "insufficient_information": 0.0789
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-05-contradicted",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2924,
+        "contradicted": 0.6334,
+        "insufficient_information": 0.0742
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-05-insufficient_information",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2905,
+        "contradicted": 0.6105,
+        "insufficient_information": 0.099
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-06-supported",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1785,
+        "contradicted": 0.7724,
+        "insufficient_information": 0.049
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-06-contradicted",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1624,
+        "contradicted": 0.7918,
+        "insufficient_information": 0.0458
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-queue_overload-06-insufficient_information",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.3063,
+        "contradicted": 0.6214,
+        "insufficient_information": 0.0723
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-supported",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.859,
+        "contradicted": 0.0891,
+        "insufficient_information": 0.0519
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-contradicted",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.8601,
+        "contradicted": 0.0879,
+        "insufficient_information": 0.052
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-insufficient_information",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.8317,
+        "contradicted": 0.084,
+        "insufficient_information": 0.0843
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-supported",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1244,
+        "contradicted": 0.6547,
+        "insufficient_information": 0.2209
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-contradicted",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1411,
+        "contradicted": 0.6662,
+        "insufficient_information": 0.1927
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-insufficient_information",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.2262,
+        "contradicted": 0.6052,
+        "insufficient_information": 0.1687
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-supported",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.0977,
+        "contradicted": 0.7872,
+        "insufficient_information": 0.1151
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-contradicted",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.0973,
+        "contradicted": 0.7982,
+        "insufficient_information": 0.1045
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-insufficient_information",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.0875,
+        "contradicted": 0.8538,
+        "insufficient_information": 0.0587
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-supported",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "probabilities": {
+        "supported": 0.0869,
+        "contradicted": 0.0221,
+        "insufficient_information": 0.8909
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-contradicted",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "insufficient_information",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1068,
+        "contradicted": 0.0207,
+        "insufficient_information": 0.8725
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-insufficient_information",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.8256,
+        "contradicted": 0.0425,
+        "insufficient_information": 0.1319
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-05-supported",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.5564,
+        "contradicted": 0.3521,
+        "insufficient_information": 0.0914
+      },
+      "changed": true,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-05-contradicted",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.5911,
+        "contradicted": 0.3156,
+        "insufficient_information": 0.0933
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-05-insufficient_information",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.5813,
+        "contradicted": 0.3348,
+        "insufficient_information": 0.0839
+      },
+      "changed": true,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-06-supported",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.1892,
+        "contradicted": 0.7733,
+        "insufficient_information": 0.0375
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-06-contradicted",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.225,
+        "contradicted": 0.7282,
+        "insufficient_information": 0.0468
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-failover_safety-06-insufficient_information",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "contradicted",
+      "error": null,
+      "probabilities": {
+        "supported": 0.3409,
+        "contradicted": 0.5888,
+        "insufficient_information": 0.0703
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-supported",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.7295,
+        "contradicted": 0.1488,
+        "insufficient_information": 0.1218
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-contradicted",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.7513,
+        "contradicted": 0.1303,
+        "insufficient_information": 0.1184
+      },
+      "changed": false,
+      "perturbation_complete": true
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-insufficient_information",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "probabilities": {
+        "supported": 0.7839,
+        "contradicted": 0.0869,
+        "insufficient_information": 0.1293
+      },
+      "changed": false,
+      "perturbation_complete": true
+    }
+  ],
+  "notice": "Synthetic/template label agreement is not independent quality evidence. Failures are scored as failures, not unknown answers.",
+  "backend": "laya",
+  "checkpoint": "D:\\architecture-review-models\\laya-multilingual",
+  "context_tokens": 1024,
+  "neutral_labels": false,
+  "split": "development",
+  "dataset_manifest_sha256": "a9e0615c3f983c16bf5665e844ca57f56dcdc81ea5373bef7e4f4581439a0edf",
+  "elapsed_seconds": 88.70300000003772,
+  "template_diagnostic": true,
+  "test_evaluated": false,
+  "model_metadata": {
+    "role": "base",
+    "repo": "convaiinnovations/laya-multilingual",
+    "revision": "1720e3e3357cfe1e281542e223f8273b0890ca34",
+    "artifact_sha256": {
+      "README.md": "e85d16c3fe35fe7094ef51a7cfa81144a5cc07558e5faddcff753a8153e38a0b",
+      "config.json": "7add7c041b53f7091e65908553af79ab3f077946e5f2312d510ae13b17c7c134",
+      "encoder/config.json": "83f6916d13ef0f556ac461f28308dc2bffa7ebeadee8ec9e2db5812020ea5bb4",
+      "model.safetensors": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "rl_agent_config.json": "25061739243b617ad88d1219ba6f8a9c86c5881ca28df024fa2d9b3b2fcc30c6",
+      "tokenizer/tokenizer.json": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "tokenizer/tokenizer_config.json": "424b69444bf7b5809dc2cd2e36d0bd71b8055124dd24274d6db3c655d38205e7"
+    },
+    "calibration_status": "unvalidated",
+    "specialized": false,
+    "notice": "Unmodified base checkpoint; not fine-tuned for architecture reviews."
+  }
+}

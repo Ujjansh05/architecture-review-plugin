@@ -61,3 +61,15 @@ def review_remote(request: ReviewRequest) -> ReviewResponse:
                                headers={"Authorization": "Bearer " + get_token()})
         response.raise_for_status()
         return ReviewResponse.model_validate(response.json())
+
+
+def design_job(method, job_id=None, request=None):
+    ensure_service()
+    if job_id is not None and (len(job_id) != 32 or any(c not in "0123456789abcdef" for c in job_id)):
+        raise ValueError("Invalid review job identifier")
+    path = "/v2/reviews" + ("/" + job_id if job_id else "")
+    with httpx.Client(trust_env=False, timeout=30) as client:
+        kwargs = {"json": request.model_dump(mode="json")} if request is not None else {}
+        response = client.request(method, endpoint() + path, headers={"Authorization": "Bearer " + get_token()}, **kwargs)
+        response.raise_for_status()
+        return response.json()

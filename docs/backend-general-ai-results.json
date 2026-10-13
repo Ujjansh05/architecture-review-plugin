@@ -1,0 +1,884 @@
+{
+  "per_check": {
+    "retry_safety": {
+      "count": 6,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "ack_durability": {
+      "count": 3,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "scenario_family_count": 1,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "queue_overload": {
+      "count": 6,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "transaction_atomicity": {
+      "count": 3,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "scenario_family_count": 1,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "replica_consistency": {
+      "count": 6,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "cache_freshness": {
+      "count": 3,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "scenario_family_count": 1,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "failover_safety": {
+      "count": 6,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    },
+    "dependency_resilience": {
+      "count": 3,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": null,
+      "multiclass_brier": null,
+      "scored_items": 0,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": null,
+      "scenario_family_count": 1,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 0,
+      "perturbation_coverage": 0.0,
+      "changed_fraction": null,
+      "perturbation_gate_passed": false
+    }
+  },
+  "overall": {
+    "count": 36,
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "per_label": {
+      "supported": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 12
+      },
+      "contradicted": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 12
+      },
+      "insufficient_information": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 12
+      }
+    },
+    "false_supported": 0,
+    "ece_10_bins": null,
+    "multiclass_brier": null,
+    "scored_items": 0,
+    "missing_labels": [],
+    "inference_failures": 0
+  },
+  "numeric_gates": {
+    "retry_safety": false,
+    "ack_durability": false,
+    "queue_overload": false,
+    "transaction_atomicity": false,
+    "replica_consistency": false,
+    "cache_freshness": false,
+    "failover_safety": false,
+    "dependency_resilience": false
+  },
+  "independent_quality_release_approved": false,
+  "eligibility": {
+    "independently_reviewed": false,
+    "final_test_minimum_counts_met": false,
+    "release_eligible": false
+  },
+  "results": [
+    {
+      "id": "diagnostic-retry_safety-05-supported",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-retry_safety-05-contradicted",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-retry_safety-05-insufficient_information",
+      "scenario_family": "diagnostic-retry_safety-05",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-retry_safety-06-supported",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-retry_safety-06-contradicted",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-retry_safety-06-insufficient_information",
+      "scenario_family": "diagnostic-retry_safety-06",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-ack_durability-05-supported",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-ack_durability-05-contradicted",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-ack_durability-05-insufficient_information",
+      "scenario_family": "diagnostic-ack_durability-05",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-05-supported",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-05-contradicted",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-05-insufficient_information",
+      "scenario_family": "diagnostic-queue_overload-05",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-06-supported",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-06-contradicted",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-queue_overload-06-insufficient_information",
+      "scenario_family": "diagnostic-queue_overload-06",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-supported",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-contradicted",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-transaction_atomicity-05-insufficient_information",
+      "scenario_family": "diagnostic-transaction_atomicity-05",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-supported",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-contradicted",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-05-insufficient_information",
+      "scenario_family": "diagnostic-replica_consistency-05",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-supported",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-contradicted",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-replica_consistency-06-insufficient_information",
+      "scenario_family": "diagnostic-replica_consistency-06",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-supported",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-contradicted",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-cache_freshness-05-insufficient_information",
+      "scenario_family": "diagnostic-cache_freshness-05",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-05-supported",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-05-contradicted",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-05-insufficient_information",
+      "scenario_family": "diagnostic-failover_safety-05",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-06-supported",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-06-contradicted",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-failover_safety-06-insufficient_information",
+      "scenario_family": "diagnostic-failover_safety-06",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-supported",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "critical": false,
+      "predicted": "supported",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-contradicted",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "critical": true,
+      "predicted": "contradicted",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    },
+    {
+      "id": "diagnostic-dependency_resilience-05-insufficient_information",
+      "scenario_family": "diagnostic-dependency_resilience-05",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "critical": false,
+      "predicted": "insufficient_information",
+      "error": null,
+      "perturbation_complete": false,
+      "perturbation_errors": [],
+      "probabilities": null
+    }
+  ],
+  "gate_requirements": {
+    "macro_f1_minimum": 0.85,
+    "contradicted_recall_minimum": 0.9,
+    "insufficient_information_recall_minimum": 0.9,
+    "supported_precision_minimum": 0.95,
+    "critical_false_supported_maximum": 0,
+    "inference_failures_maximum": 0,
+    "perturbation_coverage_required": 1.0,
+    "perturbation_change_fraction_maximum": 0.05
+  },
+  "notice": "Template families are not independent real-world examples. Numeric gates require complete answer-order testing. Failed primary calls are scored as failures, not unknown answers; failed perturbations block promotion.",
+  "backend": "imported_blind_predictions",
+  "context_tokens": 1024,
+  "neutral_labels": false,
+  "split": "development",
+  "dataset_manifest_sha256": "a9e0615c3f983c16bf5665e844ca57f56dcdc81ea5373bef7e4f4581439a0edf",
+  "candidate": {
+    "version": "backend-candidate-1",
+    "backend": "imported_blind_predictions",
+    "dataset_manifest_sha256": "a9e0615c3f983c16bf5665e844ca57f56dcdc81ea5373bef7e4f4581439a0edf",
+    "artifacts": {
+      "predictions.jsonl": "35149c6b538730074129f4c8204dfbe249c4da4a837baef8993c7dd875b15af2"
+    },
+    "artifacts_verified": false,
+    "implementation_sha256": {
+      "model.py": "3df2fdb1b0c725f8234b72756699a5fe0099271c62d85d22efa9a1f52040016d",
+      "checkpoint.py": "846a8af05b4318194c45c5d21a71c203cd1162a74f91425fc231b85de6d7a791",
+      "backends.py": "50551140d9be64b0be8f2f039374ffc91b98ea91c51954dea6bbc078f8d5835d",
+      "rules_v2.py": "6a26c11bf68629bc89cfc2984e491cf40264634f97e61ea8e5c507083ecdc629",
+      "rules.py": "7e63155512dc6fd430c2f4ec5679da19aa8dd4b070b08f3f3bfad750557b8f4a",
+      "registry.py": "dc40a43854563d86b6ad4721aba776b0080260345d37cba12312ade4d5e103b6",
+      "schema.py": "be6f9ac83a699094753586d4a27cd194030a4263da56890fb5fe1e14e275413e",
+      "schema_v2.py": "583aef5c3bcc96b4e5b8d410f1afe8222c78d0d05941dbde75a6ce7f3dfa199d",
+      "evaluation_v2.py": "9c8219d74bc26810f3c333f31d13e1eb61ea8729693173348550e4c692df70d3",
+      "evaluate_backend.py": "ba3ad9e14bc6f80b6db148cc837863e027554ac84930d17007666f5f88b01092"
+    },
+    "package_versions": {},
+    "configuration": {
+      "context_tokens": 1024,
+      "head_tokens": 256,
+      "neutral_labels": false,
+      "device_preference": "cpu",
+      "threads": 4,
+      "inference_timeout_seconds": 180,
+      "perturbation_policy": "not_measured",
+      "generative_temperature": null,
+      "generative_seed": null,
+      "generative_output_tokens": null
+    }
+  },
+  "candidate_sha256": "a098cab93e3d56f1a08beeb6ae5d25360119d13639f04ce23c54c86c04c3bab5",
+  "elapsed_seconds": 0.01600000000325963,
+  "template_diagnostic": true,
+  "scenario_count": 240,
+  "scenario_family_count": 80,
+  "near_duplicate_pair_count": 0,
+  "test_evaluated": false,
+  "model_metadata": null,
+  "inputs": "imported_predictions; source_model_inputs_not_observed_by_this_runner"
+}

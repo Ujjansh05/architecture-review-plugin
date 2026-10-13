@@ -1,0 +1,135 @@
+{
+  "requested_checks": [
+    "retry_safety",
+    "ack_durability",
+    "queue_overload",
+    "transaction_atomicity",
+    "replica_consistency",
+    "cache_freshness",
+    "failover_safety",
+    "dependency_resilience"
+  ],
+  "checks": [
+    {
+      "check_id": "retry_safety",
+      "scope_id": "notification-worker",
+      "facts": {
+        "requirements": {"prevent_duplicate_effects": true},
+        "design": {
+          "retry": {
+            "redelivery_possible": true,
+            "all_effects_intrinsically_idempotent": false,
+            "stable_message_id": true,
+            "dedup_enforced": true,
+            "dedup_atomic_with_effect": true,
+            "dedup_retention_seconds": 172800,
+            "max_redelivery_age_seconds": 86400,
+            "external_effects": false
+          }
+        }
+      }
+    },
+    {
+      "check_id": "ack_durability",
+      "scope_id": "message-intake",
+      "facts": {
+        "requirements": {
+          "acknowledged_operation": "message_accepted",
+          "survive_failures": ["process_crash", "host_loss"]
+        },
+        "design": {
+          "acknowledgement": {
+            "acknowledged_operation": "message_accepted",
+            "after_durable_commit": false,
+            "survives_failures": ["process_crash"]
+          }
+        }
+      }
+    },
+    {
+      "check_id": "queue_overload",
+      "scope_id": "delivery-queue",
+      "facts": {
+        "requirements": {
+          "preserve_accepted_messages": true,
+          "bounded_queue_required": true
+        },
+        "design": {"queue": {"policy": "unbounded"}}
+      }
+    },
+    {
+      "check_id": "transaction_atomicity",
+      "scope_id": "order-update",
+      "facts": {
+        "atomic_visibility_required": true,
+        "multiple_writes": true,
+        "boundary": "single_transaction",
+        "covers_all_writes": true,
+        "partial_state_visible": false,
+        "concurrent_invariant_protected": true
+      }
+    },
+    {
+      "check_id": "replica_consistency",
+      "scope_id": "profile-reads",
+      "facts": {
+        "required_consistency": "read_your_writes",
+        "route": "replica",
+        "replication": "asynchronous",
+        "read_your_writes_enforced": false,
+        "stale_reads_possible": true
+      }
+    },
+    {
+      "check_id": "cache_freshness",
+      "scope_id": "catalog-cache",
+      "facts": {
+        "max_staleness_ms": 1000,
+        "worst_case_staleness_ms": null,
+        "bound_covers_failures": null,
+        "stale_on_error": false
+      }
+    },
+    {
+      "check_id": "failover_safety",
+      "scope_id": "payment-writer",
+      "facts": {
+        "single_writer_required": true,
+        "partition_in_scope": true,
+        "old_writer_can_commit_after_promotion": true,
+        "fence_enforced_at_storage": false,
+        "ownership_epoch_monotonic": true
+      }
+    },
+    {
+      "check_id": "dependency_resilience",
+      "scope_id": "provider-call",
+      "facts": {
+        "deadline_ms": 1000,
+        "per_attempt_timeout_ms": 200,
+        "max_attempts": 3,
+        "total_backoff_ms": 100,
+        "local_work_ms": 50,
+        "deadline_propagated": true,
+        "retry_budget_shared": true,
+        "jitter": true
+      }
+    }
+  ],
+  "workload": {
+    "average_messages_per_second": 100,
+    "peak_factor": 5,
+    "message_bytes": 1024,
+    "average_recipients": 3,
+    "retention_days": 30,
+    "storage_copies_per_message": 1,
+    "replication_factor": 3,
+    "storage_overhead_factor": 1.2,
+    "monthly_growth_fraction": 0.1,
+    "growth_horizon_months": 6
+  },
+  "deployment": {
+    "hardware": "Unspecified; no matching workload benchmark supplied",
+    "topology": "Hypothetical example; declarations require deployment verification"
+  }
+}

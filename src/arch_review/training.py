@@ -50,10 +50,12 @@ def reserve_budget(rate, seconds, root=None):
     root.mkdir(parents=True, exist_ok=True)
     target = root / "training-budget.json"
     with FileLock(str(root / "training-budget.lock")):
-        ledger = json.loads(target.read_text()) if target.exists() else {"cap_usd": 25, "reserve_usd": 5, "runs": []}
+        ledger = json.loads(target.read_text()) if target.exists() else {"runs": []}
+        # Apply the owner's current ceiling even to ledgers created under the old $25 ceiling.
+        ledger.update(cap_usd=15, reserve_usd=5)
         allocated = sum(row["maximum_compute_usd"] for row in ledger["runs"])
-        if allocated + maximum > 20:
-            raise ValueError("This run would exceed the USD 20 compute allocation inside the USD 25 experiment cap.")
+        if allocated + maximum > 10:
+            raise ValueError("This run would exceed the USD 10 compute allocation inside the USD 15 experiment cap.")
         entry = {"id": str(uuid.uuid4()), "maximum_compute_usd": maximum, "hourly_rate_usd": rate,
                  "timeout_seconds": seconds, "status": "reserved", "actual_provider_charge_usd": None}
         ledger["runs"].append(entry)
