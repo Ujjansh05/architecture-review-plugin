@@ -4,6 +4,7 @@ recursive-include src/arch_review/data *.json *.jsonl
 recursive-include docs *.md *.txt *.json
 recursive-include examples *.json
 recursive-include scripts *.py *.ps1
+recursive-include configs *.json
 recursive-include tests *.py
 recursive-include datasets *.json *.jsonl *.md *.txt *.csv
 global-exclude *.local.json *.pyc

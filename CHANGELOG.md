@@ -2,6 +2,10 @@
 
 ## Unreleased — research dataset and validation
 
+- Add a bounded, cached website scraper, a source-only automatic decision-data generator, and a solo fine-tuning command for 322M-parameter Laya.
+- Preserve source-document splits, exact supporting quotes, machine-generated label provenance, and automatic rejection reports without mixing in the older pilot dataset.
+- Add head-only CPU and full-model training modes, context checks, and a reproducible web-only smoke experiment.
+- Restore training mode after full-trainer development evaluation between epochs.
 - Add 18 pinned, licensed human-origin architecture references, 372 attributed chunks, 15 draft lessons, 45 hypothetical decision cases, and a blind reviewer packet.
 - Record screening of 11 source candidates, including actual Kaggle/Hugging Face sample audits; exclude samples with unverified label provenance.
 - Enforce source-document split grouping and validate optional background evidence in dataset exports.

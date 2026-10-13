@@ -92,6 +92,8 @@ Host instructions are in `docs/host-instructions.txt`. They request a review aft
 
 ## Data and training
 
+For a solo workflow that collects permitted web references and automatically prepares new decision examples, use [the web scraping and fine-tuning guide](docs/solo-web-training.md). It includes three runnable scripts, uses Laya Multilingual (**0.322 billion parameters**), and keeps this web-only experiment separate from the older pilot dataset. No human labeler is required to run it; generated labels remain explicitly unreviewed.
+
 The package contains 20 primary-source references, 60 draft lessons, 12 subsystem case studies, an eight-family coverage matrix, 100 synthetic pilot cases, and ten development regressions. Broad architecture references do not add new automated verdict types.
 
 See `docs/dataset-guide.md` for company coverage, source review, and how to add future architecture families.

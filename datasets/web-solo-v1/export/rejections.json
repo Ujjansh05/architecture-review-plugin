@@ -1,0 +1,72 @@
+[
+  {
+    "source_id": "web-bb47fc172d0c4bd8",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-9f8f2bd62653e34a",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-0adf49716ba304d9",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-f6f9004cc3f83d91",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-11746225a8fe013b",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-171e25a93e6ce21c",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-f04c211372122b77",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-dc90a71e9fd8ad7d",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-954153bda64493a8",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-c9bcd0d8c2351f46",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-3883027a79ef3a26",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-2809a82836d98e8f",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-f0dc91f97338d90d",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-de23b77d262060b2",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  }
+]

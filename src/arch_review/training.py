@@ -112,6 +112,9 @@ def _train_core(options, connection):
                 if accuracy > best["accuracy"]:
                     best.update(accuracy=accuracy, epoch=epoch)
                     save_checkpoint(model, tokenizer, dict(config, max_len=max_len, head_max_len=head_len), str(output))
+                model.train()
+                if options["freeze_encoder"]:
+                    model.encoder.eval()
             train_model(model, tokenizer, items["train"], train_config, device, max_len, head_len, on_epoch_end=on_epoch)
             # The held-out test split never chooses the checkpoint or calibration parameters.
             model.load_state_dict(load_file(str(output / "model.safetensors"), device="cpu"))

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "aosa-books",
+      "seeds": [
+        "https://aosabook.org/en/"
+      ],
+      "allowed_host": "aosabook.org",
+      "allowed_path_prefix": "/en/",
+      "collect_path_regex": "^/en/v[12]/(?!intro|bib)[a-z0-9_-]+\\.html$",
+      "license": "CC-BY-3.0",
+      "license_url": "https://aosabook.org/en/",
+      "license_marker": "Creative Commons Attribution 3.0 Unported",
+      "attribution": "The Architecture of Open Source Applications; individual chapter authors are retained in each record",
+      "publication_period": "Original volumes: 2011 and 2012; current web snapshot may contain later edits",
+      "discover_links": true
+    },
+    {
+      "id": "system-design-primer",
+      "seeds": [
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/twitter/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/mint/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/pastebin/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/query_cache/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/sales_rank/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/scaling_aws/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/social_graph/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/solutions/system_design/web_crawler/README.md"
+      ],
+      "allowed_host": "raw.githubusercontent.com",
+      "allowed_path_prefix": "/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/",
+      "collect_path_regex": "README\\.md$",
+      "license": "CC-BY-4.0",
+      "license_url": "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/LICENSE.txt",
+      "license_marker": "Creative Commons Attribution 4.0",
+      "attribution": "Donne Martin and contributors; System Design Primer",
+      "publication_period": "Original work 2017; pinned Git revision recorded in source URL",
+      "discover_links": false
+    }
+  ]
+}
