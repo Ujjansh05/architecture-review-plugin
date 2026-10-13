@@ -92,7 +92,7 @@ The published model scored **25/36 on synthetic development cases and 4/12 on se
 
 ## Feedback
 
-[Open an issue](https://github.com/Ujjansh05/archrivet/issues) with a small example, what you expected, and what happened. Installation problems and incorrect findings are especially useful. See [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
+[Open an issue](https://github.com/Ujjansh05/archrivet/issues) with a small example, what you expected, and what happened. Installation problems and incorrect findings are especially useful. See [CONTRIBUTING.md](CONTRIBUTING.md) to contribute. ALSO pls do 🌟 if you find interesting 
 
 ## License and acknowledgements
 
