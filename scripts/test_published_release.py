@@ -15,7 +15,7 @@ import urllib.request
 import venv
 from pathlib import Path
 
-REPO = "Ujjansh05/architecture-review-plugin"
+REPO = "Ujjansh05/archrivet"
 
 
 def download(url, limit=2_000_000):

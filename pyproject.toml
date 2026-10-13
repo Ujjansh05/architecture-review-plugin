@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "architecture-review-plugin"
 version = "0.1.1"
-description = "Local, evidence-backed messaging architecture reviews over MCP"
+description = "ArchRivet: local, evidence-backed messaging architecture reviews over MCP"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
@@ -29,8 +29,8 @@ dev = ["pytest==9.1.1", "pytest-asyncio>=1,<2", "build>=1,<2", "ruff>=0.14,<1"]
 arch-review = "arch_review.cli:main"
 
 [project.urls]
-Repository = "https://github.com/Ujjansh05/architecture-review-plugin"
-Issues = "https://github.com/Ujjansh05/architecture-review-plugin/issues"
+Repository = "https://github.com/Ujjansh05/archrivet"
+Issues = "https://github.com/Ujjansh05/archrivet/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

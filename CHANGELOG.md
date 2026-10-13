@@ -2,6 +2,7 @@
 
 ## Unreleased — research dataset and validation
 
+- Rename the project and GitHub repository to ArchRivet; preserve the Python distribution, CLI and MCP identifiers for existing installations.
 - Publish the corrected 48-case web-only dataset, source/repair provenance and measured CPU training resources; development accuracy remains 4/9.
 - Add explicit service startup for Windows MCP so closing one assistant session cannot terminate a daemon launched by that session and interrupt other clients.
 - Reject cross-split copies of web decision inputs that differ only in evidence citation IDs.

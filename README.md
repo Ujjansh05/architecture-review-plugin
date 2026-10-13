@@ -1,6 +1,8 @@
-# Architecture Review Plugin
+# ArchRivet
 
-A local MCP tool that reviews messaging designs drafted by an existing AI assistant. It checks retry safety, acknowledgement durability and queue overload, retrieves source-backed lessons, and calculates workload/storage in code.
+**A second opinion for your system design.**
+
+ArchRivet is a local MCP tool that reviews messaging designs drafted by an existing AI assistant. It checks retry safety, acknowledgement durability and queue overload, retrieves source-backed lessons, and calculates workload/storage in code.
 
 **Status: experimental implementation.** The runtime includes 100 synthetic cases and 60 draft evidence summaries. A separate [research dataset](datasets/README.md) adds licensed references and hypothetical cases. The latest [web-only dataset](datasets/web-solo-v2/README.md) contains 57 references, 598 chunks and 48 source-linked cases. All decision labels await independent expert review. The downloadable checkpoint remains base Laya: the latest CPU head-training experiment left development accuracy unchanged at 4/9. No trained weights are bundled. See the [measured results](docs/web-v2-results.json).
 
@@ -13,8 +15,8 @@ The separate reference corpus and source-linked adaptations retain CC BY attribu
 Clone the project with Python 3.11 or 3.12 installed. On Windows PowerShell:
 
 ```powershell
-git clone https://github.com/Ujjansh05/architecture-review-plugin.git
-cd architecture-review-plugin
+git clone https://github.com/Ujjansh05/archrivet.git
+cd archrivet
 .\scripts\setup.ps1 -WithModel
 $env:ARCH_REVIEW_HOME = "$PWD\.runtime"
 .\.venv\Scripts\python.exe -m arch_review doctor
@@ -62,7 +64,9 @@ arch-review review examples/complete.json
 arch-review mcp-config
 ```
 
-[GitHub Releases](https://github.com/Ujjansh05/architecture-review-plugin/releases) provide an installable Python wheel and source archive. The current v0.1.1 release predates the web-training workflow and Windows `start` command; use the `main` checkout for the commands in this README. The package is not published on PyPI. macOS model inference has not been validated. [CI](https://github.com/Ujjansh05/architecture-review-plugin/actions) tests supported Python versions on Windows and Linux.
+[GitHub Releases](https://github.com/Ujjansh05/archrivet/releases) provide an installable Python wheel and source archive. The current v0.1.1 release predates the web-training workflow and Windows `start` command; use the `main` checkout for the commands in this README. The package is not published on PyPI. macOS model inference has not been validated. [CI](https://github.com/Ujjansh05/archrivet/actions) tests supported Python versions on Windows and Linux.
+
+ArchRivet was previously named `architecture-review-plugin`. The Python distribution retains that name, and the CLI remains `arch-review`, so existing environments and MCP configurations continue to work.
 
 ## What the assistant calls
 
