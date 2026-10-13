@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-13",
+  "scope": "Windows local MCP protocol and one actual Codex host integration trial",
+  "checkpoint_role": "unmodified_base_laya_multilingual",
+  "newly_trained_head_deployed": false,
+  "new_installations_or_downloads": false,
+  "global_host_configuration_changed": false,
+  "final_status": "passed",
+  "prior_attempts": [
+    {
+      "attempts": 2,
+      "stage": "cold_mcp_client_owned_daemon",
+      "outcome": "One request completed; closing its Windows MCP client killed the shared descendant service, resetting the other request.",
+      "cause": "Installed MCP SDK uses a Windows Job Object with KILL_ON_JOB_CLOSE; the daemon initially inherited that client job.",
+      "memory_failure_observed_in_these_attempts": false,
+      "note": "MemoryError lines in the appended service log were historical and do not diagnose these attempts."
+    },
+    {
+      "attempts": 1,
+      "stage": "actual_host_after_explicit_service_start",
+      "outcome": "Provider returned Selected model is at capacity before any MCP call.",
+      "mcp_protocol_smoke_passed": true,
+      "plugin_failure": false
+    },
+    {
+      "attempts": 1,
+      "stage": "actual_host_with_full_combined_output",
+      "completed_mcp_calls": 3,
+      "composite_tool_fixture_verdicts_correct": 9,
+      "total_fixture_verdicts": 9,
+      "host_final_verdicts_preserved": 6,
+      "outcome": "Host reported truncated output for the flawed case and substituted insufficient_information while explicitly disclosing that the observed verdicts were unavailable."
+    }
+  ],
+  "successful_procedure": {
+    "service_start": "Explicit CLI startup outside either MCP client's Windows cleanup job",
+    "host_calls": "Three separate sequential tool executions with compact output, retaining findings, model disagreements, capacity gaps and source references",
+    "transport": "stdio",
+    "concurrent_protocol_clients": 2,
+    "shared_model_workers": 1,
+    "mcp_protocol_fixture_verdicts_correct": 6,
+    "mcp_protocol_fixture_verdicts_total": 6,
+    "host": "codex-cli 0.162.1",
+    "host_model_identifier": "Not explicitly configured or emitted by CLI",
+    "actual_ai_hosts_tested": 1,
+    "completed_host_mcp_calls": 3,
+    "request_inputs_preserved": true,
+    "composite_tool_fixture_verdicts_correct": 9,
+    "host_final_verdicts_preserved": 9,
+    "total_fixture_verdicts": 9,
+    "missing_evidence_preserved": true,
+    "capacity_uncertainty_preserved": true,
+    "model_probability_distinction_preserved": true,
+    "model_disagreements_preserved": true
+  },
+  "measurements": {
+    "cli_cold_model_load_and_one_review_seconds": 10.703,
+    "two_client_mcp_smoke_seconds": 4.422,
+    "three_case_host_trial_seconds": 118.062,
+    "warm_plugin_response_ms": {
+      "complete": 871.448,
+      "flawed": 872.53,
+      "incomplete": 514.026
+    },
+    "peak_service_tree_rss_bytes": 2128416768,
+    "memory_sample_interval_seconds": 0.5,
+    "memory_samples": 186,
+    "memory_measurement_limit": "Sampled sum of service and child-process RSS, excluding the AI host; shared pages may be counted more than once. This is not a universal RAM requirement."
+  },
+  "limitations": [
+    "These known protocol fixtures verify composite plugin behavior and host fidelity, not model-only accuracy or production safety.",
+    "The unmodified Laya model predicted supported for all nine fixture checks; explicit rules preserved contradictions and missing-information verdicts.",
+    "No real deployment benchmark or production capacity was validated.",
+    "The trained experimental head was not activated in the plugin."
+  ],
+  "cleanup": {
+    "shutdown_command_exit_code": 0,
+    "service_endpoint_unreachable_after_shutdown": true,
+    "tracked_service_and_model_processes_exited": true
+  },
+  "audit_hashes": {
+    "requests_sha256": "28aee67970611e3d32945f4ad2e3605266c2c26c4a8e2bbbfb0818b90d87085b",
+    "successful_events_sha256": "c82aa6a4fac2f45391aa86a641dbc0ad74036f48b0ee6eda9a7fb77089c812cb",
+    "successful_final_answer_sha256": "9fe9864f371dcfb5c0309b8f49c5a5165e6a66b9fc956daab29d2690d39f0837"
+  }
+}

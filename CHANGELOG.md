@@ -2,6 +2,11 @@
 
 ## Unreleased — research dataset and validation
 
+- Publish the corrected 48-case web-only dataset, source/repair provenance and measured CPU training resources; development accuracy remains 4/9.
+- Add explicit service startup for Windows MCP so closing one assistant session cannot terminate a daemon launched by that session and interrupt other clients.
+- Reject cross-split copies of web decision inputs that differ only in evidence citation IDs.
+- Reject headings and resource-link lists as supporting quotes, and instruct the data-generation teacher to use explanatory prose.
+- Disable the unused TensorFlow backend inside the PyTorch model worker, including when MCP hosts filter environment variables.
 - Add a bounded, cached website scraper, a source-only automatic decision-data generator, and a solo fine-tuning command for 322M-parameter Laya.
 - Preserve source-document splits, exact supporting quotes, machine-generated label provenance, and automatic rejection reports without mixing in the older pilot dataset.
 - Add head-only CPU and full-model training modes, context checks, and a reproducible web-only smoke experiment.
@@ -28,4 +33,4 @@
 - Fixed dataset exports, baseline evaluation, calibration/training runner and budget controls.
 - Windows checkpoint-loading compatibility and protocol/concurrency tests.
 
-The default checkpoint is unmodified base Laya. Specialist training, independent expert review, two actual AI-host trials and human usefulness evaluation remain pending. See [validation](docs/validation.md) before interpreting model output.
+The default checkpoint is unmodified base Laya. Small experimental head-training runs have not improved development accuracy. A validated specialist, independent expert review, two actual AI-host trials and human usefulness evaluation remain pending. See [the latest execution report](docs/web-v2-run.md) before interpreting model output.

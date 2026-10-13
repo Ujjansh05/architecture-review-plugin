@@ -1,0 +1,668 @@
+{
+  "recorded_at": "2026-10-13T07:00:02.185407+00:00",
+  "model": {
+    "name": "Laya Multilingual",
+    "approximate_parameters": 322000000,
+    "approximate_trained_parameters": 15000000,
+    "mode": "frozen_encoder_head_update"
+  },
+  "corpus": {
+    "version": "web-corpus-1",
+    "documents": 57,
+    "chunks": 598,
+    "pages_attempted": 60,
+    "max_pages": 100,
+    "max_depth": 2,
+    "crawl_scope": "configured_permitted_paths_only_not_the_entire_internet",
+    "files": {
+      "chunks.jsonl": "d2c151685d76835b7addf29825e5bc629554ea7f12ef0f7f748388ec25e3ba04",
+      "crawl-report.json": "feb58b1d5dd65db25b49ef1475fbe30df9a132d518fef81e46cbc506c51a9021",
+      "documents.jsonl": "9001bf63f9c72b03a0fd14f34e6796eb9c789e43971077a865494db710bbc0ce",
+      "licenses.json": "880651669e8688359392bb6dcf8591598d0051008c164b9163d33f272a07d527",
+      "source-config.json": "ac4db5206c2f1e297ed7a98f39c97f773628f280ecac18d3405a40966f73b831"
+    }
+  },
+  "source_licenses": [
+    "CC-BY-3.0",
+    "CC-BY-4.0"
+  ],
+  "dataset": {
+    "version": "web-decisions-1",
+    "expert_reviewed": false,
+    "training_material": "new_web_corpus_only",
+    "bundled_pilot_used": false,
+    "runtime_evidence_used": false,
+    "label_origin": "machine_generated_rule_checked",
+    "seed": 17,
+    "corpus_manifest_sha256": "dd037a99c5ecb1845a57e07f85d47ab47c537551514e1fb1823cd729960d1062",
+    "family_splits": {
+      "web-3188c4e2fd23e891-retry_safety": "train",
+      "web-37c48f23d2dc300b-ack_durability": "train",
+      "web-c40acdc6f16dcae4-queue_overload": "development",
+      "web-cbfa60e3b42750e6-queue_overload": "train",
+      "web-6b7fa3f82a127471-retry_safety": "train",
+      "web-720afe2dd9698b76-ack_durability": "calibration",
+      "web-97a59f24efef0a4a-queue_overload": "train",
+      "web-c9bcd0d8c2351f46-ack_durability": "test",
+      "web-d272c9ae7b8c47de-retry_safety": "train",
+      "web-a299e4b1b07e1e33-queue_overload": "train",
+      "web-83929208deac1052-retry_safety": "development",
+      "web-f0dc91f97338d90d-ack_durability": "test",
+      "web-9a7dcb5516f66b72-queue_overload": "test",
+      "web-435a86e9b8564b78-queue_overload": "development",
+      "web-b358ef0aa3791794-queue_overload": "calibration",
+      "web-03dfbce0ea196d60-queue_overload": "train"
+    },
+    "source_group_splits": {
+      "web-3188c4e2fd23e891": "train",
+      "web-37c48f23d2dc300b": "train",
+      "web-c40acdc6f16dcae4": "development",
+      "web-cbfa60e3b42750e6": "train",
+      "web-6b7fa3f82a127471": "train",
+      "web-720afe2dd9698b76": "calibration",
+      "web-97a59f24efef0a4a": "train",
+      "web-c9bcd0d8c2351f46": "test",
+      "web-d272c9ae7b8c47de": "train",
+      "web-a299e4b1b07e1e33": "train",
+      "web-bb47fc172d0c4bd8": "development",
+      "web-f0dc91f97338d90d": "test",
+      "web-9a7dcb5516f66b72": "test",
+      "web-435a86e9b8564b78": "development",
+      "web-b358ef0aa3791794": "calibration",
+      "web-03dfbce0ea196d60": "train"
+    },
+    "files": {
+      "train.jsonl": {
+        "sha256": "a5512e7847486d3b745ed6297e3fdad458bd6005cbe755f8580d1ad51961ef27",
+        "count": 24
+      },
+      "development.jsonl": {
+        "sha256": "b47ec104e0261c927ed127f11128beaa18132f5e67b15d54bc92d34e4b211cc4",
+        "count": 9
+      },
+      "calibration.jsonl": {
+        "sha256": "1a0d0895b5900c0ff504137b3b67e65c1045bf6bf8d451edf8119dd1d6fa7f45",
+        "count": 6
+      },
+      "test.jsonl": {
+        "sha256": "9bf50088bf80c1caf8d9d83b4b3853e73a73eb396d2b79c0103e6c402af1a60a",
+        "count": 9
+      }
+    },
+    "cases_sha256": "03bbe62294838076802ae98b262bdf70f5a4c7d8c74a60cd4a70037ccfb87439",
+    "accepted_families": 16,
+    "rejected_families": 19,
+    "automatic_checks": [
+      "exact_source_quote",
+      "substantive_quote_structure",
+      "schema",
+      "one_changed_field",
+      "rule_label_agreement",
+      "document_group_splits",
+      "exact_shared_passage_groups",
+      "citation_normalized_input_splits",
+      "no_verdict_in_design"
+    ],
+    "limitations": [
+      "No independent validation of semantic source entailment or labels",
+      "Minimal pairs exercise three specific fields; not comprehensive architecture coverage",
+      "Exact deduplication does not eliminate semantic overlap between reference chapters",
+      "Rule agreement is construction consistency, not an independent quality measurement"
+    ]
+  },
+  "split_counts": {
+    "train": 24,
+    "development": 9,
+    "calibration": 6,
+    "test": 9
+  },
+  "split_check_coverage": {
+    "train": [
+      "ack_durability",
+      "queue_overload",
+      "retry_safety"
+    ],
+    "development": [
+      "queue_overload",
+      "retry_safety"
+    ],
+    "calibration": [
+      "ack_durability",
+      "queue_overload"
+    ],
+    "test": [
+      "ack_durability",
+      "queue_overload"
+    ]
+  },
+  "training": {
+    "status": "experimental_head_training_completed",
+    "device": "cpu",
+    "epochs": 1,
+    "selected_epoch": 1,
+    "train_cases": 24,
+    "development_cases": 9,
+    "calibration_cases": 6,
+    "test_evaluated": false,
+    "expert_reviewed_labels": false,
+    "encoder_unchanged_verified": true,
+    "base_checkpoint_unchanged_verified": true,
+    "artifact_round_trip_verified": true,
+    "base_weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "head_sha256": "d64e66d59893499e718d204267aa900e7e6b56927fb07d4ccfb186b2d740d0d7",
+    "head_bytes": 59880768,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.5677628815174103,
+        "development_accuracy": 0.4444444444444444
+      }
+    ],
+    "before": {
+      "overall": {
+        "count": 9,
+        "accuracy": 0.4444444444444444,
+        "macro_f1": 0.4481481481481482,
+        "per_label": {
+          "supported": {
+            "precision": 0.3333333333333333,
+            "recall": 0.6666666666666666,
+            "f1": 0.4444444444444444,
+            "support": 3
+          },
+          "contradicted": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4,
+            "support": 3
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "support": 3
+          }
+        },
+        "false_supported": 4,
+        "ece_10_bins": 0.3666444444444445,
+        "multiclass_brier": 0.7539716544444445,
+        "scored_items": 9,
+        "missing_labels": []
+      },
+      "results": [
+        {
+          "id": "web-83929208deac1052-retry_safety-0",
+          "check_id": "retry_safety",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6874,
+            "contradicted": 0.2493,
+            "insufficient_information": 0.0633
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7792,
+            "contradicted": 0.1811,
+            "insufficient_information": 0.0398
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.8952,
+            "contradicted": 0.0643,
+            "insufficient_information": 0.0405
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-1",
+          "check_id": "retry_safety",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6866,
+            "contradicted": 0.2517,
+            "insufficient_information": 0.0617
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-2",
+          "check_id": "retry_safety",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7146,
+            "contradicted": 0.2147,
+            "insufficient_information": 0.0706
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.74,
+            "contradicted": 0.1926,
+            "insufficient_information": 0.0675
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.1704,
+            "contradicted": 0.5205,
+            "insufficient_information": 0.3091
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.216,
+            "contradicted": 0.4109,
+            "insufficient_information": 0.373
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "insufficient_information",
+          "probabilities": {
+            "supported": 0.1321,
+            "contradicted": 0.1712,
+            "insufficient_information": 0.6968
+          }
+        }
+      ],
+      "option_order_changes": []
+    },
+    "after_unfitted": {
+      "overall": {
+        "count": 9,
+        "accuracy": 0.4444444444444444,
+        "macro_f1": 0.4481481481481482,
+        "per_label": {
+          "supported": {
+            "precision": 0.3333333333333333,
+            "recall": 0.6666666666666666,
+            "f1": 0.4444444444444444,
+            "support": 3
+          },
+          "contradicted": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4,
+            "support": 3
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "support": 3
+          }
+        },
+        "false_supported": 4,
+        "ece_10_bins": 0.3532111111111111,
+        "multiclass_brier": 0.7343747899999999,
+        "scored_items": 9,
+        "missing_labels": []
+      },
+      "results": [
+        {
+          "id": "web-83929208deac1052-retry_safety-0",
+          "check_id": "retry_safety",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6638,
+            "contradicted": 0.261,
+            "insufficient_information": 0.0752
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7522,
+            "contradicted": 0.1996,
+            "insufficient_information": 0.0482
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.8721,
+            "contradicted": 0.0779,
+            "insufficient_information": 0.05
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-1",
+          "check_id": "retry_safety",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6631,
+            "contradicted": 0.2637,
+            "insufficient_information": 0.0732
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-2",
+          "check_id": "retry_safety",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6862,
+            "contradicted": 0.2305,
+            "insufficient_information": 0.0833
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7116,
+            "contradicted": 0.2093,
+            "insufficient_information": 0.0791
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.179,
+            "contradicted": 0.5077,
+            "insufficient_information": 0.3133
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.2223,
+            "contradicted": 0.4062,
+            "insufficient_information": 0.3716
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "insufficient_information",
+          "probabilities": {
+            "supported": 0.1424,
+            "contradicted": 0.182,
+            "insufficient_information": 0.6756
+          }
+        }
+      ],
+      "option_order_changes": []
+    },
+    "after": {
+      "overall": {
+        "count": 9,
+        "accuracy": 0.4444444444444444,
+        "macro_f1": 0.4481481481481482,
+        "per_label": {
+          "supported": {
+            "precision": 0.3333333333333333,
+            "recall": 0.6666666666666666,
+            "f1": 0.4444444444444444,
+            "support": 3
+          },
+          "contradicted": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4,
+            "support": 3
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "support": 3
+          }
+        },
+        "false_supported": 4,
+        "ece_10_bins": 0.3532111111111111,
+        "multiclass_brier": 0.7343747899999999,
+        "scored_items": 9,
+        "missing_labels": []
+      },
+      "results": [
+        {
+          "id": "web-83929208deac1052-retry_safety-0",
+          "check_id": "retry_safety",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6638,
+            "contradicted": 0.261,
+            "insufficient_information": 0.0752
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7522,
+            "contradicted": 0.1996,
+            "insufficient_information": 0.0482
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.8721,
+            "contradicted": 0.0779,
+            "insufficient_information": 0.05
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-1",
+          "check_id": "retry_safety",
+          "expected": "contradicted",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6631,
+            "contradicted": 0.2637,
+            "insufficient_information": 0.0732
+          }
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-2",
+          "check_id": "retry_safety",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.6862,
+            "contradicted": 0.2305,
+            "insufficient_information": 0.0833
+          }
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "supported",
+          "probabilities": {
+            "supported": 0.7116,
+            "contradicted": 0.2093,
+            "insufficient_information": 0.0791
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-1",
+          "check_id": "queue_overload",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.179,
+            "contradicted": 0.5077,
+            "insufficient_information": 0.3133
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-0",
+          "check_id": "queue_overload",
+          "expected": "supported",
+          "predicted": "contradicted",
+          "probabilities": {
+            "supported": 0.2223,
+            "contradicted": 0.4062,
+            "insufficient_information": 0.3716
+          }
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-2",
+          "check_id": "queue_overload",
+          "expected": "insufficient_information",
+          "predicted": "insufficient_information",
+          "probabilities": {
+            "supported": 0.1424,
+            "contradicted": 0.182,
+            "insufficient_information": 0.6756
+          }
+        }
+      ],
+      "option_order_changes": [
+        {
+          "id": "web-83929208deac1052-retry_safety-0",
+          "changed": false
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-1",
+          "changed": false
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-0",
+          "changed": false
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-1",
+          "changed": false
+        },
+        {
+          "id": "web-83929208deac1052-retry_safety-2",
+          "changed": false
+        },
+        {
+          "id": "web-c40acdc6f16dcae4-queue_overload-2",
+          "changed": false
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-1",
+          "changed": false
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-0",
+          "changed": true
+        },
+        {
+          "id": "web-435a86e9b8564b78-queue_overload-2",
+          "changed": false
+        }
+      ]
+    },
+    "calibration": {
+      "temperature": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "temperature_by_options": {},
+      "n_by_bucket": {
+        "choice:3-5": 6
+      }
+    },
+    "elapsed_seconds": 20.985000000044238,
+    "paid_gpu_spend_usd": 0,
+    "artifact_format": "non_encoder_state_dict_requires_exact_base_not_standalone"
+  },
+  "limitations": [
+    "Automatically authored labels, not human-verified correctness",
+    "Rules define and gate the labels; rule agreement is not an independent baseline",
+    "Development omits acknowledgement durability; calibration and test omit retry safety",
+    "Calibration on six cases is unvalidated",
+    "Test definitions were repaired for integrity before any model scoring; final test has not been evaluated",
+    "Summed process RSS is sampled every 0.5 seconds and may count shared pages more than once",
+    "Full-model training was not measured",
+    "Earlier datasets were not used in this run, but source topics may overlap older experiments",
+    "The head is experimental and is not installed as the default plugin checkpoint"
+  ],
+  "interpretation": "Development label agreement: 0.4444 before, 0.4444 after; inspect scope before drawing conclusions.",
+  "resource_observations": {
+    "started_at": "2026-10-13T06:56:10.283287+00:00",
+    "stages": [
+      {
+        "stage": "dry-run",
+        "exit_code": 0,
+        "wall_seconds": 6.625,
+        "peak_sum_process_rss_bytes": 695365632,
+        "peak_process_count": 2,
+        "memory_note": "Sum of RSS across the spawned process tree; shared pages may be counted more than once",
+        "log_file": "web-v2-dry-run.log"
+      },
+      {
+        "stage": "training",
+        "exit_code": 0,
+        "wall_seconds": 34.59399999998277,
+        "peak_sum_process_rss_bytes": 2660814848,
+        "peak_process_count": 6,
+        "memory_note": "Sum of RSS across the spawned process tree; shared pages may be counted more than once",
+        "log_file": "web-v2-training.log"
+      }
+    ],
+    "status": "completed",
+    "finished_at": "2026-10-13T06:56:51.491322+00:00"
+  },
+  "integrity_audit": {
+    "path": "datasets/web-solo-v2/audit.json",
+    "repair_provenance": "datasets/web-solo-v2/repair-provenance.json",
+    "status": "passed_for_experimental_training",
+    "independent_human_review": false,
+    "original_contaminated_export_used_for_training": false,
+    "source_group_assignments_changed": false,
+    "test_predictions_used_for_repairs": false
+  },
+  "software_validation": {
+    "local_tests_passed": 66,
+    "local_test_seconds": 14.8,
+    "ruff": "passed",
+    "pip_check": "passed",
+    "mcp_and_host_report": "docs/web-v2-mcp-results.json"
+  }
+}

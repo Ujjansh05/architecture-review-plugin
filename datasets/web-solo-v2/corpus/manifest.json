@@ -1,0 +1,16 @@
+{
+  "version": "web-corpus-1",
+  "documents": 57,
+  "chunks": 598,
+  "pages_attempted": 60,
+  "max_pages": 100,
+  "max_depth": 2,
+  "crawl_scope": "configured_permitted_paths_only_not_the_entire_internet",
+  "files": {
+    "chunks.jsonl": "d2c151685d76835b7addf29825e5bc629554ea7f12ef0f7f748388ec25e3ba04",
+    "crawl-report.json": "feb58b1d5dd65db25b49ef1475fbe30df9a132d518fef81e46cbc506c51a9021",
+    "documents.jsonl": "9001bf63f9c72b03a0fd14f34e6796eb9c789e43971077a865494db710bbc0ce",
+    "licenses.json": "880651669e8688359392bb6dcf8591598d0051008c164b9163d33f272a07d527",
+    "source-config.json": "ac4db5206c2f1e297ed7a98f39c97f773628f280ecac18d3405a40966f73b831"
+  }
+}

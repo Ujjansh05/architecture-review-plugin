@@ -1,0 +1,40 @@
+{
+  "original_jobs_sha256": "a8d2f8952b2500176e1d477c0d45f824d893a171e92e64aaaef8395432ff89e7",
+  "original_responses_sha256": "a5fc983a92796a7a3607415f6b0dcd1dc008885d1fa5377d1b56736d82a268e9",
+  "source_group_assignments_changed": false,
+  "test_predictions_used": false,
+  "changes": [
+    {
+      "source_id": "web-f0dc91f97338d90d",
+      "check_id": "ack_durability",
+      "split": "test",
+      "original_chunk_id": "web-f0dc91f97338d90d:5305-7053",
+      "replacement_chunk_id": "web-f0dc91f97338d90d:19413-21208",
+      "rationale": "A replicated copy can be transient; its lifecycle must be considered before claiming durability. A hypothetical messaging acknowledgement must name its own storage and failure assumptions."
+    },
+    {
+      "source_id": "web-c9bcd0d8c2351f46",
+      "check_id": "ack_durability",
+      "split": "test",
+      "original_chunk_id": "web-c9bcd0d8c2351f46:17706-19483",
+      "replacement_chunk_id": "web-c9bcd0d8c2351f46:21256-23043",
+      "rationale": "The source distinguishes request transactions and deferred-update commits. A review must specify which operation an acknowledgement promises; no source claim about exact durability or crash guarantees is implied."
+    },
+    {
+      "source_id": "web-9a7dcb5516f66b72",
+      "check_id": "queue_overload",
+      "split": "test",
+      "original_chunk_id": "web-9a7dcb5516f66b72:14003-15725",
+      "replacement_chunk_id": "web-9a7dcb5516f66b72:10465-12225",
+      "rationale": "This hypothetical Twitter-style design identifies fanout as a throughput bottleneck. Queue limit, admission and accepted-message preservation remain explicit invented assumptions, not observed Twitter facts."
+    }
+  ],
+  "quarantined": [
+    {
+      "source_id": "web-f04c211372122b77",
+      "reason": "Persistence of provenance references does not directly support the generated acknowledgement lesson"
+    }
+  ],
+  "automatic_quote_filter": "Resource-link-only families rejected by make_family",
+  "original_export_preserved": true
+}

@@ -2,7 +2,7 @@
 
 A local MCP tool that reviews messaging designs drafted by an existing AI assistant. It checks retry safety, acknowledgement durability and queue overload, retrieves source-backed lessons, and calculates workload/storage in code.
 
-**Status: experimental implementation.** The runtime includes 100 synthetic cases and 60 draft evidence summaries. A separate [research dataset](datasets/README.md) adds 18 licensed human-origin references, 372 text chunks, and 45 source-linked hypothetical cases. All decision labels await independent expert review. The downloadable checkpoint remains base Laya: a small CPU head-training experiment did not improve decision accuracy. No trained weights are bundled. See the [latest experiment report](docs/research-validation-2026-10-13.md).
+**Status: experimental implementation.** The runtime includes 100 synthetic cases and 60 draft evidence summaries. A separate [research dataset](datasets/README.md) adds licensed references and hypothetical cases. The latest [web-only dataset](datasets/web-solo-v2/README.md) contains 57 references, 598 chunks and 48 source-linked cases. All decision labels await independent expert review. The downloadable checkpoint remains base Laya: the latest CPU head-training experiment left development accuracy unchanged at 4/9. No trained weights are bundled. See the [measured results](docs/web-v2-results.json).
 
 The project's original code, documentation and synthetic examples use the [MIT License](LICENSE). Dependencies, downloaded model weights and cited source materials retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
 
@@ -20,10 +20,11 @@ $env:ARCH_REVIEW_HOME = "$PWD\.runtime"
 .\.venv\Scripts\python.exe -m arch_review doctor
 .\.venv\Scripts\python.exe -m arch_review review examples\flawed.json --rules-only
 .\.venv\Scripts\python.exe -m arch_review review examples\complete.json
+.\.venv\Scripts\python.exe -m arch_review start
 .\.venv\Scripts\python.exe -m arch_review mcp-config
 ```
 
-The setup script installs the CPU runtime, downloads the base Laya checkpoint, and prints your machine's MCP configuration. Add that entry to an MCP-capable assistant and apply [the host instructions](docs/host-instructions.txt). The [configuration template](examples/mcp-config.template.json) shows the format; generate actual paths with `arch-review mcp-config`.
+The setup script installs the CPU runtime, downloads the base Laya checkpoint, and prints your machine's MCP configuration. On Windows, run `arch-review start` from your terminal before connecting an assistant; it starts the shared service without loading the model yet. Add the generated configuration to an MCP-capable assistant and apply [the host instructions](docs/host-instructions.txt). The [configuration template](examples/mcp-config.template.json) shows the format; generate actual paths with `arch-review mcp-config`.
 
 For a quick rules-only trial, omit `-WithModel` and use the `--rules-only` example. Model weights, virtual environments, tokens and private reviews are not included in this repository.
 
@@ -38,6 +39,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e '.[model,dev]'
 .\.venv\Scripts\python.exe -m arch_review download-model --destination models\laya-multilingual
 .\.venv\Scripts\python.exe -m arch_review configure --checkpoint models\laya-multilingual
+.\.venv\Scripts\python.exe -m arch_review start
 .\.venv\Scripts\python.exe -m arch_review mcp-config
 ```
 
@@ -60,7 +62,7 @@ arch-review review examples/complete.json
 arch-review mcp-config
 ```
 
-[GitHub Releases](https://github.com/Ujjansh05/architecture-review-plugin/releases) provide an installable Python wheel and source archive. The package is not published on PyPI. macOS model inference has not been validated. [CI](https://github.com/Ujjansh05/architecture-review-plugin/actions) tests supported Python versions on Windows and Linux.
+[GitHub Releases](https://github.com/Ujjansh05/architecture-review-plugin/releases) provide an installable Python wheel and source archive. The current v0.1.1 release predates the web-training workflow and Windows `start` command; use the `main` checkout for the commands in this README. The package is not published on PyPI. macOS model inference has not been validated. [CI](https://github.com/Ujjansh05/architecture-review-plugin/actions) tests supported Python versions on Windows and Linux.
 
 ## What the assistant calls
 
@@ -82,7 +84,9 @@ Arithmetic includes rates, fan-out deliveries, retained storage and supplied gro
 
 ## Local service
 
-MCP and the normal CLI automatically connect to one loopback daemon. It exposes authenticated `POST /v1/reviews`, `GET /health`, and `GET /v1/schema`. Authentication is a random local token in `ARCH_REVIEW_HOME`; do not put it in shared configuration files.
+MCP and the normal CLI connect to one loopback daemon. It exposes authenticated `POST /v1/reviews`, `GET /health`, and `GET /v1/schema`. Authentication is a random local token in `ARCH_REVIEW_HOME`; do not put it in shared configuration files.
+
+On Windows, start the service from an independent terminal with `python -m arch_review start`, using the same environment and `ARCH_REVIEW_HOME` as your MCP configuration. Repeat after a reboot or `arch-review stop`. Some Windows hosts put each stdio client and its children in a job that terminates them when that client closes. Starting the daemon there would interrupt other assistant sessions, so Windows MCP requires the separately started service. CLI reviews can still start it automatically; POSIX MCP retains automatic startup. `start` reuses an already running service and does not load another model.
 
 The daemon allows one active review plus four waiting requests. A separate CPU model worker loads one checkpoint and exits after five idle minutes. Model failure leaves the daemon available. Run `arch-review stop` before changing settings or code. The MCP process never imports torch and writes only protocol messages to stdout.
 
@@ -117,6 +121,6 @@ See `docs/dataset-guide.md` for company coverage, source review, and how to add 
 .\.venv\Scripts\python.exe -m arch_review benchmark examples\complete.json --runs 5 --output reports\benchmark.json
 ```
 
-The tests include real stdio MCP subprocesses and two concurrent clients sharing a daemon. These are protocol tests; integrations with two actual AI products and independent backend-engineer comparisons remain to be performed.
+The tests include real stdio MCP subprocesses and two concurrent clients sharing a daemon, including a Windows client-exit regression. These protocol tests are separate from actual AI-host trials and independent backend-engineer comparisons. See [the latest execution report](docs/web-v2-run.md) for which checks completed.
 
 Upstream references: [Laya training](https://nandhakishorm.github.io/laya/finetune/), [Laya API](https://nandhakishorm.github.io/laya/reference/agent/), [MCP server SDK guide](https://modelcontextprotocol.io/docs/develop/build-server). Source-specific architecture references are stored with each evidence record.

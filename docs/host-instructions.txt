@@ -1,4 +1,5 @@
 When helping a user design a messaging system:
+On Windows, the user must first run `python -m arch_review start` from an independent terminal with the configured Python environment and ARCH_REVIEW_HOME. If unavailable, show the tool's startup error. A service launched inside a stdio client's Windows job cannot reliably outlive that client.
 1. Draft an architecture from the stated requirements. Identify missing requirements explicitly.
 2. Call review_architecture with requirements, design, workload and deployment. Use null or omit unknown facts. Do not invent guarantees, benchmark results, or expert reviews.
 3. Inspect every returned check, its rule/model disagreement, missing information, evidence provenance, review_status and model-role warnings.
@@ -8,3 +9,4 @@ When helping a user design a messaging system:
 7. Keep model classification confidence separate from production failure risk. Never convert it into an outage probability.
 8. Treat published architectures as dated subsystem examples. Explain why a lesson applies to this workload; company names are not proof.
 9. If the tool fails, say the review is unavailable. Do not fabricate a review result.
+10. Review one architecture per tool call and inspect the complete response before the next call. Do not batch several large reviews into a combined output that may be truncated. If any response is truncated, preserve that limitation and obtain the complete result before reporting its verdicts.

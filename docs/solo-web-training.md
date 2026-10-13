@@ -34,6 +34,8 @@ Use `--max-documents 0` to consider every relevant collected document. Candidate
 
 Document groups and exact shared passages are assigned to train, development, calibration and test before examples are generated. Quote matching, schema validation, one-field changes, and agreement with explicit decision rules are automatic gates. Semantic correctness of a lesson is not independently verified. The initial variants change atomic duplicate protection, durable-commit acknowledgement ordering, or preservation of accepted messages. These are deliberately narrow exercises, not every failure mode in the plugin.
 
+Quotes consisting only of headings or resource links are rejected. Export validation also compares decision inputs after removing evidence citation IDs, so copying the same example under a different source ID cannot hide cross-split duplication. These checks were added after the larger run exposed both problems. They do not establish semantic independence or guarantee every decision is represented in every split.
+
 If generation is interrupted, rerun the same command with `--resume` to reuse completed compatible batches. Completed exports are immutable; choose a new output directory to regenerate them. `export/rejections.json` explains rejected families. If screening leaves a split empty, the export fails instead of silently moving examples between splits; collect more relevant sources and create a new export.
 
 **3. Fine-tune and compare against base Laya.**
@@ -59,3 +61,9 @@ To learn more decision types, define their input fields, labels and failure cond
 ## Actual first run
 
 The tested run collected **57 references and 598 chunks**. A 24-document generation pilot accepted **10 families / 30 cases**, rejecting 14 irrelevant candidates. Splits contain 18 training, 6 development, 3 calibration and 3 untouched test cases. No previous pilot examples were included. One CPU training/evaluation epoch took about 113 seconds after model loading; development label agreement stayed at **2/6 before and after**. See [the machine-readable run report](web-training-results.json) for detailed results and limitations. The [exact corpus and export](../datasets/web-solo-v1/README.md) are included, so you can train without rerunning scraping or the teacher. This is a working pipeline and a small experiment, not a validated specialist.
+
+## Expanded run
+
+The next run considered all 36 relevant candidate documents. The audit found copied examples across splits and resource-link lists used as evidence. After adding rejection checks, replacing three passages within their original split assignments and quarantining one weak source family, the corrected export contains **48 cases: 24 train, nine development, six calibration and nine test**. No final-test predictions were used or obtained. The original contaminated export was excluded from training.
+
+One CPU head-training epoch completed in about **35 seconds including startup**, with approximately **2.48 GiB peak summed process RSS** sampled across the training process tree; shared pages can be counted more than once. Development accuracy remained **4/9 before and after**. This does not establish an improvement over the earlier run, which used different cases. Development lacks durability cases, and calibration/test lack retry-safety cases. Use the [corrected snapshot](../datasets/web-solo-v2/README.md) and [measured report](web-v2-results.json) to reproduce this experiment.

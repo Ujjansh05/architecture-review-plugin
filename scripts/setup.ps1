@@ -29,6 +29,8 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Checkpoint configuration failed. Stop the local daemon first.' }
     }
     & $pythonExe -m arch_review mcp-config
+    Write-Host 'Before connecting a Windows MCP assistant, start the shared service from this terminal:'
+    Write-Host ('& "' + $pythonExe + '" -m arch_review start')
 } finally {
     Pop-Location
 }

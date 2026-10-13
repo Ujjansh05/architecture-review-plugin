@@ -6,6 +6,8 @@ This collection has two distinct uses: human-origin reference text for checking 
 |---|---|---|
 | `open-reference-v1` | 18 pinned documents, 372 attributed text chunks | Retrieval, architecture study, source verification |
 | `source-linked-v1` | 15 draft lessons and 45 hypothetical decision cases | Experimental training and evaluation; human labeling queue |
+| [`web-solo-v1`](web-solo-v1/README.md) | 57 references, 598 chunks and 30 generated cases | Historical first solo web experiment |
+| [`web-solo-v2`](web-solo-v2/README.md) | 57 references, 598 chunks and 48 integrity-checked generated cases | Latest solo web experiment; no measured accuracy improvement |
 | Existing `src/arch_review/data/pilot.jsonl` | 100 synthetic cases | Earlier narrow decision pilot |
 | `source-screening.json` | Accepted, rejected, and quarantined candidates | Audit why a source was or was not used |
 
@@ -35,7 +37,7 @@ The collector follows a small fixed allowlist, verifies pinned license text, cap
 
 `--allow-unreviewed` explicitly marks an experiment. It does not certify labels. Before a quality release, give the blind CSV and [decision specification](../docs/product-specification.md) to backend engineers. Ask them to independently label cases, record unclear facts, and supply their name/date. Resolve disagreements before importing labels. Blank reviewer fields must remain blank until someone actually reviews them.
 
-## Split and evaluation rules
+## Source-linked-v1 split and evaluation rules
 
 The 45 new cases contain 15 scenario families with three variants each. Their split is 18 train, 9 development, 9 calibration, and 9 test. Each source document and all variants of its scenario remain within one split. The three new labels are balanced overall. Source grouping alone does not eliminate conceptual similarity: these are deliberately related toy cases of three narrow checks, not an independent generalization benchmark.
 

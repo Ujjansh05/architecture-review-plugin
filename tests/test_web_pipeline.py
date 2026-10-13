@@ -6,8 +6,26 @@ import pytest
 
 from arch_review.model import build_state
 from arch_review.schema import ReviewRequest
-from arch_review.web_corpus import Article, Fetcher, crawl, in_scope, normalize_url, sha, split_text
-from arch_review.web_training import load_corpus, make_family, read_rows, select_jobs, validate_web_export
+from arch_review.web_corpus import (
+    Article,
+    Fetcher,
+    crawl,
+    in_scope,
+    normalize_url,
+    sha,
+    split_text,
+    write_json,
+    write_jsonl,
+)
+from arch_review.web_training import (
+    canonical_input_signature,
+    export_families,
+    load_corpus,
+    make_family,
+    read_rows,
+    select_jobs,
+    validate_web_export,
+)
 
 
 def test_html_extraction_keeps_article_and_removes_scripts():
@@ -126,6 +144,76 @@ def test_fabricated_quote_and_wrong_label_are_rejected():
         make_family(fixture_job(), response)
 
 
+@pytest.mark.parametrize("quote", [
+    "* [Message queues](https://example.org/queues)\n* [Back pressure](https://example.org/backpressure)",
+    "### Asynchronism and microservices\n\n* [Message queues](https://example.org/queues)",
+    "# A comprehensive introduction to durable messaging architecture",
+    "A comprehensive introduction to durable messaging architecture\n====================",
+    "[Message queues][mq]\n[Back pressure][bp]\n[mq]: https://example.org/mq\n[bp]: https://example.org/bp",
+])
+def test_link_lists_and_headings_cannot_support_generated_lessons(quote):
+    job, response = fixture_job(), fixture_response()
+    job["chunk"]["text"] = response["supporting_quote"] = quote
+    with pytest.raises(ValueError, match="not substantive prose"):
+        make_family(job, response)
+
+
+def test_substantive_quote_can_include_markdown_link():
+    job, response = fixture_job(), fixture_response()
+    quote = "Persist to [durable storage](https://example.org/storage) before acknowledging."
+    job["chunk"]["text"] = response["supporting_quote"] = quote
+    cases, _ = make_family(job, response)
+    assert len(cases) == 3
+
+
+def test_canonical_input_ignores_only_citation_ids():
+    _, rows = make_family(fixture_job(), fixture_response())
+    original = rows[0]
+    changed = copy.deepcopy(original)
+    state = json.loads(changed["state"])
+    state["evidence"][0]["id"] = "different-source:50-100"
+    changed["state"] = json.dumps(state, indent=2)
+    assert canonical_input_signature(changed) == canonical_input_signature(original)
+    assert changed["state"] != original["state"]
+    state["evidence"][0]["lesson"] += " A different substantive lesson."
+    changed["state"] = json.dumps(state)
+    assert canonical_input_signature(changed) != canonical_input_signature(original)
+    assert canonical_input_signature(rows[0]) != canonical_input_signature(rows[1])
+
+
+def test_web_export_rejects_citation_only_differences_across_splits(tmp_path):
+    corpus = tmp_path / "corpus"
+    corpus.mkdir()
+    write_json(corpus / "manifest.json", {"fixture": True})
+    jobs, responses = [], []
+    for split in ("train", "development", "calibration", "test"):
+        job, response = fixture_job(), fixture_response()
+        source = "document-" + split
+        job.update(source_id=source, source_group=source, split=split, chunk_id=source + ":0-100")
+        job["chunk"].update(source_id=source, id=job["chunk_id"])
+        response["source_id"] = source
+        request = json.loads(response["request_json"])
+        request["design"]["components"][0] = split + " writer"
+        response["request_json"] = json.dumps(request)
+        jobs.append(job)
+        responses.append(response)
+    directory = tmp_path / "export"
+    manifest = export_families(corpus, jobs, responses, directory)
+    _, rows = validate_web_export(directory)
+    train = next(row for row in rows["train"] if row["expected"] == {"ack_durability": "supported"})
+    test = next(row for row in rows["test"] if row["expected"] == train["expected"])
+    assert train["source_group"] != test["source_group"]
+    state = json.loads(train["state"])
+    state["evidence"][0]["id"] = json.loads(test["state"])["evidence"][0]["id"]
+    test["state"] = json.dumps(state)
+    assert test["state"] != train["state"]
+    write_jsonl(directory / "test.jsonl", rows["test"])
+    manifest["files"]["test.jsonl"]["sha256"] = sha((directory / "test.jsonl").read_bytes())
+    write_json(directory / "manifest.json", manifest)
+    with pytest.raises(ValueError, match="Canonical model input leaked across splits"):
+        validate_web_export(directory)
+
+
 def test_duplicate_passages_are_grouped_before_split():
     documents = {f"doc-{i}": {} for i in range(12)}
     chunks = [{"id": key + ":0", "source_id": key, "text": f"{key} durable replication acknowledgement commit"}
@@ -154,8 +242,9 @@ def test_scraper_config_is_pinned_and_limited_to_permitted_sources():
         assert sha(source["id"].encode())
 
 
-def test_published_web_snapshot_matches_sources_and_training_inputs():
-    root = Path(__file__).parents[1] / "datasets" / "web-solo-v1"
+@pytest.mark.parametrize("snapshot", ["web-solo-v1", "web-solo-v2"])
+def test_published_web_snapshot_matches_sources_and_training_inputs(snapshot):
+    root = Path(__file__).parents[1] / "datasets" / snapshot
     _, docs, _ = load_corpus(root / "corpus")
     manifest, rows = validate_web_export(root / "export")
     assert sha((root / "corpus" / "manifest.json").read_bytes()) == manifest["corpus_manifest_sha256"]

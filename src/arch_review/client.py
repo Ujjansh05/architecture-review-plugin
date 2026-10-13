@@ -32,6 +32,12 @@ def ensure_service():
         except (httpx.ConnectError, httpx.ConnectTimeout):
             pass
         # Authentication and protocol failures are deliberately not treated as permission to replace a server.
+        if sys.platform == "win32" and os.environ.get("ARCH_REVIEW_MCP_SESSION") == "1":
+            raise RuntimeError(
+                "Shared service is not running. Run `python -m arch_review start` in an independent terminal "
+                "with the same ARCH_REVIEW_HOME before connecting this Windows MCP client. "
+                "A service started inside the client would terminate when that client closes."
+            )
         options = {"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {"start_new_session": True}
         with (root / "service.log").open("ab") as log:
             child = subprocess.Popen([sys.executable, "-m", "arch_review", "serve"],

@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "audited_at_utc": "2026-10-13T06:55:20.978861+00:00",
+  "corpus": "web-corpus-v2",
+  "export": "web-training-v2-checked/export",
+  "status": "passed_for_experimental_training",
+  "independent_expert_validation": false,
+  "torch_imported": false,
+  "counts": {
+    "corpus_documents": 57,
+    "corpus_chunks": 598,
+    "jobs": 35,
+    "responses": 35,
+    "accepted_families": 16,
+    "rejected_families": 19,
+    "quarantined_families": 1,
+    "cases": 48,
+    "split_rows": {
+      "train": 24,
+      "development": 9,
+      "calibration": 6,
+      "test": 9
+    }
+  },
+  "passed_checks": [
+    "corpus_manifest_and_chunk_hashes",
+    "export_manifest_hashes_and_counts",
+    "exact_bounded_substantive_source_quotes",
+    "source_attribution_equality",
+    "case_state_and_question_reconstruction",
+    "single_field_counterfactual_variants",
+    "rule_label_agreement",
+    "source_and_check_and_split_and_group_preserved",
+    "three_document_local_chunk_substitutions_only",
+    "canonical_input_no_cross_split_duplicates",
+    "normalized_quote_no_cross_split_duplicates",
+    "no_verdict_leakage_in_model_inputs",
+    "VisTrails_quarantined",
+    "original_export_preserved_and_now_rejected"
+  ],
+  "coverage": {
+    "train": {
+      "retry_safety": {
+        "supported": 3,
+        "contradicted": 3,
+        "insufficient_information": 3
+      },
+      "ack_durability": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "queue_overload": {
+        "supported": 4,
+        "contradicted": 4,
+        "insufficient_information": 4
+      }
+    },
+    "development": {
+      "retry_safety": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "ack_durability": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_information": 0
+      },
+      "queue_overload": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      }
+    },
+    "calibration": {
+      "retry_safety": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_information": 0
+      },
+      "ack_durability": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      },
+      "queue_overload": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      }
+    },
+    "test": {
+      "retry_safety": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_information": 0
+      },
+      "ack_durability": {
+        "supported": 2,
+        "contradicted": 2,
+        "insufficient_information": 2
+      },
+      "queue_overload": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_information": 1
+      }
+    }
+  },
+  "missing_check_coverage": [
+    {
+      "split": "development",
+      "check_id": "ack_durability"
+    },
+    {
+      "split": "calibration",
+      "check_id": "retry_safety"
+    },
+    {
+      "split": "test",
+      "check_id": "retry_safety"
+    }
+  ],
+  "changed_chunks": [
+    {
+      "source_id": "web-c9bcd0d8c2351f46",
+      "check_id": "ack_durability",
+      "old_chunk": "web-c9bcd0d8c2351f46:17706-19483",
+      "new_chunk": "web-c9bcd0d8c2351f46:21256-23043"
+    },
+    {
+      "source_id": "web-f0dc91f97338d90d",
+      "check_id": "ack_durability",
+      "old_chunk": "web-f0dc91f97338d90d:5305-7053",
+      "new_chunk": "web-f0dc91f97338d90d:19413-21208"
+    },
+    {
+      "source_id": "web-9a7dcb5516f66b72",
+      "check_id": "queue_overload",
+      "old_chunk": "web-9a7dcb5516f66b72:14003-15725",
+      "new_chunk": "web-9a7dcb5516f66b72:10465-12225"
+    }
+  ],
+  "cross_split_canonical_state_duplicates": [],
+  "cross_split_exact_quote_duplicates": [],
+  "original_validator_failure": "Canonical model input leaked across splits after removing citation IDs: train/web-5e0e00142a55845a-queue_overload-0 and calibration/web-56e919bf45b696f4-queue_overload-0",
+  "rejections": [
+    {
+      "source_id": "web-bb47fc172d0c4bd8",
+      "check_id": "retry_safety",
+      "split": "development",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-9f8f2bd62653e34a",
+      "check_id": "ack_durability",
+      "split": "calibration",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-0adf49716ba304d9",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-f6f9004cc3f83d91",
+      "check_id": "retry_safety",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-11746225a8fe013b",
+      "check_id": "ack_durability",
+      "split": "development",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-171e25a93e6ce21c",
+      "check_id": "retry_safety",
+      "split": "test",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-dc90a71e9fd8ad7d",
+      "check_id": "queue_overload",
+      "split": "test",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-954153bda64493a8",
+      "check_id": "retry_safety",
+      "split": "calibration",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-3883027a79ef3a26",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-2809a82836d98e8f",
+      "check_id": "ack_durability",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-de23b77d262060b2",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+    },
+    {
+      "source_id": "web-464d39d501ea0a4c",
+      "check_id": "ack_durability",
+      "split": "development",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-e8a2313f36cc601d",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-743cc47270a12ea9",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+    },
+    {
+      "source_id": "web-5e0e00142a55845a",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+    },
+    {
+      "source_id": "web-56e919bf45b696f4",
+      "check_id": "queue_overload",
+      "split": "calibration",
+      "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+    },
+    {
+      "source_id": "web-98bcb790c918ac21",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-95043fab673b9a8a",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    },
+    {
+      "source_id": "web-2578093c85acd5dc",
+      "check_id": "queue_overload",
+      "split": "train",
+      "reason": "Teacher marked this passage irrelevant to the assigned decision"
+    }
+  ],
+  "replacement_semantic_review": [
+    {
+      "source_id": "web-f0dc91f97338d90d",
+      "result": "Substantive quote supports transient replicated-storage lifecycle; process-crash and host-loss survival belong only to the explicitly hypothetical messaging store."
+    },
+    {
+      "source_id": "web-c9bcd0d8c2351f46",
+      "result": "Substantive quote distinguishes request commits from deferred work. The lesson appropriately scopes the hypothetical acknowledged operation; source does not independently establish crash guarantees."
+    },
+    {
+      "source_id": "web-9a7dcb5516f66b72",
+      "result": "Substantive fanout-bottleneck prose replaces link list. Source is a hypothetical Twitter-style design exercise, not an observed company production architecture; numeric queue bounds and preservation guarantees are invented."
+    }
+  ],
+  "limitations": [
+    "Development omits acknowledgement durability, calibration omits retry safety, and test omits retry safety. Report only measured decisions and do not claim balanced coverage.",
+    "Machine-generated rule-checked labels and three one-field variant templates are not independent ground truth or broad architecture competence.",
+    "Canonical exact-duplicate checks do not eliminate semantically similar scenarios or shared concepts across sources.",
+    "Test source chunks were repaired for integrity before any model test predictions; fixed source/check/split assignments were preserved."
+  ]
+}

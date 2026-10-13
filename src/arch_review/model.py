@@ -32,6 +32,8 @@ def _worker(connection, settings_dict):
     settings = Settings.model_validate(settings_dict)
     os.environ["HF_HUB_OFFLINE"] = "1"
     os.environ["TRANSFORMERS_OFFLINE"] = "1"
+    # This worker uses PyTorch only; MCP hosts may strip optional parent env flags.
+    os.environ["USE_TF"] = "0"
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     try:
         with contextlib.redirect_stdout(sys.stderr):

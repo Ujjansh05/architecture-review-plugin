@@ -1,0 +1,97 @@
+[
+  {
+    "source_id": "web-bb47fc172d0c4bd8",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-9f8f2bd62653e34a",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-0adf49716ba304d9",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-f6f9004cc3f83d91",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-11746225a8fe013b",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-171e25a93e6ce21c",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-dc90a71e9fd8ad7d",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-954153bda64493a8",
+    "check_id": "retry_safety",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-3883027a79ef3a26",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-2809a82836d98e8f",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-de23b77d262060b2",
+    "check_id": "queue_overload",
+    "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+  },
+  {
+    "source_id": "web-464d39d501ea0a4c",
+    "check_id": "ack_durability",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-e8a2313f36cc601d",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-743cc47270a12ea9",
+    "check_id": "queue_overload",
+    "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+  },
+  {
+    "source_id": "web-5e0e00142a55845a",
+    "check_id": "queue_overload",
+    "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+  },
+  {
+    "source_id": "web-56e919bf45b696f4",
+    "check_id": "queue_overload",
+    "reason": "Supporting quote contains only headings or resource links, not substantive prose"
+  },
+  {
+    "source_id": "web-98bcb790c918ac21",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-95043fab673b9a8a",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  },
+  {
+    "source_id": "web-2578093c85acd5dc",
+    "check_id": "queue_overload",
+    "reason": "Teacher marked this passage irrelevant to the assigned decision"
+  }
+]

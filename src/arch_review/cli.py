@@ -2,6 +2,7 @@ import argparse
 import importlib.metadata
 import json
 import multiprocessing
+import os
 import sys
 from pathlib import Path
 
@@ -31,7 +32,8 @@ def main():
     review.add_argument("input", type=Path)
     review.add_argument("--output", type=Path)
     review.add_argument("--rules-only", action="store_true", help="Explicit diagnostic baseline; returns an incomplete rules-only review")
-    sub.add_parser("serve")
+    sub.add_parser("start", help="Start the shared service before connecting Windows MCP clients")
+    sub.add_parser("serve", help="Run the shared service in the foreground")
     sub.add_parser("stop")
     sub.add_parser("mcp")
     sub.add_parser("doctor")
@@ -88,6 +90,9 @@ def main():
                 from .client import review_remote
                 response = review_remote(req)
             emit(response.model_dump(mode="json"), args.output)
+        elif args.command == "start":
+            from .client import ensure_service
+            emit(ensure_service())
         elif args.command == "serve":
             import uvicorn
             from filelock import FileLock
@@ -109,7 +114,17 @@ def main():
                 emit(response.json())
         elif args.command == "mcp":
             from .mcp_server import run
-            run()
+            # Windows MCP hosts own a job that also kills every service spawned
+            # underneath the stdio process. Connect to an independently started daemon.
+            previous = os.environ.get("ARCH_REVIEW_MCP_SESSION")
+            os.environ["ARCH_REVIEW_MCP_SESSION"] = "1"
+            try:
+                run()
+            finally:
+                if previous is None:
+                    os.environ.pop("ARCH_REVIEW_MCP_SESSION", None)
+                else:
+                    os.environ["ARCH_REVIEW_MCP_SESSION"] = previous
         elif args.command == "doctor":
             import psutil
 

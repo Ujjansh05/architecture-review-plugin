@@ -1,6 +1,8 @@
 """Exercise two actual stdio MCP clients against the configured local model service.
 
 This verifies the protocol and shared model process, not two AI product integrations.
+It starts or reuses the service outside the MCP clients and leaves it running.
+Run ``python -m arch_review stop`` afterward when you no longer need that service.
 """
 import asyncio
 import json
@@ -10,7 +12,7 @@ from pathlib import Path
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-from arch_review.client import health
+from arch_review.client import ensure_service, health
 from arch_review.schema import ReviewResponse
 from arch_review.settings import runtime_dir
 
@@ -37,13 +39,16 @@ async def review(name):
 
 
 async def main():
+    initial = ensure_service()
     responses = await asyncio.gather(review("complete"), review("flawed"))
     state = health()
+    if state["pid"] != initial["pid"]:
+        raise RuntimeError("Shared service changed while the MCP clients were connected")
     if state["model_worker_pid"] is None:
         raise RuntimeError("Expected one live shared model worker")
     report = {"clients": 2, "transport": "stdio", "service_pid": state["pid"],
               "model_worker_pid": state["model_worker_pid"], "responses": responses,
-              "actual_ai_hosts_tested": 0}
+              "actual_ai_hosts_tested": 0, "service_left_running": True}
     output = ROOT / "reports" / "mcp-model-smoke.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2), encoding="utf-8")

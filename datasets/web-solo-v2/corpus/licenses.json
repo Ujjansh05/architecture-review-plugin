@@ -1,0 +1,14 @@
+[
+  {
+    "source": "aosa-books",
+    "license": "CC-BY-3.0",
+    "url": "https://aosabook.org/en/",
+    "sha256": "ef1c1fc2ad2453b88964aaa977cb5b104a575b9467428825ecaf762db06f7c52"
+  },
+  {
+    "source": "system-design-primer",
+    "license": "CC-BY-4.0",
+    "url": "https://raw.githubusercontent.com/donnemartin/system-design-primer/ae9bbd7b02d90b9866215de185217d33f39ab733/LICENSE.txt",
+    "sha256": "9a7492f956e845e14e04f42e3f6cdd971460a231eeb04317af9e6aace1470876"
+  }
+]

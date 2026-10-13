@@ -1,0 +1,11 @@
+[
+  {
+    "url": "https://aosabook.org/en/v2/index.html",
+    "status": "fetch_or_parse_failed",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://aosabook.org/en/v2/pypy.html",
+    "status": "skipped_short_or_off_topic"
+  }
+]

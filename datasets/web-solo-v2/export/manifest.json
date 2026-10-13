@@ -1,0 +1,84 @@
+{
+  "version": "web-decisions-1",
+  "expert_reviewed": false,
+  "training_material": "new_web_corpus_only",
+  "bundled_pilot_used": false,
+  "runtime_evidence_used": false,
+  "label_origin": "machine_generated_rule_checked",
+  "seed": 17,
+  "corpus_manifest_sha256": "dd037a99c5ecb1845a57e07f85d47ab47c537551514e1fb1823cd729960d1062",
+  "family_splits": {
+    "web-3188c4e2fd23e891-retry_safety": "train",
+    "web-37c48f23d2dc300b-ack_durability": "train",
+    "web-c40acdc6f16dcae4-queue_overload": "development",
+    "web-cbfa60e3b42750e6-queue_overload": "train",
+    "web-6b7fa3f82a127471-retry_safety": "train",
+    "web-720afe2dd9698b76-ack_durability": "calibration",
+    "web-97a59f24efef0a4a-queue_overload": "train",
+    "web-c9bcd0d8c2351f46-ack_durability": "test",
+    "web-d272c9ae7b8c47de-retry_safety": "train",
+    "web-a299e4b1b07e1e33-queue_overload": "train",
+    "web-83929208deac1052-retry_safety": "development",
+    "web-f0dc91f97338d90d-ack_durability": "test",
+    "web-9a7dcb5516f66b72-queue_overload": "test",
+    "web-435a86e9b8564b78-queue_overload": "development",
+    "web-b358ef0aa3791794-queue_overload": "calibration",
+    "web-03dfbce0ea196d60-queue_overload": "train"
+  },
+  "source_group_splits": {
+    "web-3188c4e2fd23e891": "train",
+    "web-37c48f23d2dc300b": "train",
+    "web-c40acdc6f16dcae4": "development",
+    "web-cbfa60e3b42750e6": "train",
+    "web-6b7fa3f82a127471": "train",
+    "web-720afe2dd9698b76": "calibration",
+    "web-97a59f24efef0a4a": "train",
+    "web-c9bcd0d8c2351f46": "test",
+    "web-d272c9ae7b8c47de": "train",
+    "web-a299e4b1b07e1e33": "train",
+    "web-bb47fc172d0c4bd8": "development",
+    "web-f0dc91f97338d90d": "test",
+    "web-9a7dcb5516f66b72": "test",
+    "web-435a86e9b8564b78": "development",
+    "web-b358ef0aa3791794": "calibration",
+    "web-03dfbce0ea196d60": "train"
+  },
+  "files": {
+    "train.jsonl": {
+      "sha256": "a5512e7847486d3b745ed6297e3fdad458bd6005cbe755f8580d1ad51961ef27",
+      "count": 24
+    },
+    "development.jsonl": {
+      "sha256": "b47ec104e0261c927ed127f11128beaa18132f5e67b15d54bc92d34e4b211cc4",
+      "count": 9
+    },
+    "calibration.jsonl": {
+      "sha256": "1a0d0895b5900c0ff504137b3b67e65c1045bf6bf8d451edf8119dd1d6fa7f45",
+      "count": 6
+    },
+    "test.jsonl": {
+      "sha256": "9bf50088bf80c1caf8d9d83b4b3853e73a73eb396d2b79c0103e6c402af1a60a",
+      "count": 9
+    }
+  },
+  "cases_sha256": "03bbe62294838076802ae98b262bdf70f5a4c7d8c74a60cd4a70037ccfb87439",
+  "accepted_families": 16,
+  "rejected_families": 19,
+  "automatic_checks": [
+    "exact_source_quote",
+    "substantive_quote_structure",
+    "schema",
+    "one_changed_field",
+    "rule_label_agreement",
+    "document_group_splits",
+    "exact_shared_passage_groups",
+    "citation_normalized_input_splits",
+    "no_verdict_in_design"
+  ],
+  "limitations": [
+    "No independent validation of semantic source entailment or labels",
+    "Minimal pairs exercise three specific fields; not comprehensive architecture coverage",
+    "Exact deduplication does not eliminate semantic overlap between reference chapters",
+    "Rule agreement is construction consistency, not an independent quality measurement"
+  ]
+}
