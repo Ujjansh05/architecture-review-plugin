@@ -53,7 +53,13 @@ def _worker(connection, settings_dict):
             if device == "cuda" and not torch.cuda.is_available():
                 raise RuntimeError("CUDA was requested but this PyTorch environment has no available CUDA device")
             agent = laya.load(str(checkpoint), device=device)
-            connection.send({"ready": True, "device": device})
+            metadata = model_metadata(str(checkpoint))
+            if metadata.get("inference_precision") == "float32" and metadata.get("autocast") is False:
+                # Merged experiments were evaluated in FP32, including their calibration.
+                agent.amp_enabled, agent.dtype = False, torch.float32
+            connection.send({"ready": True, "device": device,
+                             "inference_precision": str(agent.dtype).removeprefix("torch."),
+                             "autocast": agent.amp_enabled})
             while True:
                 if not connection.poll(settings.idle_seconds):
                     break
@@ -145,6 +151,8 @@ class ModelWorker:
                     if not ready.get("ready"):
                         raise RuntimeError(ready.get("error", "Model failed to initialize."))
                     self.metadata["active_device"] = ready.get("device", "unknown")
+                    self.metadata["active_precision"] = ready.get("inference_precision", "unknown")
+                    self.metadata["active_autocast"] = ready.get("autocast")
                 self.connection.send(payloads)
                 raw = self._receive(deadline)
             except (OSError, EOFError, RuntimeError, TimeoutError) as exc:

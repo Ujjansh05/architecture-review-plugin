@@ -13,7 +13,9 @@ Your AI drafts the architecture. **ArchRivet checks backend risks, brings eviden
 </div>
 
 > [!NOTE]
-> **Experimental alpha — 0.2.0a1.** The new backend interface reviews eight specific decisions with rules, Laya or an optional local generative backend. The original three-check messaging interface remains available. Findings depend on supplied facts; they do not certify a deployment or establish production capacity.
+> **Experimental alpha — 0.2.0a2.** The backend interface reviews eight specific decisions with rules, Laya or an optional local generative backend. The original three-check messaging interface remains available. Findings depend on supplied facts; they do not certify a deployment or establish production capacity.
+
+**Want the trained model?** [Download the complete 322M experimental checkpoint](docs/merged-model.md). Base weights, merged adapters, tokenizer and calibration are included. Install with `arch-review download-model --variant archrivet-experimental --destination models/archrivet-322m`. Measured accuracy remains **25/36 synthetic development cases and 4/12 separate regression cases**; rules are still the default.
 
 **New:** transactions, replica reads, cache freshness, failover fencing and dependency retry budgets join the three messaging checks. Submit structured facts now, or explore the optional document-extraction adapter. [Eight-check quick start and example](docs/backend-v2.md) · [Model improvement status](docs/model-improvement-status.md)
 

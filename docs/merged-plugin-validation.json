@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "version": "0.2.0a2",
+  "device": "cpu",
+  "checkpoint_role": "experimental_merged",
+  "checks_reviewed": 8,
+  "model_decisions_returned": 8,
+  "explicit_rule_contradictions_preserved": true,
+  "unknown_facts_preserved": true,
+  "capacity_unknown_preserved": true,
+  "model_can_disagree_with_rules": true,
+  "production_failure_probabilities": null,
+  "existing_service_configuration_changed": false
+}

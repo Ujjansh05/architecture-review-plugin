@@ -1,0 +1,14 @@
+{
+  "APACHE-2.0.txt": {
+    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "upstream-laya-model-card.md": {
+    "url": "https://huggingface.co/convaiinnovations/laya-multilingual/resolve/1720e3e3357cfe1e281542e223f8273b0890ca34/README.md",
+    "sha256": "e85d16c3fe35fe7094ef51a7cfa81144a5cc07558e5faddcff753a8153e38a0b"
+  },
+  "upstream-mmbert-model-card.md": {
+    "url": "https://huggingface.co/jhu-clsp/mmBERT-base/resolve/c5955035435e2bf121cde7f3c8863ef52ff35d82/README.md",
+    "sha256": "35724415037ee3159aa733c16050620cc19a76219112a6ceeb3949572e0b37e9"
+  }
+}

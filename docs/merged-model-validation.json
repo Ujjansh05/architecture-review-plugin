@@ -1,0 +1,43 @@
+{
+  "merge": {
+    "stage": "merged",
+    "device": "cuda",
+    "merged_linear_layers": 88,
+    "parameter_count": 321908995,
+    "compared": 48,
+    "identical_labels": 48,
+    "maximum_absolute_probability_difference": 9.999999999998899e-05,
+    "tolerance": 0.0005,
+    "test_evaluated": false,
+    "new_training_performed": false,
+    "base_unchanged_verified": true,
+    "weights_bytes": 1287653752,
+    "weights_sha256": "feb77e8183e390ab6ef2d11b4c3efe85f34bdaf28eed1477f89e27b0aac5f06b",
+    "precision": "float32",
+    "autocast": false
+  },
+  "reload_cpu": {
+    "stage": "fresh_process_reload",
+    "device": "cpu",
+    "precision": "float32",
+    "autocast": false,
+    "compared": 48,
+    "identical_labels": 48,
+    "maximum_absolute_probability_difference": 0.00010000000000000286,
+    "tolerance": 0.0005,
+    "test_evaluated": false,
+    "model_weights_sha256": "feb77e8183e390ab6ef2d11b4c3efe85f34bdaf28eed1477f89e27b0aac5f06b"
+  },
+  "reload_cuda": {
+    "stage": "fresh_process_reload",
+    "device": "cuda",
+    "precision": "float32",
+    "autocast": false,
+    "compared": 48,
+    "identical_labels": 48,
+    "maximum_absolute_probability_difference": 9.999999999998899e-05,
+    "tolerance": 0.0005,
+    "test_evaluated": false,
+    "model_weights_sha256": "feb77e8183e390ab6ef2d11b4c3efe85f34bdaf28eed1477f89e27b0aac5f06b"
+  }
+}

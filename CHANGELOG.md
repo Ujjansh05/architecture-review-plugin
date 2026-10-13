@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0a2 — opt-in experimental merged model
+
+- Publish the selected 322M candidate as a separate complete FP32 checkpoint with tokenizer, fitted calibration, upstream licenses and model card; no separate base or adapter is needed.
+- Add a pinned, streamed `download-model --variant archrivet-experimental` installer with archive/file checksums, disk checks, path validation and refusal to overwrite existing models.
+- Preserve FP32 inference for this checkpoint on CPU and CUDA; keep rules as the default backend.
+- Verify all 48 existing development/regression decisions survive merging and fresh CPU/CUDA loads. This confirms artifact fidelity, not improved accuracy; separate regression accuracy remains 4/12.
+
 ## 0.2.0a1 — experimental backend review workflow
 
 - Add eight scoped backend checks with explicit supported, contradicted and insufficient-information results; preserve the original three-check API.

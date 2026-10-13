@@ -1,6 +1,6 @@
 # Third-party notices
 
-Dependencies and downloaded model weights retain their own licenses. This repository does not bundle Laya model weights or third-party Python packages.
+Dependencies and downloaded model weights retain their own licenses. Git source and Python distributions do not bundle model weights or third-party Python packages. The separate [experimental model release](https://github.com/Ujjansh05/archrivet/releases/tag/model-v0.1.0) contains a complete merged Laya-derived checkpoint under Apache 2.0, with its MIT-declared mmBERT attribution, upstream model cards, license texts and change notice. See [model documentation](docs/merged-model.md) and [license provenance](docs/model-licenses/sources.json).
 
 The referenced [Laya multilingual model](https://huggingface.co/convaiinnovations/laya-multilingual) identifies its license as Apache 2.0 in its model card. The downloader records the revision and artifact hashes; inspect the selected revision's terms when redistributing or adapting its weights. The plugin's software license does not replace upstream terms.
 

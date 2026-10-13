@@ -67,6 +67,7 @@ def main():
     config.add_argument("--evidence", type=Path)
     download = sub.add_parser("download-model")
     download.add_argument("--destination", required=True, type=Path)
+    download.add_argument("--variant", choices=["base", "archrivet-experimental"], default="base")
     dataset = sub.add_parser("dataset")
     dataset.add_argument("action", choices=["audit", "export"])
     dataset.add_argument("--source", type=Path)
@@ -238,8 +239,12 @@ def main():
                 save_settings(settings)
             emit(settings.model_dump())
         elif args.command == "download-model":
-            from .download import download_checkpoint
-            emit(download_checkpoint(args.destination))
+            if args.variant == "archrivet-experimental":
+                from .merged_download import download_merged_checkpoint
+                emit(download_merged_checkpoint(args.destination))
+            else:
+                from .download import download_checkpoint
+                emit(download_checkpoint(args.destination))
         elif args.command == "dataset":
             from .dataset import export_dataset, load_cases, validate_cases
             if args.action == "audit":
