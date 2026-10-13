@@ -24,7 +24,7 @@ architecture explanations. ArchRivet's rules remain the default; using these wei
 is an explicit opt-in.
 
 [Download the full model](https://github.com/Ujjansh05/archrivet/releases/tag/model-v0.1.0)
-· [Plugin release](https://github.com/Ujjansh05/archrivet/releases/tag/v0.2.0a2)
+· [Plugin release](https://github.com/Ujjansh05/archrivet/releases/tag/v0.2.0a3)
 · [Measured results](https://github.com/Ujjansh05/archrivet/blob/main/docs/model-improvement-status.md)
 
 ## Install and connect your AI
@@ -37,7 +37,7 @@ The project is not on PyPI; the URL below installs the GitHub wheel.
 python -m venv .venv
 # Activate the environment using the command above for your operating system.
 python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
-python -m pip install "architecture-review-plugin[model] @ https://github.com/Ujjansh05/archrivet/releases/download/v0.2.0a2/architecture_review_plugin-0.2.0a2-py3-none-any.whl"
+python -m pip install "architecture-review-plugin[model] @ https://github.com/Ujjansh05/archrivet/releases/download/v0.2.0a3/architecture_review_plugin-0.2.0a3-py3-none-any.whl"
 arch-review download-model --variant archrivet-experimental --destination models/archrivet-322m
 arch-review configure --checkpoint models/archrivet-322m --backend laya --device cpu --context-tokens 1024
 arch-review start

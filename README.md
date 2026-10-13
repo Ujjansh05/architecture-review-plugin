@@ -30,6 +30,8 @@ Useful for messaging services, notification systems, transactional backends, and
 
 *Demo of the three-check rules-based workflow; no model inference. [Text walkthrough](docs/assets/README.md) · [Static preview](docs/assets/archrivet-demo.png)*
 
+**What if the design is incomplete?** [Run the clarification example](docs/clarification-walkthrough.md) to see an unresolved retry check, the missing facts, and how answers change the verdict.
+
 ## Try it locally
 
 You need **Git and Python 3.11 or 3.12**. Start with the included example; installation downloads Python dependencies. The package is available on [GitHub Releases](https://github.com/Ujjansh05/archrivet/releases), not PyPI.
@@ -72,7 +74,7 @@ Follow the [MCP setup guide](docs/backend-v2.md#shared-jobs-cli-and-mcp) to star
 
 Once connected, ask your assistant:
 
-> Review this backend design with ArchRivet. Ask for missing requirements, explain the findings, and include the suggested verification steps.
+> Review this backend design with ArchRivet using only supplied facts. Show findings and missing information, ask focused follow-up questions, and keep unanswered facts unknown. After I answer, rerun the review and explain what changed, including remaining gaps and verification steps.
 
 An MCP-compatible host is required. Integration has been tested with Codex; other hosts need verification. Local reviews run offline after setup; your AI host follows its own provider and data-handling settings.
 

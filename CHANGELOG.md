@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0a3 — clarification walkthrough
+
+- Add a runnable incomplete-design example with unknown duplicate-protection enforcement and atomicity.
+- Show how supplied facts change the retry verdict across unknown, explicitly unsafe, partially clarified and fully specified inputs.
+- Update the assistant prompt to ask focused follow-up questions, preserve unknowns and review confirmed answers again.
+- Explain the current boundary: checks use supplied design facts; automatic interviewing and application-code analysis are not implemented.
+- Package the concise README and clarification guide for release downloads. Review rules and model weights are unchanged.
+
 ## 0.2.0a2 — opt-in experimental merged model
 
 - Publish the selected 322M candidate as a separate complete FP32 checkpoint with tokenizer, fitted calibration, upstream licenses and model card; no separate base or adapter is needed.
