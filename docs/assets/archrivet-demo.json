@@ -1,0 +1,237 @@
+{
+  "kind": "animated_summary_of_actual_cli_results",
+  "screen_recording": false,
+  "model_inference_used": false,
+  "timing_is_benchmark": false,
+  "pillow_version": "12.3.0",
+  "width": 1200,
+  "height": 720,
+  "frames": 8,
+  "duration_ms": 22200,
+  "source_results": [
+    {
+      "input": "examples/flawed.json",
+      "input_sha256": "e5ae056b82db57b4aa7db1d71a8bd046fcebc3e6b2bc8890d94b1980ec2131f5",
+      "command": "python -m arch_review review examples/flawed.json --rules-only",
+      "review_mode": "rules_only",
+      "review_status": "partial",
+      "checks": [
+        {
+          "check_id": "retry_safety",
+          "verdict": "contradicted",
+          "reason": "A non-idempotent effect lacks stable, enforced, atomic duplicate protection."
+        },
+        {
+          "check_id": "ack_durability",
+          "verdict": "contradicted",
+          "reason": "Success is acknowledged before durable commit."
+        },
+        {
+          "check_id": "queue_overload",
+          "verdict": "contradicted",
+          "reason": "The design explicitly allows unbounded queue growth under overload."
+        }
+      ],
+      "workload_estimates": {
+        "estimates": {
+          "peak_messages": {
+            "value": 500.0,
+            "unit": "messages/second",
+            "formula": "average_rate * peak_factor",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "peak_factor": 5.0
+            }
+          },
+          "average_deliveries": {
+            "value": 300.0,
+            "unit": "deliveries/second",
+            "formula": "average_rate * recipients",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "average_recipients": 3.0
+            }
+          },
+          "peak_deliveries": {
+            "value": 1500.0,
+            "unit": "deliveries/second",
+            "formula": "average_rate * recipients * peak_factor",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "average_recipients": 3.0,
+              "peak_factor": 5.0
+            }
+          },
+          "daily_payload": {
+            "value": 8847360000.0,
+            "unit": "bytes/day",
+            "formula": "average_rate * 86400 * message_bytes",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "message_bytes": 1024
+            }
+          },
+          "retained_storage": {
+            "value": 955514880000.0,
+            "unit": "bytes",
+            "formula": "average_rate * 86400 * message_bytes * retention_days * stored_copies * replication * overhead",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "message_bytes": 1024,
+              "retention_days": 30.0,
+              "storage_copies_per_message": 1.0,
+              "replication_factor": 3,
+              "storage_overhead_factor": 1.2
+            }
+          },
+          "projected_average_messages": {
+            "value": 177.1561000000001,
+            "unit": "messages/second",
+            "formula": "average_rate * (1 + monthly_growth_fraction) ** horizon_months",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "monthly_growth_fraction": 0.1,
+              "growth_horizon_months": 6
+            }
+          }
+        },
+        "missing_inputs": [],
+        "notes": [
+          "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+          "Retained storage assumes steady arrivals across the retention window.",
+          "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+        ]
+      },
+      "capacity": {
+        "evidence_status": "unknown",
+        "supported_capacity": null,
+        "headroom_ratio": null,
+        "latency_slo_status": "unknown",
+        "missing_evidence": [
+          "A benchmark with workload, configuration, latency, errors and duration."
+        ],
+        "required_tests": [
+          "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+          "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+        ]
+      }
+    },
+    {
+      "input": "examples/complete.json",
+      "input_sha256": "6a8842bcef25d01f1d9f1c122b1d11ba0c8f365f4c5813729d83072607a58e71",
+      "command": "python -m arch_review review examples/complete.json --rules-only",
+      "review_mode": "rules_only",
+      "review_status": "partial",
+      "checks": [
+        {
+          "check_id": "retry_safety",
+          "verdict": "supported",
+          "reason": "Enforced atomic deduplication covers the declared retry window and effect boundaries."
+        },
+        {
+          "check_id": "ack_durability",
+          "verdict": "supported",
+          "reason": "Acknowledgement follows durable commit covering each explicitly required failure domain."
+        },
+        {
+          "check_id": "queue_overload",
+          "verdict": "supported",
+          "reason": "The stated queue and admission policies address the declared loss and queue-bound requirements; latency requires testing."
+        }
+      ],
+      "workload_estimates": {
+        "estimates": {
+          "peak_messages": {
+            "value": 500.0,
+            "unit": "messages/second",
+            "formula": "average_rate * peak_factor",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "peak_factor": 5.0
+            }
+          },
+          "average_deliveries": {
+            "value": 300.0,
+            "unit": "deliveries/second",
+            "formula": "average_rate * recipients",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "average_recipients": 3.0
+            }
+          },
+          "peak_deliveries": {
+            "value": 1500.0,
+            "unit": "deliveries/second",
+            "formula": "average_rate * recipients * peak_factor",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "average_recipients": 3.0,
+              "peak_factor": 5.0
+            }
+          },
+          "daily_payload": {
+            "value": 8847360000.0,
+            "unit": "bytes/day",
+            "formula": "average_rate * 86400 * message_bytes",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "message_bytes": 1024
+            }
+          },
+          "retained_storage": {
+            "value": 955514880000.0,
+            "unit": "bytes",
+            "formula": "average_rate * 86400 * message_bytes * retention_days * stored_copies * replication * overhead",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "message_bytes": 1024,
+              "retention_days": 30.0,
+              "storage_copies_per_message": 1.0,
+              "replication_factor": 3,
+              "storage_overhead_factor": 1.2
+            }
+          },
+          "projected_average_messages": {
+            "value": 177.1561000000001,
+            "unit": "messages/second",
+            "formula": "average_rate * (1 + monthly_growth_fraction) ** horizon_months",
+            "assumptions": {
+              "average_messages_per_second": 100.0,
+              "monthly_growth_fraction": 0.1,
+              "growth_horizon_months": 6
+            }
+          }
+        },
+        "missing_inputs": [],
+        "notes": [
+          "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+          "Retained storage assumes steady arrivals across the retention window.",
+          "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+        ]
+      },
+      "capacity": {
+        "evidence_status": "unknown",
+        "supported_capacity": null,
+        "headroom_ratio": null,
+        "latency_slo_status": "unknown",
+        "missing_evidence": [
+          "A benchmark with workload, configuration, latency, errors and duration."
+        ],
+        "required_tests": [
+          "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+          "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+        ]
+      }
+    }
+  ],
+  "files": {
+    "archrivet-demo.gif": {
+      "sha256": "cedcef8c7728361198c2233226990b26bbfc4165a2ae43138184b9d6ecc42578",
+      "bytes": 315401
+    },
+    "archrivet-demo.png": {
+      "sha256": "d3141edcce60a6171b63f3edd6bc10b32a17cb895f456d4f892aae57d28dda12",
+      "bytes": 67989
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 ## Unreleased — research dataset and validation
 
+- Add a visual README walkthrough, a reproducible GIF of actual rules-only results, and clearer first-run and MCP setup instructions.
 - Rename the project and GitHub repository to ArchRivet; preserve the Python distribution, CLI and MCP identifiers for existing installations.
 - Publish the corrected 48-case web-only dataset, source/repair provenance and measured CPU training resources; development accuracy remains 4/9.
 - Add explicit service startup for Windows MCP so closing one assistant session cannot terminate a daemon launched by that session and interrupt other clients.
