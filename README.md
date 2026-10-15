@@ -22,6 +22,15 @@ If the answer is 60 seconds, the review can point to the exact requirement being
 
 *Edited walkthrough of actual Codex and MCP results, using rules mode. Timing is shortened. [Read the full example and answers](docs/demo-comparison.md).*
 
+<details>
+<summary><strong>Compare Codex with and without the plugin</strong></summary>
+
+![Both Codex answers identify the gap; ArchRivet adds structured findings and a checked before/after comparison.](docs/assets/archrivet-codex-comparison.gif)
+
+Both answers found the missing detail. This example shows the added review workflow, not a claim that ArchRivet outperforms Codex.
+
+</details>
+
 ## What you get
 
 - **Specific questions:** find the missing design detail instead of guessing.

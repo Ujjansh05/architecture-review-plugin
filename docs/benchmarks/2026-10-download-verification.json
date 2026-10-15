@@ -1,0 +1,83 @@
+{
+  "all_verified": true,
+  "assets": [
+    {
+      "asset": "architecture_review_plugin-0.3.0a1-py3-none-any.whl",
+      "sha256": "232810cadc8ff8406adbe31b5bfdb989210373a88bb972458c73477d7605b821",
+      "bytes": 100700,
+      "verified": true
+    },
+    {
+      "asset": "architecture_review_plugin-0.3.0a1.tar.gz",
+      "sha256": "fa95592a0745835ef32017903426fbb2f5fc801312dd2a8b6cb35f3f1d9f0c26",
+      "bytes": 87464,
+      "verified": true
+    },
+    {
+      "asset": "archrivet-windows-x64-0.2.0-alpha.1.mcpb",
+      "sha256": "5b8131ab090a9c9165f38ea3a46247933bc01744d620268143418c0b28347077",
+      "bytes": 123058,
+      "verified": true
+    },
+    {
+      "asset": "archrivet-windows-x64-0.2.0-alpha.1.zip",
+      "sha256": "5b8131ab090a9c9165f38ea3a46247933bc01744d620268143418c0b28347077",
+      "bytes": 123058,
+      "verified": true
+    },
+    {
+      "asset": "INSTALL.md",
+      "sha256": "45fc34b4b8f114c9bb94415758d0f3a4558798d96b6935f3edb1b5cca399b4bc",
+      "bytes": 4097,
+      "verified": true
+    },
+    {
+      "asset": "BENCHMARK.md",
+      "sha256": "86871e7af0fef8959b2f5a478a576e73e42135367ee1880c2fafadd19df5cb4f",
+      "bytes": 6867,
+      "verified": true
+    },
+    {
+      "asset": "benchmark.json",
+      "sha256": "2e71bb567bc8c5a9c91acb59cc00b07313ff6836adfec0902b1f2e70cfbbfe92",
+      "bytes": 7177,
+      "verified": true
+    },
+    {
+      "asset": "archrivet-codex.gif",
+      "sha256": "87ad2705aa33077627899995bd513df7fdf2e65dc23610a991be77b9bd412974",
+      "bytes": 185900,
+      "verified": true
+    },
+    {
+      "asset": "archrivet-model-comparison.gif",
+      "sha256": "03a4ca9aeee29d812da9ca59c96c17bc9e9f2d15ef67e4c19ffb92dd0bab440a",
+      "bytes": 96588,
+      "verified": true
+    },
+    {
+      "asset": "validation.json",
+      "sha256": "4ff30aa6d5227e206fb97f426b088c03259ebfdfe8cfb429ff4027704d9438e0",
+      "bytes": 4243,
+      "verified": true
+    },
+    {
+      "asset": "SHA256SUMS.txt",
+      "sha256": "0babe2803c941dfe3d69775105113b204f31a518f7e9c3c50a8707cfb94255f0",
+      "bytes": 1065,
+      "verified": true
+    },
+    {
+      "asset": "archrivet-322m-experimental-v0.2.0-alpha.1.zip",
+      "verified": true,
+      "method": "released pinned streaming installer, exact size/SHA256 and all extracted file hashes"
+    }
+  ],
+  "ci": {
+    "status": "success",
+    "url": "https://github.com/Ujjansh05/archrivet/actions/runs/38807444070",
+    "commit": "e5596c9fe67ef4a8128e5471c7ed041b387a2c1c",
+    "note": "CI environments isolate dependencies from runner-installed pipx. Runtime/model assets are unchanged."
+  },
+  "release": "https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1"
+}
