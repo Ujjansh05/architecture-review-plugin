@@ -1,5 +1,10 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/archrivet-icon-512.png">
+  <img src="docs/assets/archrivet-icon.gif" width="144" height="144" alt="ArchRivet: a connected cyan and blue A with an amber rivet">
+</picture>
+
 # ArchRivet
 
 ### Turn a system-design answer into a review you can follow.

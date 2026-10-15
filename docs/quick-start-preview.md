@@ -4,9 +4,9 @@ This is an **experimental Windows x64 preview**. Rules are enabled by default. T
 
 ## Download and connect
 
-**Desktop extension:** download `archrivet-windows-x64-0.2.0-alpha.1.mcpb` from the [0.3 preview release](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1). Install it in a host that supports **MCPB 0.4 with the UV runtime**. Such a host manages Python and dependencies; you do not run terminal commands. This is a direct download, not an approved extension-directory listing. Actual Claude Desktop GUI testing remains pending.
+**Desktop extension:** download `archrivet-windows-x64-0.2.0-alpha.2.mcpb` from the [0.3 preview release](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1). Install it in a host that supports **MCPB 0.4 with the UV runtime**. Such a host manages Python and dependencies; you do not run terminal commands. This is a direct download, not an approved extension-directory listing. Actual Claude Desktop GUI testing remains pending.
 
-**Codex on Windows:** download the `.zip` bundle from the same release and extract it to `C:\Apps\ArchRivet`. The folder should contain `server`, `vendor`, `pyproject.toml` and `uv.lock`. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) if it is not already available. With Codex installed and signed in, run this once:
+**Codex on Windows:** download `archrivet-windows-x64-0.2.0-alpha.2.zip` from the same release and extract it to `C:\Apps\ArchRivet`. The folder should contain `server`, `vendor`, `pyproject.toml` and `uv.lock`. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) if it is not already available. With Codex installed and signed in, run this once:
 
 ```powershell
 codex mcp add archrivet -- uv run --frozen --managed-python --directory "C:\Apps\ArchRivet" server/main.py

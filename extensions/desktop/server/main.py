@@ -1,5 +1,6 @@
 """Standalone stdio extension: no daemon, port, shell command or host config edits."""
 import asyncio
+import base64
 import multiprocessing
 import os
 import platform
@@ -8,6 +9,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from mcp.server import MCPServer
+from mcp.types import Icon
 from setup_model import ModelSetup
 
 from arch_review import __version__ as ENGINE_VERSION
@@ -20,7 +22,7 @@ from arch_review.review_v2 import DesignReviewer
 from arch_review.schema_v2 import DesignReviewRequest
 from arch_review.settings import Settings
 
-VERSION = "0.2.0-alpha.1"
+VERSION = "0.2.0-alpha.2"
 
 
 class Extension:
@@ -82,7 +84,10 @@ def create_server(extension):
         finally:
             await asyncio.to_thread(extension.close)
 
-    server = MCPServer("archrivet", version=VERSION, lifespan=lifespan, instructions=(
+    icon = Path(__file__).resolve().parents[1] / "icons" / "icon-128.png"
+    icon_uri = "data:image/png;base64," + base64.b64encode(icon.read_bytes()).decode("ascii")
+    server = MCPServer("archrivet", title="ArchRivet", version=VERSION, lifespan=lifespan,
+                       icons=[Icon(src=icon_uri, mimeType="image/png", sizes=["128x128"])], instructions=(
         "ArchRivet is experimental decision support for eight scoped backend checks. "
         "Start with get_setup_status and get_review_schema. Turn only explicitly stated design facts into "
         "structured checks. Requirements belong in each check's facts. Laya does not extract arbitrary prose. "

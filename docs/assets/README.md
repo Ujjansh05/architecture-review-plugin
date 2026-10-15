@@ -1,5 +1,20 @@
 # ArchRivet demo
 
+## Project icon
+
+The original ArchRivet mark is a connected **A** with an amber rivet. A soft light travels along the connections in the animation; it is branding, not review progress or a success indicator.
+
+- [Animated GIF](archrivet-icon.gif) for the GitHub README and sharing.
+- [Animated SVG](archrivet-icon-animated.svg) for compatible websites; respects `prefers-reduced-motion`.
+- [Static SVG](archrivet-icon.svg), [512 px PNG](archrivet-icon-512.png), and [128 px PNG](archrivet-icon-128.png).
+- [Preview at different sizes](archrivet-icon-preview.png).
+
+The README provides a static PNG for browsers that request reduced motion. The desktop MCP manifest uses static PNGs because that is the supported icon format. The server also supplies an embedded PNG during MCP initialization; whether it appears is controlled by the assistant host. No remote image request is needed.
+
+To rebuild the artwork, install Pillow 11.3.0 in an authoring environment and run `python scripts/render_brand_icon.py`. Pillow is not added to the plugin's runtime dependencies. The original artwork and renderer use the repository's MIT license.
+
+## Product walkthrough
+
 The [GIF](archrivet-demo.gif) is an animated summary of **actual rules-only CLI results**. It is a designed walkthrough, not a screen recording, a model-inference demonstration, or a performance benchmark. Wording and timing are adapted for readability. The [static preview](archrivet-demo.png) shows the first scene without motion.
 
 ## Text walkthrough

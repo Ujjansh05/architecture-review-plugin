@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"
+      viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">ArchRivet</title>
+  <desc id="desc">A cyan and blue architectural A joined by an amber rivet.</desc>
+  <defs>
+    <linearGradient id="tile" x2="1" y2="1">
+      <stop stop-color="#0b1425"/><stop offset="1" stop-color="#172a40"/>
+    </linearGradient>
+    <linearGradient id="arch" x1="138" y1="0" x2="374" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#65ead4"/><stop offset="1" stop-color="#7ca5ff"/>
+    </linearGradient>
+    <clipPath id="tile-clip"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#tile)"/>
+  <g clip-path="url(#tile-clip)" stroke="#c4e7ff" opacity=".035">
+    <path d="M104 8V504 M180 8V504 M256 8V504 M332 8V504 M408 8V504
+      M8 104H504 M8 180H504 M8 256H504 M8 332H504 M8 408H504"/>
+  </g>
+  <rect x="9" y="9" width="494" height="494" rx="111" fill="none" stroke="#30475d" stroke-width="2"/>
+  <path d="M138 366L256 130L374 366 M180 282H332" fill="none"
+    stroke="#65ead4" stroke-width="54" opacity=".035" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M138 366L256 130L374 366 M180 282H332" fill="none"
+    stroke="url(#arch)" stroke-width="28" stroke-linejoin="round" stroke-linecap="round"/>
+  <g fill="#102134" stroke-width="7">
+    <circle cx="138" cy="366" r="20" stroke="#65ead4"/>
+    <circle cx="256" cy="130" r="20" stroke="#8edddf"/>
+    <circle cx="374" cy="366" r="20" stroke="#7ca5ff"/>
+  </g>
+  <circle cx="256" cy="282" r="25" fill="#102134"/>
+  <circle cx="256" cy="282" r="17" fill="#ffd08a"/>
+  <path d="M250 282H262" stroke="#655231" stroke-width="4" stroke-linecap="round"/>
+
+    <style>
+      .signal { opacity: 0; }
+      .arch-signal { animation: arch 4.8s linear infinite; }
+      .bridge-signal { animation: bridge 4.8s linear infinite; }
+      @keyframes arch {
+        0%, 10% { opacity: 0; transform: translate(138px,366px); }
+        15% { opacity: 1; }
+        42% { opacity: 1; transform: translate(256px,130px); }
+        74% { opacity: 1; transform: translate(374px,366px); }
+        80%, 100% { opacity: 0; transform: translate(374px,366px); }
+      }
+      @keyframes bridge {
+        0%, 40% { opacity: 0; transform: translate(180px,282px); }
+        45% { opacity: 1; }
+        70% { opacity: 1; transform: translate(332px,282px); }
+        75%, 100% { opacity: 0; transform: translate(332px,282px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .signal { animation: none; opacity: 0; }
+      }
+    </style>
+    <g class="signal arch-signal"><circle r="18" fill="#baffed" opacity=".15"/>
+      <circle r="7" fill="#effffb"/></g>
+    <g class="signal bridge-signal"><circle r="16" fill="#ffd08a" opacity=".18"/>
+      <circle r="6" fill="#fff2d7"/></g>
+</svg>

@@ -1,8 +1,13 @@
 {
   "manifest_version": "0.4",
   "name": "archrivet",
-  "display_name": "ArchRivet \u00e2\u20ac\u201d System Design Review (Preview)",
-  "version": "0.2.0-alpha.1",
+  "display_name": "ArchRivet - System Design Review (Preview)",
+  "version": "0.2.0-alpha.2",
+  "icon": "icon.png",
+  "icons": [
+    {"src": "icons/icon-128.png", "size": "128x128"},
+    {"src": "icon.png", "size": "512x512"}
+  ],
   "description": "Review backend design decisions, missing facts and workload with your assistant.",
   "long_description": "Windows x64 experimental preview. Eight local checks, specific follow-up questions and before/after review comparisons. Rules are the default. Enable optional Laya 322M for the updated experimental model; strict accuracy gates are not met. Requires an MCPB 0.4 UV host, internet for setup and several GB of disk space. Host provider settings still apply.",
   "author": {
