@@ -125,6 +125,11 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                 "fact_provenance": "machine_extracted_unverified" if documents else "caller_supplied",
                 "scope_discovery": "model_extracted_unverified" if documents else "caller_supplied",
                 "chunk_target_tokens": 1536, "overlap_target_tokens": 128}
+    if request.input_mode == "supplied_facts":
+        coverage.update(input_mode="supplied_facts", fact_provenance="caller_declared_origins_unverified",
+                        scope_discovery="caller_supplied", reference_only_documents=[d.id for d in documents],
+                        document_content_reviewed=False)
+        return request.checks, coverage, conflicts
     if not documents:
         return request.checks, coverage, conflicts
     if not hasattr(backend, "complete"):
@@ -220,7 +225,9 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                         facts[path] = global_value
                         spans[key].setdefault(path, []).extend(spans[global_key].get(path, []))
         items.append(CheckInput(check_id=check_id, scope_id=scope, facts=unflatten(facts),
-                                fact_spans=spans[key], applicable=applicability.get(key, True)))
+                                fact_spans=spans[key], applicable=applicability.get(key, True),
+                                context=next((c.context for c in request.checks
+                                              if (c.scope_id, c.check_id) == key), "")))
     return items, coverage, conflicts
 
 
@@ -228,6 +235,29 @@ def validate_spans(request):
     docs = {d.id: d.text for d in request.documents}
     docs[REQUIREMENTS_DOCUMENT_ID] = request.requirements
     for check in request.checks:
+        facts = flatten(check.facts)
+        for path, references in check.fact_quotes.items():
+            if path not in facts:
+                raise ValueError("Supporting quote references a missing fact")
+            for reference in references:
+                text = docs.get(reference.document_id)
+                if text is None or text.count(reference.quote) != 1:
+                    raise ValueError("Supporting quote must occur exactly once in its source document")
+                offset = text.index(reference.quote)
+                span = Span(document_id=reference.document_id, start=offset, end=offset + len(reference.quote))
+                existing = check.fact_spans.setdefault(path, [])
+                if span not in existing:
+                    existing.append(span)
+        if set(check.fact_origins) - facts.keys():
+            raise ValueError("Fact origin references a missing fact")
+        if request.input_mode == "supplied_facts":
+            # Origins prevent silently upgrading an assistant interpretation to a user declaration.
+            allowed = set(fact_fields(check.check_id))
+            if (facts.keys() & allowed) - check.fact_origins.keys():
+                raise ValueError("supplied_facts requires an origin for every decision fact")
+            for path, origin in check.fact_origins.items():
+                if origin == "host_extracted" and not check.fact_spans.get(path):
+                    raise ValueError("Host-extracted facts require a supporting source span")
         for path, references in check.fact_spans.items():
             if path not in flatten(check.facts):
                 raise ValueError("Supporting span references a missing fact")

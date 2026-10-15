@@ -30,22 +30,21 @@ class LayaBackend:
     def __init__(self, worker):
         self.worker = worker
         self.context_tokens = worker.settings.model_context_tokens
+        from .model_contract import verify_contract
+        checkpoint = getattr(worker.settings, "checkpoint", None)
+        self.contract = verify_contract(checkpoint, self.context_tokens) if checkpoint else None
 
     def metadata(self):
         return {"name": self.name, "context_tokens": self.context_tokens,
                 **self.worker.metadata, "device_preference": self.worker.settings.device}
 
-    def judge(self, check_id, facts, evidence):
-        criteria = {"supported": "Explicit facts satisfy the required guarantee.",
-                    "contradicted": "Explicit facts establish a violation of the requirement.",
-                    "insufficient_information": "Necessary facts are missing, ambiguous or conflicting."}
-        payload = {check_id: {"state": json.dumps({"facts": facts, "evidence": evidence}, ensure_ascii=False),
-                   "questions": {check_id: {"type": "choice", "instructions": REGISTRY[check_id].definition,
-                                             "criteria": criteria}}}}
+    def judge(self, check_id, facts, evidence, context=""):
+        from .model_contract import assessment_metadata, payload_for
+        payload = {check_id: payload_for(self.contract, check_id, facts, evidence, context)}
         answers, errors = self.worker.predict(payload)
         if errors:
             raise RuntimeError(errors[check_id])
-        return answers[check_id].model_dump(mode="json")
+        return assessment_metadata(answers[check_id].model_dump(mode="json"), self.contract)
 
     def close(self):
         self.worker.close()
@@ -174,10 +173,10 @@ class LlamaBackend:
             finally:
                 self._schedule_unload()
 
-    def judge(self, check_id, facts, evidence):
+    def judge(self, check_id, facts, evidence, context=""):
         result = self.complete("Review only the specified decision against explicit facts. A product name proves no guarantee. "
                                "Do not supply numerical confidence. Cite only supplied evidence IDs.",
-            {"decision": REGISTRY[check_id].definition, "facts": facts, "evidence": evidence},
+            {"decision": REGISTRY[check_id].definition, "facts": facts, "evidence": evidence, "context": context},
             BackendJudgment.model_json_schema(), output_tokens=512)
         decision = BackendJudgment.model_validate(result)
         if set(decision.evidence_ids) - {e["id"] for e in evidence}:

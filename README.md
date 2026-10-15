@@ -2,102 +2,56 @@
 
 # ArchRivet
 
-### A second opinion for your system design.
+### Turn a system-design answer into a review you can follow.
 
-**Review backend decisions, spot missing details, and plan workload before you build.**
+Your AI explains the design. ArchRivet checks the stated facts, names the gaps, and shows what changes after your answer.
 
-[![CI](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml/badge.svg)](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml) [![Status: experimental alpha](https://img.shields.io/badge/status-experimental_alpha-f5a623)](#what-is-proven-today) [![Python 3.11–3.12](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776ab)](#try-it-locally) [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-14b8a6)](LICENSE)
-
-[Watch the demo](#see-it-in-action) · [Get started](#try-it-locally) · [Download](https://github.com/Ujjansh05/archrivet/releases) · [Report an issue](https://github.com/Ujjansh05/archrivet/issues)
+**[Download the preview](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1) · [Connect to Codex](docs/quick-start-preview.md) · [See the benchmark](docs/benchmarks/2026-10-preview.md)**
 
 </div>
 
-ArchRivet is a local MCP plugin for reviewing backend architectures with your AI assistant. Your assistant drafts and explains the design; ArchRivet returns focused findings, supporting references, workload estimates, and questions that still need answers.
+## A small question that changes the answer
 
-## Where it helps
+> “Prices must be less than five seconds old. We serve cached prices during an outage.”
 
-- **Review potential risks early.** Eight checks cover retries, acknowledgements, queues, transactions, replica reads, caching, failover, and dependency deadlines.
-- **Understand each finding.** See reasons, source references, missing facts, and suggested verification steps.
-- **Plan for your workload.** Estimate traffic, message fan-out, and storage growth from explicit assumptions.
-- **Keep your existing workflow.** Connect through MCP or run reviews from the command line.
-- **Start with your current hardware.** The rules-based review needs no model download or GPU. Optional model inference supports CPU and CUDA.
+ArchRivet asks: **“During an outage, how old may a cached value become?”**
 
-Useful for messaging services, notification systems, transactional backends, and system-design exercises. Supply structured requirements and design facts using the [example and input guide](docs/backend-v2.md).
+If the answer is 60 seconds, the review can point to the exact requirement being broken. If you do not know, it keeps the finding unresolved.
 
-## See it in action
+![Connect ArchRivet to Codex, review a price cache, and answer its missing-detail question.](docs/assets/archrivet-codex.gif)
 
-![ArchRivet reviews a flawed messaging design, identifies retry, acknowledgement and queue issues, and reviews the revised design.](docs/assets/archrivet-demo.gif)
+*Edited walkthrough of actual Codex and MCP results, using rules mode. Timing is shortened. [Read the full example and answers](docs/demo-comparison.md).*
 
-*Demo of the three-check rules-based workflow; no model inference. [Text walkthrough](docs/assets/README.md) · [Static preview](docs/assets/archrivet-demo.png)*
+## What you get
 
-**What if the design is incomplete?** [Run the clarification example](docs/clarification-walkthrough.md) to see an unresolved retry check, the missing facts, and how answers change the verdict.
+- **Specific questions:** find the missing design detail instead of guessing.
+- **Before/after reviews:** see which supplied fact changed a finding and what remains unresolved.
+- **Eight focused checks:** retries, durability, queues, transactions, replica reads, caching, failover, and dependency deadlines.
+- **Evidence and arithmetic:** references, workload assumptions, and calculations the assistant can explain.
+- **Local checks:** rules work without a model or GPU. Optional Laya 322M runs locally on CPU; the Python runtime also supports CUDA.
 
-## Try it locally
+Useful for product backends, payment flows, caches, notifications, and system-design discussions. Your assistant turns your description into structured facts; the plugin does not independently verify your implementation.
 
-You need **Git and Python 3.11 or 3.12**. Start with the included example; installation downloads Python dependencies. The package is available on [GitHub Releases](https://github.com/Ujjansh05/archrivet/releases), not PyPI.
+## Try it
 
-```bash
-git clone https://github.com/Ujjansh05/archrivet.git
-cd archrivet
-```
+1. **Download** the Windows bundle from [Releases](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1).
+2. **Connect** it to Codex, or install the `.mcpb` in a desktop host supporting MCPB 0.4 with UV. [Full setup guide](docs/quick-start-preview.md)
+3. **Ask:** “Review my design with ArchRivet. Use only stated facts. Name what is missing, then compare the review after I answer.”
 
-<details open>
-<summary><strong>Windows · PowerShell</strong></summary>
+Desktop hosts with the required extension runtime manage dependency installation. Codex has a one-time setup command. Windows x64 is the tested bundle platform; a real Claude Desktop GUI test is still pending. The plugin is a direct download, not an approved directory listing. Initial setup needs internet and disk space for dependencies.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e .
-.\.venv\Scripts\python.exe -m arch_review review examples\flawed.json --rules-only
-```
+## Has the model improved?
 
-</details>
+The [benchmark](docs/benchmarks/2026-10-preview.md) compares the published model and the new preview on the same synthetic cases, including incorrect approvals and remaining failures. Each version uses its own deployment input format. This tests the model **and** formatting changes together.
 
-<details>
-<summary><strong>Linux</strong></summary>
+![Comparison of the published Laya model and the new experimental preview on the same evaluation cases.](docs/assets/archrivet-model-comparison.gif)
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e .
-arch-review review examples/flawed.json --rules-only
-```
+The model remains **optional and experimental**. Strict accuracy gates are not met, and the tests do not establish accuracy on every real-world design. Full merged weights are included as a separate release download. Training files and scraped source collections are not part of the runtime package.
 
-</details>
+## Know what the answer means
 
-The review returns JSON with findings, evidence, workload estimates, and missing information. Compare it with [the revised example](examples/complete.json), or follow the [eight-check quick start](docs/backend-v2.md#install-and-run-one-review).
+“Supported” means the supplied facts satisfy a listed check. It does not certify the whole system. Unknown facts, rule/model disagreements, and source limitations stay visible. Workload calculations estimate demand; production capacity needs a matching load test. Model confidence is not production failure risk.
 
-<a id="local-service"></a>
+ArchRivet runs checks locally. Your AI assistant still follows its own provider and conversation-storage settings.
 
-## Connect your AI
-
-Follow the [MCP setup guide](docs/backend-v2.md#shared-jobs-cli-and-mcp) to start the local service and generate your host configuration. Windows users must start the service in an independent terminal before connecting. Stop an existing service before changing its configuration.
-
-Once connected, ask your assistant:
-
-> Review this backend design with ArchRivet using only supplied facts. Show findings and missing information, ask focused follow-up questions, and keep unanswered facts unknown. After I answer, rerun the review and explain what changed, including remaining gaps and verification steps.
-
-An MCP-compatible host is required. Integration has been tested with Codex; other hosts need verification. Local reviews run offline after setup; your AI host follows its own provider and data-handling settings.
-
-## Optional model download
-
-The [complete experimental model](https://github.com/Ujjansh05/archrivet/releases/tag/model-v0.1.0) includes merged weights, tokenizer, configuration, and calibration. No separate base-model or adapter download is needed.
-
-**[Installation instructions →](docs/merged-model.md)**
-
-The archive is approximately **964 MB**; allow additional space for extraction and dependencies. Rules remain the default, and model inference is optional.
-
-## What is proven today
-
-**Experimental alpha.** Reviews cover eight defined decisions and depend on supplied facts. Workload estimates describe demand; production capacity requires relevant benchmarks and tests. Model confidence is separate from production failure risk.
-
-The published model scored **25/36 on synthetic development cases and 4/12 on separate regression cases**. These small evaluations do not establish general architecture accuracy. [Results and limitations](docs/model-improvement-status.md)
-
-## Feedback
-
-[Open an issue](https://github.com/Ujjansh05/archrivet/issues) with a small example, what you expected, and what happened. Installation problems and incorrect findings are especially useful. See [CONTRIBUTING.md](CONTRIBUTING.md) to contribute. ALSO pls do 🌟 if you find interesting 
-
-## License and acknowledgements
-
-Original code uses the [MIT License](LICENSE). Model weights and reference materials retain their respective licenses and attribution; see [third-party notices](THIRD_PARTY_NOTICES.md).
-
-Built with [Laya](https://nandhakishorm.github.io/laya/reference/agent/) and [MCP](https://modelcontextprotocol.io/docs/develop/build-server).
+[Report a problem](https://github.com/Ujjansh05/archrivet/issues) with a small example and the result you expected. Original code: [MIT](LICENSE). Models and references retain their [licenses and attribution](THIRD_PARTY_NOTICES.md).

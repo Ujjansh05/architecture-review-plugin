@@ -54,6 +54,8 @@ def _worker(connection, settings_dict):
                 raise RuntimeError("CUDA was requested but this PyTorch environment has no available CUDA device")
             agent = laya.load(str(checkpoint), device=device)
             metadata = model_metadata(str(checkpoint))
+            from .model_contract import verify_contract
+            contract = verify_contract(checkpoint, settings.model_context_tokens)
             if metadata.get("inference_precision") == "float32" and metadata.get("autocast") is False:
                 # Merged experiments were evaluated in FP32, including their calibration.
                 agent.amp_enabled, agent.dtype = False, torch.float32
@@ -69,6 +71,8 @@ def _worker(connection, settings_dict):
                 results = {}
                 for key, payload in payloads.items():
                     try:
+                        if contract is not None and json.loads(payload["state"]).get("input_contract") != contract["input_contract"]:
+                            raise ValueError("Input does not use this model's evaluated fact formatter")
                         result = agent.predict(payload["state"], payload["questions"],
                                                max_len=settings.model_context_tokens, head_max_len=256)
                         usage = result.get("usage", {})

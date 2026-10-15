@@ -23,12 +23,22 @@ class Span(StrictModel):
     end: int = Field(gt=0)
 
 
+class FactQuote(StrictModel):
+    document_id: str
+    quote: str = Field(min_length=1, max_length=3000)
+
+
 class CheckInput(StrictModel):
     check_id: str
     scope_id: str = Field(default="design", min_length=1, max_length=128)
+    context: str = Field(default="", max_length=4000)
     applicable: bool | None = True
     facts: dict = Field(default_factory=dict)
     fact_spans: dict[str, list[Span]] = Field(default_factory=dict)
+    fact_quotes: dict[str, list[FactQuote]] = Field(default_factory=dict,
+        description="Exact source quotes for known non-null facts only. Omit entries for unknown/null facts.")
+    fact_origins: dict[str, Literal["user_declared", "host_extracted"]] = Field(default_factory=dict,
+        description="Origins for supplied non-null decision facts. Omit unknown/null fact paths, even when mentioned as missing in the source.")
 
     @model_validator(mode="after")
     def validate_facts(self):
@@ -42,6 +52,7 @@ class CheckInput(StrictModel):
 
 
 class DesignReviewRequest(StrictModel):
+    input_mode: Literal["extract_documents", "supplied_facts"] = "extract_documents"
     requirements: str = Field(default="", max_length=16_000)
     documents: list[Document] = Field(default_factory=list, max_length=64)
     checks: list[CheckInput] = Field(default_factory=list, max_length=128)
@@ -55,6 +66,8 @@ class DesignReviewRequest(StrictModel):
             raise ValueError("V2 request exceeds 2 MiB")
         if not self.documents and not self.checks:
             raise ValueError("Provide documents or explicit structured checks")
+        if self.input_mode == "supplied_facts" and not self.checks:
+            raise ValueError("supplied_facts requires explicit checks; documents are reference material only")
         if not self.requested_checks or len(set(self.requested_checks)) != len(self.requested_checks):
             raise ValueError("requested_checks must be nonempty and unique")
         if set(self.requested_checks) - REGISTRY.keys():
@@ -84,6 +97,9 @@ class BackendFinding(StrictModel):
     reason: str
     facts: dict = Field(default_factory=dict)
     supporting_spans: dict[str, list[Span]] = Field(default_factory=dict)
+    fact_origins: dict[str, str] = Field(default_factory=dict)
+    clarification_questions: list[dict] = Field(default_factory=list)
+    suggested_action: str | None = None
     missing_information: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)
     verification_steps: list[str] = Field(default_factory=list)
@@ -104,3 +120,5 @@ class DesignReviewResponse(StrictModel):
     resources: dict = Field(default_factory=dict)
     warnings: list[str]
     elapsed_ms: float
+    next_questions: list[dict] = Field(default_factory=list)
+    review_summary: str = Field(default="", description="Deterministic findings and limitations to retain in the host's final answer.")

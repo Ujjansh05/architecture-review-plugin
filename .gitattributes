@@ -15,3 +15,6 @@ datasets/backend-diagnostics-v1/* -text whitespace=blank-at-eol,blank-at-eof,spa
 
 # Preserve audited upstream license/card bytes, including their original whitespace.
 docs/model-licenses/* -text whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve the published benchmark hash on every platform.
+docs/benchmarks/2026-10-final-test.jsonl -text whitespace=cr-at-eol

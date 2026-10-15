@@ -1,0 +1,83 @@
+{
+  "device": "CPU",
+  "cpu": "Intel Core i7-13700H",
+  "threads": 4,
+  "precision": "float32",
+  "concurrency": 1,
+  "case_ids": [
+    "next-retry_safety-offline_client_reconciliation-0-supported",
+    "next-retry_safety-offline_client_reconciliation-0-contradicted",
+    "next-ack_durability-quorum_failure_domain_overlap-0-supported",
+    "next-ack_durability-quorum_failure_domain_overlap-0-contradicted",
+    "next-cache_freshness-clock_skew_age_budget-0-supported",
+    "next-cache_freshness-clock_skew_age_budget-0-contradicted",
+    "next-queue_overload-bulk_ingest_partial_admission-0-supported",
+    "next-queue_overload-bulk_ingest_partial_admission-0-contradicted",
+    "next-transaction_atomicity-reservation_ledger_visibility-0-supported",
+    "next-transaction_atomicity-reservation_ledger_visibility-0-contradicted",
+    "next-replica_consistency-migration_read_barrier-0-supported",
+    "next-replica_consistency-migration_read_barrier-0-contradicted",
+    "next-failover_safety-recovery_job_fence-0-supported",
+    "next-failover_safety-recovery_job_fence-0-contradicted",
+    "next-dependency_resilience-retry_after_header_budget-0-supported",
+    "next-dependency_resilience-retry_after_header_budget-0-contradicted"
+  ],
+  "reports": {
+    "published": {
+      "load_seconds": 55.442732700001216,
+      "calls": 16,
+      "warmup_calls_excluded": 1,
+      "median_seconds": 0.1784611000039149,
+      "min_seconds": 0.1409492999955546,
+      "max_seconds": 0.23724989999027457,
+      "sampled_peak_process_rss_bytes": 1741082624,
+      "per_call_seconds": [
+        0.23724989999027457,
+        0.23523700000077952,
+        0.19836430001305416,
+        0.19999649999954272,
+        0.1652691000053892,
+        0.16263010000693612,
+        0.17923950000840705,
+        0.17824710000422783,
+        0.18050570000195876,
+        0.1758980999875348,
+        0.1436105999891879,
+        0.1409492999955546,
+        0.15532400000665803,
+        0.15773770000669174,
+        0.18456730000616517,
+        0.17867510000360198
+      ]
+    },
+    "preview": {
+      "load_seconds": 1.7076000999950338,
+      "calls": 16,
+      "warmup_calls_excluded": 1,
+      "median_seconds": 0.2990492999961134,
+      "min_seconds": 0.25301200000103563,
+      "max_seconds": 0.4278749999939464,
+      "sampled_peak_process_rss_bytes": 1838993408,
+      "per_call_seconds": [
+        0.3664363999996567,
+        0.36913300000014715,
+        0.31330829999933485,
+        0.3026788999995915,
+        0.4252115999988746,
+        0.4278749999939464,
+        0.3028923000092618,
+        0.2954196999926353,
+        0.2858267999981763,
+        0.2854800999921281,
+        0.26233399999910034,
+        0.2601416999968933,
+        0.25301200000103563,
+        0.2631069000053685,
+        0.3051271000003908,
+        0.2854065999999875
+      ]
+    }
+  },
+  "scope": "Native decision API, one warmup excluded; 16 fixed decisions per version. Not full review or host latency.",
+  "limitations": "One Windows laptop, one pass, no clean-machine guarantee. Process RSS includes Python and libraries; allocator may retain pages between models."
+}

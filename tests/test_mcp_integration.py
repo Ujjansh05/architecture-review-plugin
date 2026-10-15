@@ -64,7 +64,7 @@ async def test_two_mcp_clients_use_one_service_and_preserve_unknowns(daemon):
             async with ClientSession(read, write, read_timeout_seconds=30) as session:
                 await session.initialize()
                 listing = await session.list_tools()
-                assert {tool.name for tool in listing.tools} == {"review_architecture", "review_design", "get_review", "cancel_review", "get_review_schema"}
+                assert {tool.name for tool in listing.tools} == {"review_architecture", "review_design", "get_review", "cancel_review", "get_review_schema", "compare_reviews"}
                 result = await session.call_tool("review_architecture", arguments={
                     "requirements": {}, "design": {"components": ["Queue"]}, "workload": {}, "deployment": {}})
                 body = result.model_dump(by_alias=True)
@@ -115,7 +115,7 @@ async def test_stdio_accepts_raw_jsonrpc_initialize_and_tool_listing(tmp_path):
         await send(messages[1])
         await send(messages[2])
         listing = await asyncio.wait_for(receive(2), timeout=30)
-        assert {tool["name"] for tool in listing.get("result", {}).get("tools", [])} == {"review_architecture", "review_design", "get_review", "cancel_review", "get_review_schema"}
+        assert {tool["name"] for tool in listing.get("result", {}).get("tools", [])} == {"review_architecture", "review_design", "get_review", "cancel_review", "get_review_schema", "compare_reviews"}
         process.stdin.close()
         stdout, stderr = await asyncio.wait_for(process.communicate(), timeout=10)
         for line in stdout.splitlines():

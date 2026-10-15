@@ -13,6 +13,8 @@ import pytest
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+from arch_review.review_summary import audit_summary, render_summary
+
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
     "retry_safety": "supported",
@@ -117,14 +119,57 @@ async def test_v2_mcp_jobs_preserve_eight_checks_and_unprocessed_documents(backe
     assert result["backend"]["name"] == "rules_only"
     assert not result["backend"]["model_loaded"]
     assert all(check["model_decision"] is None for check in result["checks"])
+    assert result["review_summary"] == render_summary(result)
+    assert audit_summary(result, result["review_summary"])["literal_retention_passed"]
     assert unprocessed["review_status"] == "partial"
     assert unprocessed["coverage"]["unprocessed"] == ["notes"]
     assert unprocessed["coverage"]["extraction_errors"]
     assert all(check["verdict"] == "insufficient_information" for check in unprocessed["checks"])
+    assert unprocessed["review_summary"] == render_summary(unprocessed)
+    assert "Application capacity is unknown" in unprocessed["review_summary"]
+    assert "Review coverage limitation (unprocessed)" in unprocessed["review_summary"]
     with httpx.Client(trust_env=False, timeout=3) as client:
         state = client.get(base + "/health", headers=headers).json()
     assert state["pid"] == pid, "Closing either stdio client must not kill the independent daemon"
     assert state["model_worker_pid"] is None
+
+
+async def test_guided_prompt_questions_and_comparison_over_real_mcp(backend_daemon):
+    from arch_review.documents import fact_fields, flatten
+
+    runtime, base, headers, _ = backend_daemon
+    original = json.loads((ROOT / "examples/needs-clarification.json").read_text())
+    facts = {k: original[k] for k in ("requirements", "design")}
+    body = {"input_mode": "supplied_facts", "requested_checks": ["retry_safety"],
+            "checks": [{"check_id": "retry_safety", "scope_id": "save-message", "facts": facts,
+                        "fact_origins": {p: "user_declared" for p in flatten(facts) if p in fact_fields("retry_safety")}}]}
+    parameters = StdioServerParameters(command=sys.executable, args=["-m", "arch_review", "mcp"],
+                                       env={"ARCH_REVIEW_HOME": runtime})
+    async with stdio_client(parameters) as (reader, writer):
+        async with ClientSession(reader, writer, read_timeout_seconds=30) as session:
+            await session.initialize()
+            prompts = await session.list_prompts()
+            assert "review_my_design" in {p.name for p in prompts.prompts}
+            prompt = await session.get_prompt("review_my_design", arguments={"design": "My chat app", "audience": "beginner"})
+            assert "plain language" in prompt.messages[0].content.text
+            first = await await_job(session, structured(await session.call_tool("review_design", {"request": body})))
+            assert len(first["result"]["next_questions"]) == 2
+            for path in ("dedup_enforced", "dedup_atomic_with_effect"):
+                facts["design"]["retry"][path] = True
+                body["checks"][0]["fact_origins"]["design.retry." + path] = "user_declared"
+            second = await await_job(session, structured(await session.call_tool("review_design", {"request": body})))
+            comparison = structured(await session.call_tool("compare_reviews", {
+                "before_job_id": first["job_id"], "after_job_id": second["job_id"]}))
+            assert comparison["changes"][0]["before_verdict"] == "insufficient_information"
+            assert comparison["changes"][0]["after_verdict"] == "supported"
+            assert not comparison["unresolved"]
+            assert comparison["capacity"]["evidence_status"] == "unknown"
+            assert len(comparison["changes"][0]["changed_facts"]) == 2
+    with httpx.Client(trust_env=False, timeout=3) as client:
+        response = client.get(base + "/v2/comparison", headers=headers,
+                              params={"before_job_id": "0" * 32, "after_job_id": second["job_id"]})
+        assert response.status_code == 404
+        assert client.get(base + "/health", headers=headers).json()["model_worker_pid"] is None
 
 
 def test_v2_http_schema_and_cancel_unknown_job(backend_daemon):

@@ -106,6 +106,15 @@ def create_app(settings: Settings, token: str, service=None):
         except KeyError:
             raise HTTPException(404, "Unknown or expired review job") from None
 
+    @app.get("/v2/comparison", dependencies=[Depends(authorize)])
+    async def compare_reviews(before_job_id: str, after_job_id: str):
+        try:
+            return jobs.compare(before_job_id, after_job_id)
+        except KeyError:
+            raise HTTPException(404, "Unknown or expired review job") from None
+        except ValueError as exc:
+            raise HTTPException(409, str(exc)) from None
+
     @app.post("/v1/shutdown", dependencies=[Depends(authorize)])
     async def shutdown():
         callback = getattr(app.state, "shutdown", None)

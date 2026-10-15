@@ -1,0 +1,28 @@
+{
+  "input_mode": "supplied_facts",
+  "requested_checks": ["retry_safety"],
+  "checks": [{
+    "check_id": "retry_safety",
+    "scope_id": "save-message",
+    "facts": {
+      "requirements": {"prevent_duplicate_effects": true},
+      "design": {"retry": {
+        "redelivery_possible": true,
+        "all_effects_intrinsically_idempotent": false,
+        "stable_message_id": true,
+        "dedup_retention_seconds": 172800,
+        "max_redelivery_age_seconds": 86400,
+        "external_effects": false
+      }}
+    },
+    "fact_origins": {
+      "requirements.prevent_duplicate_effects": "user_declared",
+      "design.retry.redelivery_possible": "user_declared",
+      "design.retry.all_effects_intrinsically_idempotent": "user_declared",
+      "design.retry.stable_message_id": "user_declared",
+      "design.retry.dedup_retention_seconds": "user_declared",
+      "design.retry.max_redelivery_age_seconds": "user_declared",
+      "design.retry.external_effects": "user_declared"
+    }
+  }]
+}

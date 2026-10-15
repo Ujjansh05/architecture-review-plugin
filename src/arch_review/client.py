@@ -73,3 +73,13 @@ def design_job(method, job_id=None, request=None):
         response = client.request(method, endpoint() + path, headers={"Authorization": "Bearer " + get_token()}, **kwargs)
         response.raise_for_status()
         return response.json()
+
+
+def compare_remote(before_job_id, after_job_id):
+    ensure_service()
+    with httpx.Client(trust_env=False, timeout=30) as client:
+        response = client.get(endpoint() + "/v2/comparison",
+            params={"before_job_id": before_job_id, "after_job_id": after_job_id},
+            headers={"Authorization": "Bearer " + get_token()})
+        response.raise_for_status()
+        return response.json()

@@ -12,6 +12,9 @@ tags:
 
 # ArchRivet 322M — experimental merged model
 
+> **October 2026 update:** This page records earlier experiments or interfaces. For the new optional preview, use the [setup guide](quick-start-preview.md) and [current same-case benchmark](benchmarks/2026-10-preview.md). Old scores below describe older releases.
+
+
 A complete local decision classifier for backend architecture experiments. The base
 Laya weights, trained decision head, merged adapters, tokenizer, encoder configuration
 and fitted calibration are included. **No separate base-model or adapter download is

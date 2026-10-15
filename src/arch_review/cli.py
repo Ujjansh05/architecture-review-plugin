@@ -25,7 +25,7 @@ def emit(value, output=None):
 
 def main():
     multiprocessing.freeze_support()
-    parser = argparse.ArgumentParser(prog="arch-review", description="Local messaging architecture review plugin")
+    parser = argparse.ArgumentParser(prog="arch-review", description="Local backend architecture review plugin")
     parser.add_argument("--version", action="version", version=__version__)
     sub = parser.add_subparsers(dest="command", required=True)
     review = sub.add_parser("review")
@@ -205,6 +205,9 @@ def main():
             except Exception as exc:
                 service_status = {"status": "not_connected", "detail": str(exc)}
             emit({"python": sys.version, "executable": sys.executable, "packages": packages,
+                  "guided_review": {"available": True, "input_mode": "supplied_facts",
+                                    "prompt": "review_my_design", "model_required": False,
+                                    "next_step": "Start the shared service, then add the mcp-config output to your AI host."},
                   "settings": settings.model_dump(), "model": model_metadata(settings.checkpoint),
                   "runtime_directory": str(runtime_dir()), "service": service_status,
                   "total_ram_bytes": psutil.virtual_memory().total})

@@ -1,0 +1,1574 @@
+{
+  "per_check": {
+    "retry_safety": {
+      "count": 6,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.5555555555555555,
+      "per_label": {
+        "supported": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.07298333333333332,
+      "multiclass_brier": 0.45295810000000003,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.5555555555555555,
+        0.5555555555555555
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 2,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.0,
+      "perturbation_gate_passed": true
+    },
+    "ack_durability": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 4,
+      "ece_10_bins": 0.3889166666666667,
+      "multiclass_brier": 0.7988789933333335,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 4,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.3333333333333333,
+      "perturbation_gate_passed": false
+    },
+    "queue_overload": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 4,
+      "ece_10_bins": 0.14734999999999993,
+      "multiclass_brier": 0.9182018966666666,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 4,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.6666666666666666,
+      "perturbation_gate_passed": false
+    },
+    "transaction_atomicity": {
+      "count": 6,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.5555555555555555,
+      "per_label": {
+        "supported": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 2,
+      "ece_10_bins": 0.24506666666666668,
+      "multiclass_brier": 0.52988526,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.5555555555555555,
+        0.5555555555555555
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 2,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.0,
+      "perturbation_gate_passed": true
+    },
+    "replica_consistency": {
+      "count": 6,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_label": {
+        "supported": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": 0.6351333333333333,
+      "multiclass_brier": 0.9311987,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.6666666666666666,
+      "perturbation_gate_passed": false
+    },
+    "cache_freshness": {
+      "count": 6,
+      "accuracy": 0.5,
+      "macro_f1": 0.5222222222222223,
+      "per_label": {
+        "supported": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        }
+      },
+      "false_supported": 1,
+      "ece_10_bins": 0.18674999999999997,
+      "multiclass_brier": 0.6974782683333333,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 1,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.16666666666666666,
+      "perturbation_gate_passed": false
+    },
+    "failover_safety": {
+      "count": 6,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "supported": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": 0.3874666666666667,
+      "multiclass_brier": 0.27344321833333335,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.6666666666666666,
+      "perturbation_gate_passed": false
+    },
+    "dependency_resilience": {
+      "count": 6,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.16666666666666666,
+      "per_label": {
+        "supported": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        },
+        "contradicted": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 2
+        },
+        "insufficient_information": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "support": 2
+        }
+      },
+      "false_supported": 0,
+      "ece_10_bins": 0.3454499999999999,
+      "multiclass_brier": 0.7612994016666667,
+      "scored_items": 6,
+      "missing_labels": [],
+      "macro_f1_family_bootstrap_95": [
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "scenario_family_count": 2,
+      "independent_family_count": null,
+      "primary_inference_failures": 0,
+      "perturbation_inference_failures": 0,
+      "inference_failures": 0,
+      "critical_false_supported": 0,
+      "perturbation_cases": 6,
+      "perturbation_coverage": 1.0,
+      "changed_fraction": 0.6666666666666666,
+      "perturbation_gate_passed": false
+    }
+  },
+  "overall": {
+    "count": 48,
+    "accuracy": 0.4791666666666667,
+    "macro_f1": 0.4677096636866751,
+    "per_label": {
+      "supported": {
+        "precision": 0.4583333333333333,
+        "recall": 0.6875,
+        "f1": 0.5499999999999999,
+        "support": 16
+      },
+      "contradicted": {
+        "precision": 0.45454545454545453,
+        "recall": 0.3125,
+        "f1": 0.3703703703703703,
+        "support": 16
+      },
+      "insufficient_information": {
+        "precision": 0.5384615384615384,
+        "recall": 0.4375,
+        "f1": 0.4827586206896552,
+        "support": 16
+      }
+    },
+    "false_supported": 13,
+    "ece_10_bins": 0.14398958333333337,
+    "multiclass_brier": 0.6704179797916666,
+    "scored_items": 48,
+    "missing_labels": [],
+    "inference_failures": 0
+  },
+  "numeric_gates": {
+    "retry_safety": false,
+    "ack_durability": false,
+    "queue_overload": false,
+    "transaction_atomicity": false,
+    "replica_consistency": false,
+    "cache_freshness": false,
+    "failover_safety": false,
+    "dependency_resilience": false
+  },
+  "independent_quality_release_approved": false,
+  "eligibility": {
+    "independently_reviewed": false,
+    "release_eligible": false
+  },
+  "results": [
+    {
+      "id": "payment_unique_key-working",
+      "check_id": "retry_safety",
+      "scenario_family": "payment_unique_key",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.5647,
+        "contradicted": 0.1858,
+        "insufficient_information": 0.2494
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "payment_unique_key-flawed",
+      "check_id": "retry_safety",
+      "scenario_family": "payment_unique_key",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.5265,
+        "contradicted": 0.1913,
+        "insufficient_information": 0.2822
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "payment_unique_key-incomplete",
+      "check_id": "retry_safety",
+      "scenario_family": "payment_unique_key",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.0346,
+        "contradicted": 0.1047,
+        "insufficient_information": 0.8607
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "inventory_effect_and_marker-working",
+      "check_id": "retry_safety",
+      "scenario_family": "inventory_effect_and_marker",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.5647,
+        "contradicted": 0.1858,
+        "insufficient_information": 0.2494
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "inventory_effect_and_marker-flawed",
+      "check_id": "retry_safety",
+      "scenario_family": "inventory_effect_and_marker",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.5034,
+        "contradicted": 0.1604,
+        "insufficient_information": 0.3362
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "inventory_effect_and_marker-incomplete",
+      "check_id": "retry_safety",
+      "scenario_family": "inventory_effect_and_marker",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.0346,
+        "contradicted": 0.1047,
+        "insufficient_information": 0.8607
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_commit_before_reply-working",
+      "check_id": "ack_durability",
+      "scenario_family": "profile_commit_before_reply",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.8292,
+        "contradicted": 0.0923,
+        "insufficient_information": 0.0785
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "profile_commit_before_reply-flawed",
+      "check_id": "ack_durability",
+      "scenario_family": "profile_commit_before_reply",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.8275,
+        "contradicted": 0.0768,
+        "insufficient_information": 0.0958
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "profile_commit_before_reply-incomplete",
+      "check_id": "ack_durability",
+      "scenario_family": "profile_commit_before_reply",
+      "expected": "insufficient_information",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4144,
+        "contradicted": 0.2319,
+        "insufficient_information": 0.3538
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "booking_batch_commit-working",
+      "check_id": "ack_durability",
+      "scenario_family": "booking_batch_commit",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.8633,
+        "contradicted": 0.0629,
+        "insufficient_information": 0.0738
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "booking_batch_commit-flawed",
+      "check_id": "ack_durability",
+      "scenario_family": "booking_batch_commit",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.8062,
+        "contradicted": 0.0978,
+        "insufficient_information": 0.096
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "booking_batch_commit-incomplete",
+      "check_id": "ack_durability",
+      "scenario_family": "booking_batch_commit",
+      "expected": "insufficient_information",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.5929,
+        "contradicted": 0.2191,
+        "insufficient_information": 0.188
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "bounded_job_admission-working",
+      "check_id": "queue_overload",
+      "scenario_family": "bounded_job_admission",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4064,
+        "contradicted": 0.216,
+        "insufficient_information": 0.3776
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "bounded_job_admission-flawed",
+      "check_id": "queue_overload",
+      "scenario_family": "bounded_job_admission",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.6176,
+        "contradicted": 0.2126,
+        "insufficient_information": 0.1698
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "bounded_job_admission-incomplete",
+      "check_id": "queue_overload",
+      "scenario_family": "bounded_job_admission",
+      "expected": "insufficient_information",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4925,
+        "contradicted": 0.4261,
+        "insufficient_information": 0.0814
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "contradicted",
+        "contradicted",
+        "supported",
+        "supported",
+        "contradicted"
+      ]
+    },
+    {
+      "id": "hidden_overflow_buffer-working",
+      "check_id": "queue_overload",
+      "scenario_family": "hidden_overflow_buffer",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4064,
+        "contradicted": 0.216,
+        "insufficient_information": 0.3776
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "hidden_overflow_buffer-flawed",
+      "check_id": "queue_overload",
+      "scenario_family": "hidden_overflow_buffer",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4687,
+        "contradicted": 0.2507,
+        "insufficient_information": 0.2806
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "hidden_overflow_buffer-incomplete",
+      "check_id": "queue_overload",
+      "scenario_family": "hidden_overflow_buffer",
+      "expected": "insufficient_information",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4925,
+        "contradicted": 0.4261,
+        "insufficient_information": 0.0814
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "contradicted",
+        "contradicted",
+        "supported",
+        "supported",
+        "contradicted"
+      ]
+    },
+    {
+      "id": "booking_reader_between_writes-working",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "booking_reader_between_writes",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.7637,
+        "contradicted": 0.0991,
+        "insufficient_information": 0.1371
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "booking_reader_between_writes-flawed",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "booking_reader_between_writes",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.7925,
+        "contradicted": 0.0964,
+        "insufficient_information": 0.1112
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "booking_reader_between_writes-incomplete",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "booking_reader_between_writes",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.1001,
+        "contradicted": 0.0789,
+        "insufficient_information": 0.821
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "transfer_rollback-working",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "transfer_rollback",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.7637,
+        "contradicted": 0.0991,
+        "insufficient_information": 0.1371
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "transfer_rollback-flawed",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "transfer_rollback",
+      "expected": "contradicted",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.7925,
+        "contradicted": 0.0964,
+        "insufficient_information": 0.1112
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "transfer_rollback-incomplete",
+      "check_id": "transaction_atomicity",
+      "scenario_family": "transfer_rollback",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.1001,
+        "contradicted": 0.0789,
+        "insufficient_information": 0.821
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_delayed_replica-working",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_delayed_replica",
+      "expected": "supported",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.3222,
+        "contradicted": 0.1177,
+        "insufficient_information": 0.5601
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_delayed_replica-flawed",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_delayed_replica",
+      "expected": "contradicted",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.0712,
+        "contradicted": 0.1971,
+        "insufficient_information": 0.7317
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "contradicted",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_delayed_replica-incomplete",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_delayed_replica",
+      "expected": "insufficient_information",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.0515,
+        "contradicted": 0.6136,
+        "insufficient_information": 0.3349
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "insufficient_information",
+        "contradicted",
+        "contradicted",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_session_reroute-working",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_session_reroute",
+      "expected": "supported",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.3222,
+        "contradicted": 0.1177,
+        "insufficient_information": 0.5601
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_session_reroute-flawed",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_session_reroute",
+      "expected": "contradicted",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.0712,
+        "contradicted": 0.1971,
+        "insufficient_information": 0.7317
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "contradicted",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "profile_session_reroute-incomplete",
+      "check_id": "replica_consistency",
+      "scenario_family": "profile_session_reroute",
+      "expected": "insufficient_information",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.0515,
+        "contradicted": 0.6136,
+        "insufficient_information": 0.3349
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "insufficient_information",
+        "contradicted",
+        "contradicted",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "product_stale_on_error-working",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_stale_on_error",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.4409,
+        "contradicted": 0.1305,
+        "insufficient_information": 0.4285
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "product_stale_on_error-flawed",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_stale_on_error",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.058,
+        "contradicted": 0.5824,
+        "insufficient_information": 0.3596
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted"
+      ]
+    },
+    {
+      "id": "product_stale_on_error-incomplete",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_stale_on_error",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.1312,
+        "contradicted": 0.2819,
+        "insufficient_information": 0.5869
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "product_two_cache_layers-working",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_two_cache_layers",
+      "expected": "supported",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.391,
+        "contradicted": 0.177,
+        "insufficient_information": 0.432
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "product_two_cache_layers-flawed",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_two_cache_layers",
+      "expected": "contradicted",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.3557,
+        "contradicted": 0.0863,
+        "insufficient_information": 0.5581
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "product_two_cache_layers-incomplete",
+      "check_id": "cache_freshness",
+      "scenario_family": "product_two_cache_layers",
+      "expected": "insufficient_information",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.7208,
+        "contradicted": 0.1173,
+        "insufficient_information": 0.162
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "storage_epoch_fence-working",
+      "check_id": "failover_safety",
+      "scenario_family": "storage_epoch_fence",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.6588,
+        "contradicted": 0.3003,
+        "insufficient_information": 0.0409
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "storage_epoch_fence-flawed",
+      "check_id": "failover_safety",
+      "scenario_family": "storage_epoch_fence",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.4705,
+        "contradicted": 0.4769,
+        "insufficient_information": 0.0525
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "insufficient_information",
+        "supported",
+        "insufficient_information",
+        "supported",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "storage_epoch_fence-incomplete",
+      "check_id": "failover_safety",
+      "scenario_family": "storage_epoch_fence",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.2601,
+        "contradicted": 0.0613,
+        "insufficient_information": 0.6787
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "restart_preserves_epoch-working",
+      "check_id": "failover_safety",
+      "scenario_family": "restart_preserves_epoch",
+      "expected": "supported",
+      "predicted": "supported",
+      "probabilities": {
+        "supported": 0.6588,
+        "contradicted": 0.3003,
+        "insufficient_information": 0.0409
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "supported",
+        "insufficient_information",
+        "supported",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "restart_preserves_epoch-flawed",
+      "check_id": "failover_safety",
+      "scenario_family": "restart_preserves_epoch",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.3729,
+        "contradicted": 0.5233,
+        "insufficient_information": 0.1038
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "insufficient_information",
+        "supported",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "restart_preserves_epoch-incomplete",
+      "check_id": "failover_safety",
+      "scenario_family": "restart_preserves_epoch",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information",
+      "probabilities": {
+        "supported": 0.2601,
+        "contradicted": 0.0613,
+        "insufficient_information": 0.6787
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information",
+        "insufficient_information"
+      ]
+    },
+    {
+      "id": "nested_attempt_budget-working",
+      "check_id": "dependency_resilience",
+      "scenario_family": "nested_attempt_budget",
+      "expected": "supported",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.3073,
+        "contradicted": 0.4981,
+        "insufficient_information": 0.1946
+      },
+      "critical": false,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "supported",
+        "contradicted",
+        "contradicted",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "nested_attempt_budget-flawed",
+      "check_id": "dependency_resilience",
+      "scenario_family": "nested_attempt_budget",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.2937,
+        "contradicted": 0.5251,
+        "insufficient_information": 0.1812
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "nested_attempt_budget-incomplete",
+      "check_id": "dependency_resilience",
+      "scenario_family": "nested_attempt_budget",
+      "expected": "insufficient_information",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.343,
+        "contradicted": 0.5134,
+        "insufficient_information": 0.1436
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "supported",
+        "contradicted",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    },
+    {
+      "id": "backoff_in_deadline-working",
+      "check_id": "dependency_resilience",
+      "scenario_family": "backoff_in_deadline",
+      "expected": "supported",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.31,
+        "contradicted": 0.4878,
+        "insufficient_information": 0.2022
+      },
+      "critical": false,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted"
+      ]
+    },
+    {
+      "id": "backoff_in_deadline-flawed",
+      "check_id": "dependency_resilience",
+      "scenario_family": "backoff_in_deadline",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.2071,
+        "contradicted": 0.551,
+        "insufficient_information": 0.2419
+      },
+      "critical": true,
+      "changed": false,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "contradicted"
+      ]
+    },
+    {
+      "id": "backoff_in_deadline-incomplete",
+      "check_id": "dependency_resilience",
+      "scenario_family": "backoff_in_deadline",
+      "expected": "insufficient_information",
+      "predicted": "contradicted",
+      "probabilities": {
+        "supported": 0.2089,
+        "contradicted": 0.6763,
+        "insufficient_information": 0.1147
+      },
+      "critical": true,
+      "changed": true,
+      "perturbation_complete": true,
+      "perturbation_orders_scored": 6,
+      "order_predictions": [
+        "contradicted",
+        "contradicted",
+        "contradicted",
+        "supported",
+        "supported",
+        "supported"
+      ]
+    }
+  ],
+  "gate_requirements": {
+    "macro_f1_minimum": 0.85,
+    "contradicted_recall_minimum": 0.9,
+    "insufficient_information_recall_minimum": 0.9,
+    "supported_precision_minimum": 0.95,
+    "critical_false_supported_maximum": 0,
+    "inference_failures_maximum": 0,
+    "perturbation_coverage_required": 1.0,
+    "perturbation_change_fraction_maximum": 0.05
+  },
+  "notice": "Template families are not independent real-world examples. Numeric gates require complete answer-order testing. Failed primary calls are scored as failures, not unknown answers; failed perturbations block promotion.",
+  "model_sha256": "feb77e8183e390ab6ef2d11b4c3efe85f34bdaf28eed1477f89e27b0aac5f06b",
+  "input_format": "published_v0.2.0a3",
+  "inference_api": "native_laya_predict",
+  "precision": "float32",
+  "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "threads": 4,
+  "max_len": 1024
+}

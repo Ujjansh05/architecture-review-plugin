@@ -98,6 +98,15 @@ class ReviewJobs:
                 job["status"] = "cancelling"
             return self.get(key)
 
+    def compare(self, before_id, after_id):
+        from .comparison import compare_results
+        with self.lock:
+            before, after = self.get(before_id), self.get(after_id)
+            if before["status"] != "completed" or after["status"] != "completed":
+                raise ValueError("Both review jobs must be completed before comparison")
+            return {"before_job_id": before_id, "after_job_id": after_id,
+                    **compare_results(before["result"], after["result"])}
+
     def close(self):
         with self.lock:
             self.closed = True

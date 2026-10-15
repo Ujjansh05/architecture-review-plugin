@@ -8,12 +8,12 @@ import urllib.request
 import zipfile
 from pathlib import Path, PurePosixPath
 
-MODEL_ID = "archrivet-322m-experimental-v0.1.0"
-RELEASE = "https://github.com/Ujjansh05/archrivet/releases/download/model-v0.1.0"
+MODEL_ID = 'archrivet-322m-experimental-v0.2.0-alpha.1'
+RELEASE = 'https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a1'
 # Filled from the verified, immutable release archive during packaging.
-ARCHIVE_SHA256 = "fade8bd93f6f9b8bfa80c5eaf717a6eb0c8f6cff2faf09d8516c0612092648e6"
-ARCHIVE_BYTES = 964394458
-EXPANDED_BYTES = 1322096788
+ARCHIVE_SHA256 = '03323bc3ff604e2bf390a8021be7b0962fa918f920a26b097dce7c25000e4c0f'
+ARCHIVE_BYTES = 964452454
+EXPANDED_BYTES = 1322094961
 
 
 def digest(path):

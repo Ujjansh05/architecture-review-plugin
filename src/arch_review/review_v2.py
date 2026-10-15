@@ -1,9 +1,11 @@
 """Evidence-aware orchestration; neither model approval nor long input proves completeness."""
 import time
 
+from .clarifications import enrich, next_questions
 from .documents import extract_documents, validate_spans
 from .registry import REGISTRY_VERSION
 from .resources import ResourceSampler
+from .review_summary import render_summary
 from .rules_v2 import evaluate_check
 from .schema import ReviewRequest, Verdict
 from .schema_v2 import CheckInput, DesignReviewResponse
@@ -18,6 +20,7 @@ class DesignReviewer:
         with ResourceSampler() as sampler:
             result = self._review(request, cancelled, progress)
         result.resources = sampler.report()
+        result.review_summary = render_summary(result.model_dump(mode="json"))
         return result
 
     def _review(self, request, cancelled, progress):
@@ -34,15 +37,17 @@ class DesignReviewer:
             if item.check_id not in request.requested_checks:
                 continue
             finding = evaluate_check(item)
+            finding.fact_origins = dict(item.fact_origins)
             records = self.evidence.search(item.check_id, item.facts)
             selected.update({r["id"]: r for r in records})
             finding.evidence_ids = [r["id"] for r in records]
             if finding.evaluation_status == "evaluated" and hasattr(self.backend, "judge"):
                 try:
                     evidence = [{"id": r["id"], "conditions": r["conditions"], "lesson": r["lesson"]} for r in records]
-                    model = self.backend.judge(item.check_id, item.facts, evidence)
+                    model = self.backend.judge(item.check_id, item.facts, evidence,
+                                               **({"context": item.context} if item.context else {}))
                     finding.model_decision = model
-                    if model["verdict"] != finding.rule_verdict:
+                    if model.get("assessment_status") != "abstained" and model["verdict"] != finding.rule_verdict:
                         finding.conflict = True
                         if finding.rule_verdict != Verdict.CONTRADICTED:
                             finding.verdict = Verdict.INSUFFICIENT
@@ -57,10 +62,13 @@ class DesignReviewer:
             if coverage["unprocessed"] and finding.verdict == Verdict.SUPPORTED:
                 finding.verdict = Verdict.INSUFFICIENT
                 finding.missing_information.append("Some document sections were not reviewed; a supported verdict is withheld.")
+            enrich(finding)
             findings.append(finding)
         coverage.update(requested_checks=request.requested_checks,
                         evaluated_scopes=len(findings), registry_version=REGISTRY_VERSION,
                         evidence_version=self.evidence.version, inference_errors=failures)
+        coverage["operations"] = sorted({f.scope_id for f in findings})
+        coverage["whole_architecture_reviewed"] = False
         estimates, capacity = calculate(ReviewRequest(requirements={}, design={},
             workload=request.workload, deployment=request.deployment))
         incomplete = (coverage["unprocessed"] or failures
@@ -68,6 +76,7 @@ class DesignReviewer:
         return DesignReviewResponse(review_status="partial" if incomplete else "complete", checks=findings,
             coverage=coverage, evidence=list(selected.values()), workload_estimates=estimates, capacity=capacity,
             backend=self.backend.metadata(), elapsed_ms=round((time.monotonic() - started) * 1000, 2),
+            next_questions=next_questions(findings),
             warnings=["Experimental review of supplied facts; no production certification or outage probability.",
                       "Source lessons are background evidence; extracted facts and labels await independent review.",
                       "Complete means the requested checks finished, not that the entire architecture is safe."])

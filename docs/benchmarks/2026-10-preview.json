@@ -1,0 +1,222 @@
+{
+  "version": "archrivet-public-comparison-1",
+  "release": "v0.3.0a1",
+  "models": {
+    "published": {
+      "weights_sha256": "feb77e8183e390ab6ef2d11b4c3efe85f34bdaf28eed1477f89e27b0aac5f06b",
+      "input_format": "published_v0.2.0a3"
+    },
+    "preview": {
+      "weights_sha256": "f5a1e2f702cce7f1a732b0c35107146530a39e3c820712492e00a6175769416c",
+      "input_format": "archrivet-facts-2"
+    }
+  },
+  "final_test_sha256": "0ef150ff77d1cb19568c31c1292e6fcb5db7666d8651c3b34d563d7265c51de8",
+  "selection_frozen_before_final_test": true,
+  "selection_sha256": "7657e0009a3e5527bce557b8a25f2e79a3ef75b6f8fd9e7d166eeb233607baed",
+  "strict_release_gates_passed": false,
+  "independent_real_world_validation": false,
+  "independent_human_reviews": 0,
+  "release_channel": "optional_experimental_preview",
+  "results": {
+    "development": {
+      "published": {
+        "count": 420,
+        "accuracy": 0.3880952380952381,
+        "macro_f1": 0.3783351486748007,
+        "per_label": {
+          "supported": {
+            "precision": 0.3804878048780488,
+            "recall": 0.5571428571428572,
+            "f1": 0.45217391304347826,
+            "support": 140
+          },
+          "contradicted": {
+            "precision": 0.3888888888888889,
+            "recall": 0.35,
+            "f1": 0.36842105263157887,
+            "support": 140
+          },
+          "insufficient_information": {
+            "precision": 0.4044943820224719,
+            "recall": 0.2571428571428571,
+            "f1": 0.314410480349345,
+            "support": 140
+          }
+        },
+        "false_supported": 127,
+        "ece_10_bins": 0.2244590476190476,
+        "multiclass_brier": 0.7692463310952381,
+        "scored_items": 420,
+        "missing_labels": [],
+        "inference_failures": 0
+      },
+      "preview": {
+        "count": 420,
+        "accuracy": 0.9785714285714285,
+        "macro_f1": 0.9786052907623336,
+        "per_label": {
+          "supported": {
+            "precision": 0.9645390070921985,
+            "recall": 0.9714285714285714,
+            "f1": 0.9679715302491102,
+            "support": 140
+          },
+          "contradicted": {
+            "precision": 0.9714285714285714,
+            "recall": 0.9714285714285714,
+            "f1": 0.9714285714285714,
+            "support": 140
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.9928571428571429,
+            "f1": 0.996415770609319,
+            "support": 140
+          }
+        },
+        "false_supported": 5,
+        "ece_10_bins": 0.00978880952380956,
+        "multiclass_brier": 0.028117770761904762,
+        "scored_items": 420,
+        "missing_labels": [],
+        "inference_failures": 0
+      }
+    },
+    "regressions": {
+      "published": {
+        "count": 48,
+        "accuracy": 0.4791666666666667,
+        "macro_f1": 0.4677096636866751,
+        "per_label": {
+          "supported": {
+            "precision": 0.4583333333333333,
+            "recall": 0.6875,
+            "f1": 0.5499999999999999,
+            "support": 16
+          },
+          "contradicted": {
+            "precision": 0.45454545454545453,
+            "recall": 0.3125,
+            "f1": 0.3703703703703703,
+            "support": 16
+          },
+          "insufficient_information": {
+            "precision": 0.5384615384615384,
+            "recall": 0.4375,
+            "f1": 0.4827586206896552,
+            "support": 16
+          }
+        },
+        "false_supported": 13,
+        "ece_10_bins": 0.14398958333333337,
+        "multiclass_brier": 0.6704179797916666,
+        "scored_items": 48,
+        "missing_labels": [],
+        "inference_failures": 0
+      },
+      "preview": {
+        "count": 48,
+        "accuracy": 0.9791666666666666,
+        "macro_f1": 0.9791463017269469,
+        "per_label": {
+          "supported": {
+            "precision": 0.9411764705882353,
+            "recall": 1.0,
+            "f1": 0.9696969696969697,
+            "support": 16
+          },
+          "contradicted": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 16
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.9375,
+            "f1": 0.967741935483871,
+            "support": 16
+          }
+        },
+        "false_supported": 1,
+        "ece_10_bins": 0.04901249999999997,
+        "multiclass_brier": 0.04731081208333333,
+        "scored_items": 48,
+        "missing_labels": [],
+        "inference_failures": 0
+      }
+    },
+    "final-test": {
+      "published": {
+        "count": 780,
+        "accuracy": 0.3769230769230769,
+        "macro_f1": 0.3687725665378614,
+        "per_label": {
+          "supported": {
+            "precision": 0.37640449438202245,
+            "recall": 0.5153846153846153,
+            "f1": 0.43506493506493504,
+            "support": 260
+          },
+          "contradicted": {
+            "precision": 0.3794466403162055,
+            "recall": 0.36923076923076925,
+            "f1": 0.37426900584795314,
+            "support": 260
+          },
+          "insufficient_information": {
+            "precision": 0.3742690058479532,
+            "recall": 0.24615384615384617,
+            "f1": 0.29698375870069604,
+            "support": 260
+          }
+        },
+        "false_supported": 222,
+        "ece_10_bins": 0.24049910256410256,
+        "multiclass_brier": 0.7824964294871795,
+        "scored_items": 780,
+        "missing_labels": [],
+        "inference_failures": 0
+      },
+      "preview": {
+        "count": 780,
+        "accuracy": 0.985897435897436,
+        "macro_f1": 0.9859136639375919,
+        "per_label": {
+          "supported": {
+            "precision": 0.98828125,
+            "recall": 0.9730769230769231,
+            "f1": 0.9806201550387595,
+            "support": 260
+          },
+          "contradicted": {
+            "precision": 0.969811320754717,
+            "recall": 0.9884615384615385,
+            "f1": 0.9790476190476192,
+            "support": 260
+          },
+          "insufficient_information": {
+            "precision": 1.0,
+            "recall": 0.9961538461538462,
+            "f1": 0.9980732177263969,
+            "support": 260
+          }
+        },
+        "false_supported": 3,
+        "ece_10_bins": 0.008950128205128237,
+        "multiclass_brier": 0.02784529121794872,
+        "scored_items": 780,
+        "missing_labels": [],
+        "inference_failures": 0
+      }
+    }
+  },
+  "limitations": [
+    "Synthetic finite scenarios; variants share mechanisms.",
+    "Model weights and input formatter change together; this is not a weights-only ablation.",
+    "No independent human review or real-world accuracy estimate.",
+    "The new model still makes incorrect approvals and fails strict gates.",
+    "Released test cases are now public: future training must not treat them as an untouched test."
+  ]
+}

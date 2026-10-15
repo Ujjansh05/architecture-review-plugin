@@ -1,0 +1,91 @@
+{
+  "manifest_version": "0.4",
+  "name": "archrivet",
+  "display_name": "ArchRivet \u00e2\u20ac\u201d System Design Review (Preview)",
+  "version": "0.2.0-alpha.1",
+  "description": "Review backend design decisions, missing facts and workload with your assistant.",
+  "long_description": "Windows x64 experimental preview. Eight local checks, specific follow-up questions and before/after review comparisons. Rules are the default. Enable optional Laya 322M for the updated experimental model; strict accuracy gates are not met. Requires an MCPB 0.4 UV host, internet for setup and several GB of disk space. Host provider settings still apply.",
+  "author": {
+    "name": "Ujjansh05",
+    "url": "https://github.com/Ujjansh05"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ujjansh05/archrivet"
+  },
+  "homepage": "https://github.com/Ujjansh05/archrivet",
+  "support": "https://github.com/Ujjansh05/archrivet/issues",
+  "license": "MIT",
+  "keywords": [
+    "system-design",
+    "architecture",
+    "backend",
+    "local",
+    "laya"
+  ],
+  "compatibility": {
+    "platforms": [
+      "win32"
+    ]
+  },
+  "server": {
+    "type": "uv",
+    "entry_point": "server/main.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--frozen",
+        "--managed-python",
+        "--directory",
+        "${__dirname}",
+        "server/main.py"
+      ],
+      "env": {
+        "ARCHRIVET_ENABLE_LAYA": "${user_config.enable_laya}",
+        "ARCHRIVET_EXTENSION_HOME": "${HOME}/.archrivet-extension",
+        "PYTHONUTF8": "1",
+        "HF_HUB_DISABLE_TELEMETRY": "1"
+      }
+    }
+  },
+  "user_config": {
+    "enable_laya": {
+      "type": "boolean",
+      "title": "Enable experimental local Laya model",
+      "description": "Download the optional updated Laya 322M model (about 1 GB) for local CPU inference. Experimental: some incorrect approvals remain. Rules are the default.",
+      "default": false,
+      "required": false
+    }
+  },
+  "tools": [
+    {
+      "name": "get_setup_status",
+      "description": "Check model download progress and active review mode."
+    },
+    {
+      "name": "retry_model_setup",
+      "description": "Retry an opted-in model download after a connection or disk error."
+    },
+    {
+      "name": "get_review_schema",
+      "description": "Get eight supported checks and their exact structured inputs."
+    },
+    {
+      "name": "review_design",
+      "description": "Start a local review of explicitly supplied design facts."
+    },
+    {
+      "name": "get_review",
+      "description": "Retrieve review findings, missing information and estimates."
+    },
+    {
+      "name": "cancel_review",
+      "description": "Cancel an unfinished review."
+    },
+    {
+      "name": "compare_reviews",
+      "description": "Compare changed facts and findings, preserving unanswered questions."
+    }
+  ]
+}

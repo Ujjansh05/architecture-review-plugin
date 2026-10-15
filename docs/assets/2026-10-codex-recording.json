@@ -1,0 +1,646 @@
+{
+  "host": "Codex CLI",
+  "mode": "rules_only",
+  "single_example_not_accuracy_benchmark": true,
+  "host_model_id_not_reported": true,
+  "same_original_design_prompt": true,
+  "tool_instructions_differ_between_conditions": true,
+  "summary_retention": {
+    "plugin": {
+      "required_items": 21,
+      "retained_items": 21,
+      "missing_items": [],
+      "literal_retention_passed": true,
+      "freeform_claims_verified": false,
+      "method": "Exact required statements with whitespace normalization; paraphrases require separate review."
+    },
+    "clarified": {
+      "required_items": 20,
+      "retained_items": 20,
+      "missing_items": [],
+      "literal_retention_passed": true,
+      "freeform_claims_verified": false,
+      "method": "Exact required statements with whitespace normalization; paraphrases require separate review."
+    }
+  },
+  "recordings": {
+    "baseline": {
+      "prompt": "Review this product-price cache in plain English. Prices must never be more than five seconds old. The normal serving path returns values at most three seconds old. During a database outage the cache serves old data, but the maximum age during an outage is unspecified. Other failure paths obey the declared age bounds. Traffic is 100 reads per second. Can this design meet the freshness requirement? Name the missing detail, give a short example, and say whether the traffic number proves capacity. Do not invent implementation details. Do not use the web, shell, or other external tools except ArchRivet if it is available. Keep the explanation under 130 words; a tool-required review summary can follow separately.",
+      "answer": "The design does **not establish that it meets the freshness requirement**. Normal responses are at most three seconds old, within the five-second limit. But the missing detail is the **maximum age of data served during a database outage**.\n\nFor example, if a price is already three seconds old when an outage starts and is served three seconds later, it is six seconds old and violates the requirement. The unspecified outage bound leaves this possible; it does not prove it happens.\n\nThe other failure paths meet the stated bounds.\n\n**100 reads per second does not prove capacity.** It describes demand, not demonstrated ability to handle it while meeting the freshness requirement.",
+      "tools": []
+    },
+    "plugin": {
+      "prompt": "Review this product-price cache in plain English. Prices must never be more than five seconds old. The normal serving path returns values at most three seconds old. During a database outage the cache serves old data, but the maximum age during an outage is unspecified. Other failure paths obey the declared age bounds. Traffic is 100 reads per second. Can this design meet the freshness requirement? Name the missing detail, give a short example, and say whether the traffic number proves capacity. Do not invent implementation details. Do not use the web, shell, or other external tools except ArchRivet if it is available. Keep the explanation under 130 words; a tool-required review summary can follow separately.\nUse ArchRivet: check its schema, submit the supplied facts, and retrieve the completed review before answering. Retain its review_summary verbatim. Never equate rules-only mode with a model benchmark.",
+      "answer": "The design does not establish the five-second guarantee. The normal path’s three-second bound meets it, but the missing detail is the maximum age permitted during a database outage.\n\nFor example, if a price is already three seconds old when the database fails, serving that same value three seconds later would return a six-second-old price. Specify and enforce an outage age limit of five seconds or less, then test an outage while measuring returned prices’ ages.\n\n100 reads per second describes demand; it does not prove capacity. That needs a representative benchmark measuring throughput, latency, and errors.\n\nArchRivet’s completed, partial review found insufficient information. It ran in rules-only mode; no model benchmark ran.\n\nArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: insufficient_information. \"The declared facts do not establish the required guarantee.\"\n- Missing or unresolved for [\"product-price-cache\", \"cache_freshness\"]: \"stale_on_error_bound_ms\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\"",
+      "tools": [
+        "get_setup_status",
+        "get_review_schema",
+        "review_design",
+        "get_review"
+      ],
+      "completed_reviews": [
+        {
+          "schema_version": "2.0",
+          "review_status": "partial",
+          "checks": [
+            {
+              "check_id": "cache_freshness",
+              "scope_id": "product-price-cache",
+              "evaluation_status": "evaluated",
+              "verdict": "insufficient_information",
+              "rule_verdict": "insufficient_information",
+              "reason": "The declared facts do not establish the required guarantee.",
+              "facts": {
+                "max_staleness_ms": 5000.0,
+                "worst_case_staleness_ms": 3000.0,
+                "bound_covers_failures": true,
+                "stale_on_error": true
+              },
+              "supporting_spans": {
+                "max_staleness_ms": [
+                  {
+                    "document_id": "user",
+                    "start": 0,
+                    "end": 48
+                  }
+                ],
+                "worst_case_staleness_ms": [
+                  {
+                    "document_id": "user",
+                    "start": 49,
+                    "end": 114
+                  }
+                ],
+                "bound_covers_failures": [
+                  {
+                    "document_id": "user",
+                    "start": 220,
+                    "end": 269
+                  }
+                ],
+                "stale_on_error": [
+                  {
+                    "document_id": "user",
+                    "start": 115,
+                    "end": 219
+                  }
+                ]
+              },
+              "fact_origins": {
+                "max_staleness_ms": "user_declared",
+                "worst_case_staleness_ms": "user_declared",
+                "bound_covers_failures": "user_declared",
+                "stale_on_error": "user_declared"
+              },
+              "clarification_questions": [
+                {
+                  "id": "feaab0391e23566cf5ba",
+                  "check_id": "cache_freshness",
+                  "scope_id": "product-price-cache",
+                  "fact_path": "stale_on_error_bound_ms",
+                  "missing_detail": "stale_on_error_bound_ms",
+                  "question": "During an outage, how old may a cached value become, in milliseconds?",
+                  "answer_schema": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "why": "The declared facts do not establish the required guarantee.",
+                  "unknown_allowed": true
+                }
+              ],
+              "suggested_action": "Answer the missing questions from the actual design; keep unknown answers unresolved.",
+              "missing_information": [
+                "stale_on_error_bound_ms"
+              ],
+              "evidence_ids": [
+                "backend-cache-1"
+              ],
+              "verification_steps": [
+                "Delay invalidation and fail the source while measuring the oldest value returned."
+              ],
+              "model_decision": null,
+              "conflict": false,
+              "production_failure_probability": null
+            }
+          ],
+          "coverage": {
+            "documents": 1,
+            "requirements_document_id": "__requirements__",
+            "chunks_total": 0,
+            "chunks_processed": 0,
+            "tokens": null,
+            "token_count_method": "unavailable",
+            "unprocessed": [],
+            "extraction_errors": [],
+            "fact_provenance": "caller_declared_origins_unverified",
+            "scope_discovery": "caller_supplied",
+            "chunk_target_tokens": 1536,
+            "overlap_target_tokens": 128,
+            "input_mode": "supplied_facts",
+            "reference_only_documents": [
+              "__requirements__",
+              "user"
+            ],
+            "document_content_reviewed": false,
+            "requested_checks": [
+              "cache_freshness"
+            ],
+            "evaluated_scopes": 1,
+            "registry_version": "backend-2.0",
+            "evidence_version": "84adaae48014ff69",
+            "inference_errors": [],
+            "operations": [
+              "product-price-cache"
+            ],
+            "whole_architecture_reviewed": false
+          },
+          "evidence": [
+            {
+              "id": "backend-cache-1",
+              "problem": "Serving stale responses during an error can extend cache age",
+              "conditions": [
+                "Cached responses have a maximum permitted age",
+                "Failure behavior can serve an older response"
+              ],
+              "lesson": "Include error paths and invalidation delays in the freshness bound. A normal-path TTL alone does not describe all permitted stale responses.",
+              "tradeoffs": [
+                "Rejecting stale reads can reduce availability during source failure."
+              ],
+              "tags": [
+                "cache",
+                "staleness",
+                "freshness",
+                "invalidation"
+              ],
+              "checks": [
+                "cache_freshness"
+              ],
+              "source_url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+              "publication_date": "2022-06",
+              "accessed_at": "2026-10-13",
+              "review_status": "pending_independent_review",
+              "license": "original_summary_link_only",
+              "provenance": "Original short engineering inference based on HTTP caching semantics; HTTP-specific rules do not automatically apply to every application cache.",
+              "relationship": "background_lesson_not_deployment_proof"
+            }
+          ],
+          "workload_estimates": {
+            "estimates": {},
+            "missing_inputs": [
+              "average_messages_per_second",
+              "average_recipients",
+              "growth_horizon_months",
+              "message_bytes",
+              "monthly_growth_fraction",
+              "peak_factor",
+              "replication_factor",
+              "retention_days",
+              "storage_copies_per_message",
+              "storage_overhead_factor"
+            ],
+            "notes": [
+              "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+              "Retained storage assumes steady arrivals across the retention window.",
+              "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+            ]
+          },
+          "capacity": {
+            "evidence_status": "unknown",
+            "supported_capacity": null,
+            "headroom_ratio": null,
+            "latency_slo_status": "unknown",
+            "missing_evidence": [
+              "A benchmark with workload, configuration, latency, errors and duration."
+            ],
+            "required_tests": [
+              "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+              "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+            ]
+          },
+          "backend": {
+            "name": "rules_only",
+            "model_loaded": false,
+            "calibration_status": "unvalidated"
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 79204352,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "warnings": [
+            "Experimental review of supplied facts; no production certification or outage probability.",
+            "Source lessons are background evidence; extracted facts and labels await independent review.",
+            "Complete means the requested checks finished, not that the entire architecture is safe."
+          ],
+          "elapsed_ms": 0.0,
+          "next_questions": [
+            {
+              "id": "feaab0391e23566cf5ba",
+              "check_id": "cache_freshness",
+              "scope_id": "product-price-cache",
+              "fact_path": "stale_on_error_bound_ms",
+              "missing_detail": "stale_on_error_bound_ms",
+              "question": "During an outage, how old may a cached value become, in milliseconds?",
+              "answer_schema": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "why": "The declared facts do not establish the required guarantee.",
+              "unknown_allowed": true
+            }
+          ],
+          "review_summary": "ArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: insufficient_information. \"The declared facts do not establish the required guarantee.\"\n- Missing or unresolved for [\"product-price-cache\", \"cache_freshness\"]: \"stale_on_error_bound_ms\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\""
+        }
+      ]
+    },
+    "clarified": {
+      "prompt": "Review this product-price cache in plain English. Prices must never be more than five seconds old. The normal serving path returns values at most three seconds old. During a database outage the cache serves old data, but the maximum age during an outage is unspecified. Other failure paths obey the declared age bounds. Traffic is 100 reads per second. Can this design meet the freshness requirement? Name the missing detail, give a short example, and say whether the traffic number proves capacity. Do not invent implementation details. Do not use the web, shell, or other external tools except ArchRivet if it is available. Keep the explanation under 130 words; a tool-required review summary can follow separately.\nUse ArchRivet: check its schema, submit the supplied facts, and retrieve the completed review before answering. Retain its review_summary verbatim. Never equate rules-only mode with a model benchmark.\nFor this two-step walkthrough, first submit only the original facts above and retrieve the completed review. Then apply ONLY this user clarification: during an outage the cache may serve prices up to 60 seconds old. Submit the full updated request, retrieve the second completed review, and call compare_reviews with those two job IDs. Explain how this one fact changes the verdict.",
+      "answer": "Originally, compliance is unproven: the normal three-second age meets the five-second limit, but the maximum age served during a database outage is missing. ArchRivet returned `insufficient_information`, with a partial review.\n\nWith only the 60-second outage clarification added, the verdict becomes `contradicted`. For example, serving a 30-second-old price during an outage is permitted by that clarification but violates the five-second requirement. ArchRivet’s comparison confirmed that only the outage-age fact changed.\n\n100 reads per second describes demand; it does not prove capacity. That needs measurements under representative load and failures. Verify freshness by failing the database and measuring the oldest returned price.\n\nBoth reviews used experimental rules-only mode; no model benchmark ran.\n\nFirst review’s verbatim summary:\n\n```text\nArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: insufficient_information. \"The declared facts do not establish the required guarantee.\"\n- Missing or unresolved for [\"product-price-cache\", \"cache_freshness\"]: \"stale_on_error_bound_ms\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\"\n```\n\nSecond review’s verbatim summary:\n\n```text\nArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: contradicted. \"The declared cache-age bound exceeds the permitted staleness.\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\"\n```",
+      "tools": [
+        "get_setup_status",
+        "get_review_schema",
+        "review_design",
+        "get_review",
+        "review_design",
+        "get_review",
+        "compare_reviews"
+      ],
+      "completed_reviews": [
+        {
+          "schema_version": "2.0",
+          "review_status": "partial",
+          "checks": [
+            {
+              "check_id": "cache_freshness",
+              "scope_id": "product-price-cache",
+              "evaluation_status": "evaluated",
+              "verdict": "insufficient_information",
+              "rule_verdict": "insufficient_information",
+              "reason": "The declared facts do not establish the required guarantee.",
+              "facts": {
+                "max_staleness_ms": 5000.0,
+                "worst_case_staleness_ms": 3000.0,
+                "bound_covers_failures": true,
+                "stale_on_error": true
+              },
+              "supporting_spans": {},
+              "fact_origins": {
+                "max_staleness_ms": "user_declared",
+                "worst_case_staleness_ms": "user_declared",
+                "bound_covers_failures": "user_declared",
+                "stale_on_error": "user_declared"
+              },
+              "clarification_questions": [
+                {
+                  "id": "feaab0391e23566cf5ba",
+                  "check_id": "cache_freshness",
+                  "scope_id": "product-price-cache",
+                  "fact_path": "stale_on_error_bound_ms",
+                  "missing_detail": "stale_on_error_bound_ms",
+                  "question": "During an outage, how old may a cached value become, in milliseconds?",
+                  "answer_schema": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "why": "The declared facts do not establish the required guarantee.",
+                  "unknown_allowed": true
+                }
+              ],
+              "suggested_action": "Answer the missing questions from the actual design; keep unknown answers unresolved.",
+              "missing_information": [
+                "stale_on_error_bound_ms"
+              ],
+              "evidence_ids": [
+                "backend-cache-1"
+              ],
+              "verification_steps": [
+                "Delay invalidation and fail the source while measuring the oldest value returned."
+              ],
+              "model_decision": null,
+              "conflict": false,
+              "production_failure_probability": null
+            }
+          ],
+          "coverage": {
+            "documents": 1,
+            "requirements_document_id": "__requirements__",
+            "chunks_total": 0,
+            "chunks_processed": 0,
+            "tokens": null,
+            "token_count_method": "unavailable",
+            "unprocessed": [],
+            "extraction_errors": [],
+            "fact_provenance": "caller_declared_origins_unverified",
+            "scope_discovery": "caller_supplied",
+            "chunk_target_tokens": 1536,
+            "overlap_target_tokens": 128,
+            "input_mode": "supplied_facts",
+            "reference_only_documents": [
+              "__requirements__",
+              "original"
+            ],
+            "document_content_reviewed": false,
+            "requested_checks": [
+              "cache_freshness"
+            ],
+            "evaluated_scopes": 1,
+            "registry_version": "backend-2.0",
+            "evidence_version": "84adaae48014ff69",
+            "inference_errors": [],
+            "operations": [
+              "product-price-cache"
+            ],
+            "whole_architecture_reviewed": false
+          },
+          "evidence": [
+            {
+              "id": "backend-cache-1",
+              "problem": "Serving stale responses during an error can extend cache age",
+              "conditions": [
+                "Cached responses have a maximum permitted age",
+                "Failure behavior can serve an older response"
+              ],
+              "lesson": "Include error paths and invalidation delays in the freshness bound. A normal-path TTL alone does not describe all permitted stale responses.",
+              "tradeoffs": [
+                "Rejecting stale reads can reduce availability during source failure."
+              ],
+              "tags": [
+                "cache",
+                "staleness",
+                "freshness",
+                "invalidation"
+              ],
+              "checks": [
+                "cache_freshness"
+              ],
+              "source_url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+              "publication_date": "2022-06",
+              "accessed_at": "2026-10-13",
+              "review_status": "pending_independent_review",
+              "license": "original_summary_link_only",
+              "provenance": "Original short engineering inference based on HTTP caching semantics; HTTP-specific rules do not automatically apply to every application cache.",
+              "relationship": "background_lesson_not_deployment_proof"
+            }
+          ],
+          "workload_estimates": {
+            "estimates": {},
+            "missing_inputs": [
+              "average_messages_per_second",
+              "average_recipients",
+              "growth_horizon_months",
+              "message_bytes",
+              "monthly_growth_fraction",
+              "peak_factor",
+              "replication_factor",
+              "retention_days",
+              "storage_copies_per_message",
+              "storage_overhead_factor"
+            ],
+            "notes": [
+              "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+              "Retained storage assumes steady arrivals across the retention window.",
+              "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+            ]
+          },
+          "capacity": {
+            "evidence_status": "unknown",
+            "supported_capacity": null,
+            "headroom_ratio": null,
+            "latency_slo_status": "unknown",
+            "missing_evidence": [
+              "A benchmark with workload, configuration, latency, errors and duration."
+            ],
+            "required_tests": [
+              "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+              "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+            ]
+          },
+          "backend": {
+            "name": "rules_only",
+            "model_loaded": false,
+            "calibration_status": "unvalidated"
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 78716928,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "warnings": [
+            "Experimental review of supplied facts; no production certification or outage probability.",
+            "Source lessons are background evidence; extracted facts and labels await independent review.",
+            "Complete means the requested checks finished, not that the entire architecture is safe."
+          ],
+          "elapsed_ms": 0.0,
+          "next_questions": [
+            {
+              "id": "feaab0391e23566cf5ba",
+              "check_id": "cache_freshness",
+              "scope_id": "product-price-cache",
+              "fact_path": "stale_on_error_bound_ms",
+              "missing_detail": "stale_on_error_bound_ms",
+              "question": "During an outage, how old may a cached value become, in milliseconds?",
+              "answer_schema": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "why": "The declared facts do not establish the required guarantee.",
+              "unknown_allowed": true
+            }
+          ],
+          "review_summary": "ArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: insufficient_information. \"The declared facts do not establish the required guarantee.\"\n- Missing or unresolved for [\"product-price-cache\", \"cache_freshness\"]: \"stale_on_error_bound_ms\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\""
+        },
+        {
+          "schema_version": "2.0",
+          "review_status": "complete",
+          "checks": [
+            {
+              "check_id": "cache_freshness",
+              "scope_id": "product-price-cache",
+              "evaluation_status": "evaluated",
+              "verdict": "contradicted",
+              "rule_verdict": "contradicted",
+              "reason": "The declared cache-age bound exceeds the permitted staleness.",
+              "facts": {
+                "max_staleness_ms": 5000.0,
+                "worst_case_staleness_ms": 3000.0,
+                "bound_covers_failures": true,
+                "stale_on_error": true,
+                "stale_on_error_bound_ms": 60000.0
+              },
+              "supporting_spans": {},
+              "fact_origins": {
+                "max_staleness_ms": "user_declared",
+                "worst_case_staleness_ms": "user_declared",
+                "bound_covers_failures": "user_declared",
+                "stale_on_error": "user_declared",
+                "stale_on_error_bound_ms": "user_declared"
+              },
+              "clarification_questions": [],
+              "suggested_action": "Bound returned cache age on both normal and failure paths, or revise the freshness requirement explicitly.",
+              "missing_information": [],
+              "evidence_ids": [
+                "backend-cache-1"
+              ],
+              "verification_steps": [
+                "Delay invalidation and fail the source while measuring the oldest value returned."
+              ],
+              "model_decision": null,
+              "conflict": false,
+              "production_failure_probability": null
+            }
+          ],
+          "coverage": {
+            "documents": 1,
+            "requirements_document_id": "__requirements__",
+            "chunks_total": 0,
+            "chunks_processed": 0,
+            "tokens": null,
+            "token_count_method": "unavailable",
+            "unprocessed": [],
+            "extraction_errors": [],
+            "fact_provenance": "caller_declared_origins_unverified",
+            "scope_discovery": "caller_supplied",
+            "chunk_target_tokens": 1536,
+            "overlap_target_tokens": 128,
+            "input_mode": "supplied_facts",
+            "reference_only_documents": [
+              "__requirements__",
+              "original"
+            ],
+            "document_content_reviewed": false,
+            "requested_checks": [
+              "cache_freshness"
+            ],
+            "evaluated_scopes": 1,
+            "registry_version": "backend-2.0",
+            "evidence_version": "84adaae48014ff69",
+            "inference_errors": [],
+            "operations": [
+              "product-price-cache"
+            ],
+            "whole_architecture_reviewed": false
+          },
+          "evidence": [
+            {
+              "id": "backend-cache-1",
+              "problem": "Serving stale responses during an error can extend cache age",
+              "conditions": [
+                "Cached responses have a maximum permitted age",
+                "Failure behavior can serve an older response"
+              ],
+              "lesson": "Include error paths and invalidation delays in the freshness bound. A normal-path TTL alone does not describe all permitted stale responses.",
+              "tradeoffs": [
+                "Rejecting stale reads can reduce availability during source failure."
+              ],
+              "tags": [
+                "cache",
+                "staleness",
+                "freshness",
+                "invalidation"
+              ],
+              "checks": [
+                "cache_freshness"
+              ],
+              "source_url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+              "publication_date": "2022-06",
+              "accessed_at": "2026-10-13",
+              "review_status": "pending_independent_review",
+              "license": "original_summary_link_only",
+              "provenance": "Original short engineering inference based on HTTP caching semantics; HTTP-specific rules do not automatically apply to every application cache.",
+              "relationship": "background_lesson_not_deployment_proof"
+            }
+          ],
+          "workload_estimates": {
+            "estimates": {},
+            "missing_inputs": [
+              "average_messages_per_second",
+              "average_recipients",
+              "growth_horizon_months",
+              "message_bytes",
+              "monthly_growth_fraction",
+              "peak_factor",
+              "replication_factor",
+              "retention_days",
+              "storage_copies_per_message",
+              "storage_overhead_factor"
+            ],
+            "notes": [
+              "Recipient fan-out does not multiply storage unless separate stored copies are specified.",
+              "Retained storage assumes steady arrivals across the retention window.",
+              "Growth projections are scenarios, not forecasts; no user-count capacity is inferred."
+            ]
+          },
+          "capacity": {
+            "evidence_status": "unknown",
+            "supported_capacity": null,
+            "headroom_ratio": null,
+            "latency_slo_status": "unknown",
+            "missing_evidence": [
+              "A benchmark with workload, configuration, latency, errors and duration."
+            ],
+            "required_tests": [
+              "Benchmark the same message sizes, fan-out, durability, configuration and error budget.",
+              "Test sustained overload, failure recovery and p95/p99 latency at peak traffic."
+            ]
+          },
+          "backend": {
+            "name": "rules_only",
+            "model_loaded": false,
+            "calibration_status": "unvalidated"
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 78761984,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "warnings": [
+            "Experimental review of supplied facts; no production certification or outage probability.",
+            "Source lessons are background evidence; extracted facts and labels await independent review.",
+            "Complete means the requested checks finished, not that the entire architecture is safe."
+          ],
+          "elapsed_ms": 0.0,
+          "next_questions": [],
+          "review_summary": "ArchRivet review summary\n- Only the listed requirements were reviewed; the whole architecture is not certified.\n- Findings depend on supplied facts. Source interpretation and deployment behavior are not independently verified.\n- Suggested changes are proposals, not evidence of an implemented fix.\n- Scope/check [\"product-price-cache\", \"cache_freshness\"]: contradicted. \"The declared cache-age bound exceeds the permitted staleness.\"\n- Background evidence for [\"product-price-cache\", \"cache_freshness\"]: \"backend-cache-1\"\n- Application capacity is unknown; workload arithmetic is not a capacity benchmark.\n- Missing capacity evidence: \"A benchmark with workload, configuration, latency, errors and duration.\"\n- Missing workload input: \"average_messages_per_second\"\n- Missing workload input: \"average_recipients\"\n- Missing workload input: \"growth_horizon_months\"\n- Missing workload input: \"message_bytes\"\n- Missing workload input: \"monthly_growth_fraction\"\n- Missing workload input: \"peak_factor\"\n- Missing workload input: \"replication_factor\"\n- Missing workload input: \"retention_days\"\n- Missing workload input: \"storage_copies_per_message\"\n- Missing workload input: \"storage_overhead_factor\"\n- Limitation: \"Experimental review of supplied facts; no production certification or outage probability.\"\n- Limitation: \"Source lessons are background evidence; extracted facts and labels await independent review.\"\n- Limitation: \"Complete means the requested checks finished, not that the entire architecture is safe.\""
+        }
+      ]
+    }
+  },
+  "note": "Codex without the plugin already found the missing detail. The plugin adds structured findings, provenance and a checked comparison; no claim of superiority over Codex."
+}

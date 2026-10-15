@@ -1,5 +1,8 @@
 # Model improvement status
 
+> **October 2026 update:** This page records earlier experiments or interfaces. For the new optional preview, use the [setup guide](quick-start-preview.md) and [current same-case benchmark](benchmarks/2026-10-preview.md). Old scores below describe older releases.
+
+
 The selected seed-29 candidate is now available as an **opt-in [complete merged experimental download](merged-model.md)**. This publication changes availability, not its accuracy or default-backend status. The original training runs below saved deltas; a separate verified export includes base weights, merged updates, tokenizer and calibration. Rules remain the default.
 
 All-layer LoRA reached **25/36 (69.44%) on synthetic development cases**, up from the base model's 11/36, but **stayed at 4/12 (33.33%) on separate executable regression cases**, equal to the base model. It recognized none of the four regression unknowns. The development gain did not transfer to accuracy on these narrow untrained local traces. The candidate remains **research-only and was not promoted**. Software behavior, model-only scores and host integration results remain separate.

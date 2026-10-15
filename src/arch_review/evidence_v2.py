@@ -21,7 +21,7 @@ def validate_lessons(records):
             raise ValueError("Evidence requires source URL, date (null if unknown), provenance, license and applicability")
         if row["id"] in identifiers or set(row["checks"]) - REGISTRY.keys():
             raise ValueError("Duplicate evidence ID or unsupported check")
-        if not row["provenance"] or row["license"] not in {"MIT", "CC-BY-3.0", "CC-BY-4.0", "original_summary_link_only"}:
+        if not row["provenance"] or row["license"] not in {"MIT", "CC-BY-3.0", "CC-BY-4.0", "Apache-2.0", "original_summary_link_only"}:
             raise ValueError("Unsupported or missing evidence provenance/reuse metadata")
         if {"expected", "answers", "split", "request"} & row.keys():
             raise ValueError("Evaluation/training cases must not be indexed as evidence")

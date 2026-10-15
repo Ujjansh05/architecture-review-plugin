@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0a1 — experimental preview
+
+- Preserve scoped decisions, missing facts and capacity limits in a deterministic review summary; verify retention through MCP and one real AI host.
+- Add supplied-fact reviews with caller-declared origins and exact supporting quotes, without requiring a second local model.
+- Return deterministic clarification questions, at most three per round, and qualified suggestions for contradicted requirements.
+- Add completed-review comparison over MCP/HTTP and the `review_my_design` prompt with developer and beginner language.
+- Add an optional updated Laya 322M checkpoint, a versioned fact formatter and a 2,048-token context. Strict accuracy gates remain unmet; this is not production certification.
+- Add Windows MCPB/ZIP bundles, a Codex walkthrough and a same-case benchmark against the published model.
+- Keep rules as the default and distribute only reviewed runtime files. Training data and collection tools remain private.
+- Second real AI-host validation remains pending by user choice.
+
 ## 0.2.0a3 — clarification walkthrough
 
 - Add a runnable incomplete-design example with unknown duplicate-protection enforcement and atomicity.

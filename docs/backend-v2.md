@@ -1,5 +1,10 @@
 # Backend reviews in 0.2.0a1
 
+> **October 2026 update:** This page records earlier experiments or interfaces. For the new optional preview, use the [setup guide](quick-start-preview.md) and [current same-case benchmark](benchmarks/2026-10-preview.md). Old scores below describe older releases.
+
+
+For the additive 0.3 conversation prompt, fact origins, and comparison tool, see [guided reviews](guided-review.md). The interfaces below remain supported.
+
 The additive v2 interface checks eight specific backend decisions. Start with structured facts and the rules backend; add local model inference when you need an experimental second judgment or document extraction. The existing `review_architecture` MCP tool, `review` CLI command and `/v1/reviews` API keep their three-check contracts.
 
 The example is hypothetical. Neither its company-like workload nor a familiar database or queue name establishes a production guarantee.
