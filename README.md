@@ -7,21 +7,38 @@
 
 # ArchRivet
 
-### Turn a system-design answer into a review you can follow.
+### Give your system design a second look, inside your AI assistant.
 
-Your AI explains the design. ArchRivet checks the stated facts, names the gaps, and shows what changes after your answer.
+Find missing details. Check backend risks. See what changes after a clarification.
 
-**[Download the preview](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1) · [Connect to Codex](docs/quick-start-preview.md) · [See the benchmark](docs/benchmarks/2026-10-preview.md)**
+[![CI](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml)
+[![Preview](https://img.shields.io/badge/release-experimental_preview-f4bc72)](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1)
+[![Code license: MIT](https://img.shields.io/badge/code-MIT-65ead4)](LICENSE)
+[![Rules: no GPU required](https://img.shields.io/badge/rules-no_GPU_required-7ca5ff)](#try-it)
+
+**[Download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1) · [Quick start](#try-it) · [Demo](#one-question-changes-the-review) · [How it works](#how-it-works) · [Benchmarks](#measured-improvement)**
 
 </div>
 
-## A small question that changes the answer
+ArchRivet is an open-source, local **MCP plugin for system-design reviews**. Your assistant drafts and explains the architecture. ArchRivet reviews the supplied facts and returns findings, evidence, calculations, and specific questions to ask next.
+
+| Find the gap | Understand the risk | Check the revision |
+|---|---|---|
+| Get the exact missing detail to supply. | See the affected requirement and supporting references. | See which changed fact changed the finding. |
+
+Useful for product backends, payment flows, caches, notifications, and system-design discussions. Start with local rules; optionally enable the **322M Laya model**.
+
+## One question changes the review
 
 > “Prices must be less than five seconds old. We serve cached prices during an outage.”
 
 ArchRivet asks: **“During an outage, how old may a cached value become?”**
 
-If the answer is 60 seconds, the review can point to the exact requirement being broken. If you do not know, it keeps the finding unresolved.
+| What you supply | Rules-mode result | What you learn |
+|---|---|---|
+| Outage age limit not specified | `insufficient_information` | Name the missing outage-age bound. |
+| “Up to 60 seconds” | `contradicted` | This exceeds your five-second requirement. |
+| “Up to four seconds,” with the other declared bounds satisfied | `supported` | The supplied bounds satisfy this scoped check; verify them in the implementation. |
 
 ![Connect ArchRivet to Codex, review a price cache, and answer its missing-detail question.](docs/assets/archrivet-codex.gif)
 
@@ -32,35 +49,108 @@ If the answer is 60 seconds, the review can point to the exact requirement being
 
 ![Both Codex answers identify the gap; ArchRivet adds structured findings and a checked before/after comparison.](docs/assets/archrivet-codex-comparison.gif)
 
-Both answers found the missing detail. This example shows the added review workflow, not a claim that ArchRivet outperforms Codex.
+Codex found the missing detail in both runs. ArchRivet adds a structured result, named missing facts, and a checked comparison after clarification. This example does not establish an accuracy advantage over Codex.
 
 </details>
 
-## What you get
+## How it works
 
-- **Specific questions:** find the missing design detail instead of guessing.
-- **Before/after reviews:** see which supplied fact changed a finding and what remains unresolved.
-- **Eight focused checks:** retries, durability, queues, transactions, replica reads, caching, failover, and dependency deadlines.
-- **Evidence and arithmetic:** references, workload assumptions, and calculations the assistant can explain.
-- **Local checks:** rules work without a model or GPU. Optional Laya 322M runs locally on CPU; the Python runtime also supports CUDA.
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/archrivet-flow.png">
+  <img src="docs/assets/archrivet-flow.gif" width="960" height="585" alt="Animated review flow: your design goes to the AI assistant, through ArchRivet checks, into a missing-detail question, and back through review after clarification.">
+</picture>
 
-Useful for product backends, payment flows, caches, notifications, and system-design discussions. Your assistant turns your description into structured facts; the plugin does not independently verify your implementation.
+*Illustrated flow of the recorded rules-mode example; animation timing is not response time. [View the still diagram](docs/assets/archrivet-flow.png).*
+
+<details>
+<summary><strong>See the full flow and the stage covered by the model benchmark</strong></summary>
+
+```mermaid
+flowchart TD
+    A["Your idea, requirements and workload"] --> B["AI assistant drafts the design<br/>and supplies explicitly stated facts"]
+    B --> C["Local ArchRivet review<br/>Rule checks · evidence · workload arithmetic"]
+    C -. "Optional model path" .-> M["Laya decision + input formatting<br/>Measured improvement over the older version"]
+    C --> D["Structured findings<br/>Verdicts · sources · missing details · assumptions"]
+    M --> D
+    D --> E["Your assistant explains the result<br/>and compares completed revisions"]
+    D -. "A necessary detail is missing" .-> Q["Ask a focused question"]
+    Q -. "You supply a clarification" .-> B
+    Q -. "You do not know" .-> U["Keep that finding unresolved"]
+    U --> E
+    classDef local fill:#102b35,stroke:#65ead4,color:#f1fffb;
+    classDef measured fill:#30291c,stroke:#ffd08a,color:#fff3dc;
+    classDef unknown fill:#18283d,stroke:#7ca5ff,color:#edf4ff;
+    class C,D local;
+    class M measured;
+    class Q,U unknown;
+```
+
+The amber node identifies the optional model path measured below.
+
+</details>
+
+**The benchmark compares the optional Laya decision and its input format.** Rules and model disagreements stay visible in the combined review. Calculations estimate demand; tested production capacity requires a matching load test.
+
+## Measured improvement
+
+**769 of 780 correct decisions. Incorrect approvals reduced from 222 to 3.**
+
+These are **synthetic final-test results for the optional Laya classifier**, comparing the previous release with the new preview on the same cases. They do not measure the whole assistant or accuracy on real production architectures.
+
+| Measure — same 780 cases | Previous model deployment | New preview deployment |
+|---|---:|---:|
+| Correct decisions ↑ | 294 / 780 | **769 / 780** |
+| Accuracy ↑ | 37.7% | **98.6%** |
+| Incorrect approvals ↓ | 222 | **3** |
+| Recognized missing-information cases ↑ | 64 / 260 | **259 / 260** |
+
+An incorrect approval is a `supported` answer for a flawed or incomplete case. The improvement covers **model weights, input formatting, and context changes together**. The test shares synthetic mechanisms with training, has no independent human review, and still contains incorrect approvals. Strict release gates remain unmet; the model stays optional and experimental.
+
+**[Full results and remaining failures](docs/benchmarks/2026-10-preview.md) · [780 test cases](docs/benchmarks/2026-10-final-test.jsonl) · [Raw results](docs/benchmarks/2026-10-preview.json) · [Reproduce the comparison](docs/benchmarks/2026-10-preview.md#reproduce-the-final-test-decision-counts)**
+
+<details>
+<summary><strong>Watch the comparison and see CPU measurements</strong></summary>
+
+![Previous Laya deployment compared with the new preview on synthetic evaluation cases.](docs/assets/archrivet-model-comparison.gif)
+
+| CPU measurement | Previous | Preview |
+|---|---:|---:|
+| Median warm classifier call | 0.178 s | 0.299 s |
+| Sampled process RAM | 1.62 GiB | 1.71 GiB |
+
+One local pass on an i7-13700H: 16 decisions per version, FP32, four threads, one call at a time. These exclude first model loading and are not whole-review or AI-response timings. The new model was **more accurate on this test, but slower on CPU**. [Timing samples and cold-start observations](docs/benchmarks/2026-10-preview.md#response-time-and-memory)
+
+</details>
 
 ## Try it
 
-1. **Download** the Windows bundle from [Releases](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1).
-2. **Connect** it to Codex, or install the `.mcpb` in a desktop host supporting MCPB 0.4 with UV. [Full setup guide](docs/quick-start-preview.md)
-3. **Ask:** “Review my design with ArchRivet. Use only stated facts. Name what is missing, then compare the review after I answer.”
+| Your setup | Start here |
+|---|---|
+| Codex on Windows x64 | [Download ZIP](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a1/archrivet-windows-x64-0.2.0-alpha.2.zip), extract, then follow the [one-time connection steps](docs/quick-start-preview.md). |
+| Desktop host supporting MCPB 0.4 with UV | [Download MCP extension](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a1/archrivet-windows-x64-0.2.0-alpha.2.mcpb) and install through the host's extension settings. |
 
-Desktop hosts with the required extension runtime manage dependency installation. Codex has a one-time setup command. Windows x64 is the tested bundle platform; a real Claude Desktop GUI test is still pending. The plugin is a direct download, not an approved directory listing. Initial setup needs internet and disk space for dependencies.
+Start in **rules mode**: no model download or GPU is required. Optional Laya runs on CPU; the Python runtime also supports CUDA. Complete merged model weights are a separate [release download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1).
 
-## Has the model improved?
+Once connected, try:
 
-The [benchmark](docs/benchmarks/2026-10-preview.md) compares the published model and the new preview on the same synthetic cases, including incorrect approvals and remaining failures. Each version uses its own deployment input format. This tests the model **and** formatting changes together.
+> Review my design with ArchRivet. Use only stated facts. Name what is missing, ask the next useful question, then compare the review after I answer.
 
-![Comparison of the published Laya model and the new experimental preview on the same evaluation cases.](docs/assets/archrivet-model-comparison.gif)
+Windows x64 is the tested bundle platform. Compatible desktop hosts manage dependency setup; Codex needs a one-time setup command. Initial installation requires internet and disk space. A real Claude Desktop GUI test is still pending; this is a direct GitHub download, not an approved directory listing.
 
-The model remains **optional and experimental**. Strict accuracy gates are not met, and the tests do not establish accuracy on every real-world design. Full merged weights are included as a separate release download. Training files and scraped source collections are not part of the runtime package.
+## Eight focused checks
+
+| Design area | Question it helps review |
+|---|---|
+| Retries | Could trying an operation again repeat its effects? |
+| Durability | Is success acknowledged only after the required data is safely stored? |
+| Queues | What happens when work arrives faster than it can be processed? |
+| Transactions | Could part of a multi-step change succeed while another part fails? |
+| Replica reads | Can a read return data older than the requirement allows? |
+| Caching | Could cached data exceed its allowed age, including during failures? |
+| Failover | Could the old and new leaders both accept writes? |
+| Dependencies | Can a slow downstream service exhaust the request's time budget? |
+
+Your assistant maps your description to these checks. ArchRivet does not independently inspect your implementation or verify deployment behavior.
 
 ## Know what the answer means
 

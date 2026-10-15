@@ -15,6 +15,8 @@ To rebuild the artwork, install Pillow 11.3.0 in an authoring environment and ru
 
 ## Product walkthrough
 
+The [animated flowchart](archrivet-flow.gif) follows the recorded price-cache example through the assistant, local checks, missing-detail question, clarification and revised finding. The [still diagram](archrivet-flow.png) shows the whole cycle; the [frame preview](archrivet-flow-preview.png) shows four stages. It illustrates rules-mode behavior, not a live run, model accuracy or response timing. Optional Laya is identified separately and measured in the published benchmark. Rebuild with `python scripts/render_flowchart.py` using the same Pillow authoring environment as the icon.
+
 The [GIF](archrivet-demo.gif) is an animated summary of **actual rules-only CLI results**. It is a designed walkthrough, not a screen recording, a model-inference demonstration, or a performance benchmark. Wording and timing are adapted for readability. The [static preview](archrivet-demo.png) shows the first scene without motion.
 
 ## Text walkthrough
