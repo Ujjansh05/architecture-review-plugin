@@ -4,6 +4,18 @@ The new optional preview got **769/780 (98.6%)** synthetic final-test decisions 
 
 **This is an experimental improvement, not production certification.** Strict gates remain unmet. Rules stay the default.
 
+## Rules baseline
+
+The deterministic rules score **780/780**, with **zero incorrect approvals**, on these same public synthetic inputs. The evaluation maps the model formatter's cache field aliases back to the runtime schema. It does not include prose extraction or a host assistant.
+
+These finite scenarios closely match the rules. This baseline establishes neither perfect real-world performance nor a benefit from adding Laya. The 780 inputs are now a regression suite; future training needs a separately frozen test. [Per-case rules results](2026-10-rules-baseline.json).
+
+```powershell
+python scripts/benchmark_rules_baseline.py --output rules-results.json
+```
+
+The 0.3.0a2 runtime adds conservative fact verification and new packaging; it does not change the weights behind the model results below. See [full-review runtime measurements](2026-10-runtime.md) for separately scoped performance data.
+
 ## Same-case comparison
 
 | Split | Cases | Published correct | Preview correct | Published wrong approvals | Preview wrong approvals |

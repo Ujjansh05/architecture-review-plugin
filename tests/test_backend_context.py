@@ -1,3 +1,4 @@
+import json
 import time
 
 import pytest
@@ -19,14 +20,17 @@ class RequirementsExtractor:
     def complete(self, instructions, data, schema):
         if data["document_id"] == "__requirements__":
             return {"facts": [{"check_id": "cache_freshness", "path": "max_staleness_ms", "value": 100,
-                               "quote": "All flows must return values no older than 100 ms."}]}
+                               "quote": data["section"]}]}
         return {"facts": [{"check_id": "cache_freshness", "scope_id": "catalog", "path": "worst_case_staleness_ms",
-                           "value": 500, "quote": "Catalog cache may return 500 ms old values."}]}
+                           "value": 500, "quote": data["section"]}]}
 
 
 def test_requirements_are_cited_and_apply_to_named_flows():
-    request = DesignReviewRequest(requirements="All flows must return values no older than 100 ms.",
-        documents=[Document(id="implementation", text="Catalog cache may return 500 ms old values.")],
+    requirement = json.dumps({"check_id": "cache_freshness", "scope_id": "design", "facts": {"max_staleness_ms": 100}})
+    implementation = json.dumps({"check_id": "cache_freshness", "scope_id": "catalog",
+                                 "facts": {"worst_case_staleness_ms": 500}})
+    request = DesignReviewRequest(requirements=requirement,
+        documents=[Document(id="implementation", text=implementation)],
         requested_checks=["cache_freshness"])
     items, coverage, _ = extract_documents(request, RequirementsExtractor())
     flow = next(item for item in items if item.scope_id == "catalog")

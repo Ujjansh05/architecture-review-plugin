@@ -1,0 +1,1420 @@
+{
+  "schema_version": "archrivet-runtime-benchmark-1",
+  "mode": "rules",
+  "device_preference": "cpu",
+  "threads": 4,
+  "checks": "all",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "python": "3.12.4",
+  "cold_reviews": {
+    "count": 3,
+    "median_ms": 39.485,
+    "p95_ms": 42.429,
+    "min_ms": 36.325,
+    "max_ms": 42.429
+  },
+  "warm_reviews": {
+    "count": 30,
+    "median_ms": 33.004,
+    "p95_ms": 41.182,
+    "min_ms": 31.328,
+    "max_ms": 41.866
+  },
+  "application_initialization_to_first_result": {
+    "count": 3,
+    "median_ms": 517.195,
+    "p95_ms": 517.5,
+    "min_ms": 514.638,
+    "max_ms": 517.5
+  },
+  "peak_sampled_process_tree_rss_bytes": 51638272,
+  "trials": [
+    {
+      "engine_version": "0.3.0a2",
+      "imports_ms": 423.531,
+      "backend_setup_ms": 0.537,
+      "evidence_index_ms": 56.266,
+      "application_initialization_to_first_result_ms": 517.195,
+      "reviews": [
+        {
+          "phase": "cold",
+          "elapsed_ms": 36.325,
+          "job_timings_ms": {
+            "queue_wait": 16.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50356224,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 31.73,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50495488,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.638,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 15.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 16.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50552832,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.132,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 16.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50774016,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 41.182,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50888704,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 34.221,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50933760,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.955,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51036160,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 34.733,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51113984,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.584,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51200000,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.935,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51429376,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.53,
+          "job_timings_ms": {
+            "queue_wait": 16.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 15.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51638272,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        }
+      ],
+      "process_total_ms": 1036.374
+    },
+    {
+      "engine_version": "0.3.0a2",
+      "imports_ms": 415.656,
+      "backend_setup_ms": 0.48,
+      "evidence_index_ms": 57.849,
+      "application_initialization_to_first_result_ms": 514.638,
+      "reviews": [
+        {
+          "phase": "cold",
+          "elapsed_ms": 39.485,
+          "job_timings_ms": {
+            "queue_wait": 15.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 16.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50348032,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.869,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50458624,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 31.328,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50511872,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 34.547,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 15.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50716672,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 41.139,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50802688,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.266,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 15.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50855936,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.005,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50958336,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.336,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51048448,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.158,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51134464,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 31.746,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51363840,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.894,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51462144,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        }
+      ],
+      "process_total_ms": 1026.612
+    },
+    {
+      "engine_version": "0.3.0a2",
+      "imports_ms": 404.982,
+      "backend_setup_ms": 0.497,
+      "evidence_index_ms": 68.937,
+      "application_initialization_to_first_result_ms": 517.5,
+      "reviews": [
+        {
+          "phase": "cold",
+          "elapsed_ms": 42.429,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50282496,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.716,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 16.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50401280,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.099,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 15.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50446336,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.719,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50577408,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.973,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50774016,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 41.866,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 47.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 50913280,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.973,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 16.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51015680,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.617,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 0.0,
+            "extract_and_verify": 15.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 16.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51130368,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.234,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 15.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 0.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51171328,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 32.946,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 31.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 15.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51290112,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        },
+        {
+          "phase": "warm",
+          "elapsed_ms": 33.034,
+          "job_timings_ms": {
+            "queue_wait": 0.0,
+            "total": 32.0
+          },
+          "stage_timings_ms": {
+            "validate_facts": 16.0,
+            "extract_and_verify": 0.0,
+            "rules": 0.0,
+            "evidence_retrieval": 0.0,
+            "model": 0.0,
+            "workload": 0.0,
+            "aggregate": 16.0
+          },
+          "resources": {
+            "peak_sampled_process_tree_rss_bytes": 51400704,
+            "sample_count": 2,
+            "sample_interval_seconds": 0.25,
+            "gpu_peak_bytes": null,
+            "measurement_scope": "Current process and descendants; shared pages may be counted more than once. External llama servers excluded.",
+            "notice": "Sampled RSS is not a strict peak or a guarantee the next input will fit."
+          },
+          "model_metrics": {
+            "cuda_peak_allocated_bytes": null,
+            "cuda_peak_reserved_bytes": null,
+            "measurement_scope": "Maximum of worker-recorded allocator peaks across review calls."
+          },
+          "runtime_metrics": null,
+          "verdicts": {
+            "retry_safety": "supported",
+            "ack_durability": "supported",
+            "queue_overload": "supported",
+            "transaction_atomicity": "supported",
+            "replica_consistency": "supported",
+            "cache_freshness": "supported",
+            "failover_safety": "supported",
+            "dependency_resilience": "supported"
+          }
+        }
+      ],
+      "process_total_ms": 1056.167
+    }
+  ],
+  "training_started": false,
+  "measurement_scope": "Complete local review jobs include queue/poll overhead, resource sampling, final summary rendering and result serialization; exclude backend setup and evidence-index creation. Cold means first review in a fresh process, not cleared OS disk cache. Application initialization starts at child function entry after Python/script standard-library imports; includes ArchRivet imports, backend setup, evidence index and first review, not process launch. No host generation, package install or weight download. RSS sampled only during review; shared pages may be double-counted. CUDA allocator metrics are not total device use.",
+  "accuracy_claim": "None: fixed declared performance fixtures, not independent real-world evaluation."
+}

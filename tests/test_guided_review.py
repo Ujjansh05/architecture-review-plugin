@@ -66,7 +66,8 @@ def test_sourced_facts_need_no_model_but_are_not_verified_extraction():
         review(DesignReviewRequest.model_validate(raw))
     check["fact_spans"][path][0]["end"] = len(raw["documents"][0]["text"])
     result = review(DesignReviewRequest.model_validate(raw))
-    assert result["checks"][0]["verdict"] == "supported"
+    assert result["checks"][0]["verdict"] == "insufficient_information"
+    assert result["coverage"]["unverified_facts"][0]["fact_path"] == path
     assert result["coverage"]["document_content_reviewed"] is False
     assert not result["backend"]["model_loaded"]
     assert result["coverage"]["whole_architecture_reviewed"] is False

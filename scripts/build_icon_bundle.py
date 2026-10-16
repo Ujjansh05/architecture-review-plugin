@@ -34,7 +34,9 @@ def build(base, output):
     for name in UPDATED | ADDED:
         files[name] = (ROOT / "extensions/desktop" / name).read_bytes()
     manifest = json.loads(files["manifest.json"])
-    assert manifest["version"] == "0.2.0-alpha.2"
+    if manifest["version"] != "0.2.0-alpha.2":
+        raise ValueError("This historical builder needs the 0.2.0-alpha.2 source checkout. "
+                         "For current Rules/Laya packages use scripts/build_desktop_variants.py.")
     assert manifest["icon"] == "icon.png"
     assert manifest["icons"][0]["src"] in files
     assert all(digest(files[name]) == original[name] for name in BASE_FILES - UPDATED)

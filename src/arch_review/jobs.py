@@ -48,14 +48,18 @@ class ReviewJobs:
                 raise RuntimeError("Review queue is full or shutting down")
             key = uuid.uuid4().hex
             self.jobs[key] = {"job_id": key, "status": "queued", "progress": {}, "result": None,
-                              "error": None, "updated": time.monotonic(), "cancel": threading.Event()}
+                              "error": None, "updated": time.monotonic(), "submitted": time.monotonic(),
+                              "timings_ms": {}, "cancel": threading.Event()}
             self.pool.submit(self._run, key, request)
             return self.get(key)
 
     def _run(self, key, request):
         with self.execution_lock:
             job = self.jobs[key]
+            terminal_status, result_data, error = "failed", None, None
             try:
+                with self.lock:
+                    job["timings_ms"]["queue_wait"] = round((time.monotonic() - job["submitted"]) * 1000, 3)
                 if job["cancel"].is_set():
                     raise InterruptedError()
                 with self.lock:
@@ -69,26 +73,32 @@ class ReviewJobs:
                     with self.lock:
                         job["progress"].update(values)
                 result = self.reviewer.review(request, cancelled=cancelled, progress=progress)
-                with self.lock:
-                    if cancelled():
-                        job["status"] = "cancelled"
-                    else:
-                        job.update(status="completed", result=result.model_dump(mode="json"))
+                if cancelled():
+                    terminal_status = "cancelled"
+                else:
+                    result_data = result.model_dump(mode="json")
+                    terminal_status = "completed"
             except InterruptedError:
-                with self.lock:
-                    job["status"] = "cancelled"
+                terminal_status = "cancelled"
             except Exception as exc:
-                with self.lock:
-                    job.update(status="failed", error=f"{type(exc).__name__}: {exc}")
+                error = f"{type(exc).__name__}: {exc}"
             finally:
                 with self.lock:
+                    if terminal_status == "completed" and job["cancel"].is_set():
+                        terminal_status, result_data = "cancelled", None
                     job["updated"] = time.monotonic()
+                    job["timings_ms"]["total"] = round((job["updated"] - job["submitted"]) * 1000, 3)
+                    # A completed result and its timings become visible together.
+                    job.update(status=terminal_status, result=result_data, error=error)
 
     def get(self, key):
         with self.lock:
             self._expire()
             job = self.jobs[key]
-            return {k: v for k, v in job.items() if k not in {"cancel", "updated"}}
+            snapshot = {k: v for k, v in job.items() if k not in {"cancel", "updated", "submitted"}}
+            snapshot["timings_ms"] = dict(job["timings_ms"])
+            snapshot["progress"] = dict(job["progress"])
+            return snapshot
 
     def cancel(self, key):
         with self.lock:

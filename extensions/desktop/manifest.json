@@ -1,15 +1,15 @@
 {
   "manifest_version": "0.4",
   "name": "archrivet",
-  "display_name": "ArchRivet - System Design Review (Preview)",
-  "version": "0.2.0-alpha.2",
+  "display_name": "ArchRivet - Rules (Preview)",
+  "version": "0.3.0-alpha.1",
   "icon": "icon.png",
   "icons": [
     {"src": "icons/icon-128.png", "size": "128x128"},
     {"src": "icon.png", "size": "512x512"}
   ],
   "description": "Review backend design decisions, missing facts and workload with your assistant.",
-  "long_description": "Windows x64 experimental preview. Eight local checks, specific follow-up questions and before/after review comparisons. Rules are the default. Enable optional Laya 322M for the updated experimental model; strict accuracy gates are not met. Requires an MCPB 0.4 UV host, internet for setup and several GB of disk space. Host provider settings still apply.",
+  "long_description": "Windows x64 experimental Rules preview. Eight scoped local checks, specific follow-up questions and before/after reviews. No model libraries or model download. Requires an MCPB 0.4 UV host and internet for initial setup. A separate Laya CPU variant replaces this installation when you want the experimental model.",
   "author": {
     "name": "Ujjansh05",
     "url": "https://github.com/Ujjansh05"
@@ -47,22 +47,13 @@
         "server/main.py"
       ],
       "env": {
-        "ARCHRIVET_ENABLE_LAYA": "${user_config.enable_laya}",
         "ARCHRIVET_EXTENSION_HOME": "${HOME}/.archrivet-extension",
         "PYTHONUTF8": "1",
         "HF_HUB_DISABLE_TELEMETRY": "1"
       }
     }
   },
-  "user_config": {
-    "enable_laya": {
-      "type": "boolean",
-      "title": "Enable experimental local Laya model",
-      "description": "Download the optional updated Laya 322M model (about 1 GB) for local CPU inference. Experimental: some incorrect approvals remain. Rules are the default.",
-      "default": false,
-      "required": false
-    }
-  },
+  "user_config": {},
   "tools": [
     {
       "name": "get_setup_status",
@@ -71,6 +62,10 @@
     {
       "name": "retry_model_setup",
       "description": "Retry an opted-in model download after a connection or disk error."
+    },
+    {
+      "name": "cancel_model_setup",
+      "description": "Pause unfinished model setup while retaining resumable files."
     },
     {
       "name": "get_review_schema",

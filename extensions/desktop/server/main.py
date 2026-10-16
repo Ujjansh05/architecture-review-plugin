@@ -1,10 +1,12 @@
 """Standalone stdio extension: no daemon, port, shell command or host config edits."""
 import asyncio
 import base64
+import json
 import multiprocessing
 import os
 import platform
 import threading
+import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -13,40 +15,88 @@ from mcp.types import Icon
 from setup_model import ModelSetup
 
 from arch_review import __version__ as ENGINE_VERSION
-from arch_review.backends import LayaBackend, NoModelBackend
+from arch_review.backends import NoModelBackend
 from arch_review.evidence_v2 import PersistentEvidence
 from arch_review.jobs import ReviewJobs
-from arch_review.model import ModelWorker
 from arch_review.registry import definitions
 from arch_review.review_v2 import DesignReviewer
 from arch_review.schema_v2 import DesignReviewRequest
 from arch_review.settings import Settings
 
-VERSION = "0.2.0-alpha.2"
+VERSION = "0.3.0-alpha.1"
+
+
+def bundle_config():
+    path = Path(__file__).resolve().parents[1] / "bundle-config.json"
+    if path.is_file():
+        config = json.loads(path.read_text(encoding="utf-8"))
+        if config.get("variant") not in {"rules", "laya-cpu"}:
+            raise ValueError("Unknown desktop bundle variant")
+        return config
+    # Existing source/portable registrations keep their explicit model opt-in.
+    return {"variant": "laya-cpu", "engine_version": "0.3.0a2", "extension_version": VERSION}
 
 
 class Extension:
-    def __init__(self, root, enabled=False, checkpoint=None):
-        if ENGINE_VERSION != "0.3.0a1":
-            raise RuntimeError("This extension requires the pinned ArchRivet 0.3.0a1 engine.")
+    def __init__(self, root, enabled=False, checkpoint=None, variant=None):
+        config = bundle_config()
+        self.variant = variant or config["variant"]
+        if ENGINE_VERSION != config["engine_version"]:
+            raise RuntimeError("This extension requires its pinned ArchRivet engine: " + config["engine_version"])
+        if self.variant == "rules" and enabled:
+            raise ValueError("This Rules bundle has no model dependencies. Replace it with the Laya CPU bundle to enable Laya.")
         self.root = Path(root).resolve()
-        self.setup = ModelSetup(self.root, enabled, checkpoint)
         self.lock = threading.RLock()
         self.jobs = None
+        self.backend = None
+        self.closed = False
+        self.model_ready = threading.Event()
+        self.setup = ModelSetup(self.root, enabled, checkpoint, loader=self._load_backend,
+                                is_loaded=self._is_loaded, release=self._release_backend)
         self.setup.start()
+
+    def _is_loaded(self):
+        return bool(self.model_ready.is_set() and self.backend is not None and self.backend.worker.is_ready)
+
+    def _release_backend(self):
+        self.model_ready.clear()
+        if self.backend:
+            self.backend.close()
+
+    def _load_backend(self, cancelled):
+        self.model_ready.clear()
+        if self.backend is None:
+            started = time.perf_counter()
+            from arch_review.backends import LayaBackend
+            from arch_review.model import ModelWorker
+            self.setup.update(runtime_import_seconds=round(time.perf_counter() - started, 6))
+            settings = Settings(checkpoint=str(self.setup.checkpoint), backend="laya", device="cpu",
+                                model_context_tokens=2048, threads=4)
+            backend = LayaBackend(ModelWorker(settings))
+            with self.lock:
+                if self.closed or cancelled():
+                    backend.close()
+                    raise InterruptedError()
+                self.backend = backend
+        self.backend.worker.ensure_ready(cancelled=cancelled)
+        if self.closed or cancelled():
+            self.backend.close()
+            raise InterruptedError()
+        self.setup.update(runtime_metrics=self.backend.worker.metadata.get("runtime_metrics", {}))
+        self.model_ready.set()
 
     def submit(self, request):
         with self.lock:
+            if self.closed:
+                raise RuntimeError("Extension is shutting down")
             status = self.setup.status()
+            if self.setup.enabled and status["status"] == "unloaded":
+                status = self.setup.start()
             if self.setup.enabled and status["status"] != "ready":
                 return {"status": "setup_required", "setup": status,
                         "message": "The requested Laya model is not ready. Check setup progress; no review has run."}
             if self.jobs is None:
-                backend = NoModelBackend()
-                if self.setup.enabled:
-                    settings = Settings(checkpoint=str(self.setup.checkpoint), backend="laya", device="cpu",
-                                        model_context_tokens=2048, threads=4)
-                    backend = LayaBackend(ModelWorker(settings))
+                backend = self.backend if self.setup.enabled else NoModelBackend()
                 # Per-process index avoids concurrent SQLite rebuilds across desktop sessions.
                 evidence = PersistentEvidence(self.root / "evidence-index" / str(os.getpid()))
                 self.jobs = ReviewJobs(DesignReviewer(backend, evidence))
@@ -64,9 +114,14 @@ class Extension:
                 raise ValueError("Review expired or belongs to a different assistant session.") from exc
 
     def close(self):
+        with self.lock:
+            self.closed = True
         self.setup.close()
         if self.jobs:
             self.jobs.close()
+        elif self.backend:
+            self.backend.close()
+        self.model_ready.clear()
 
     def compare(self, before_id, after_id):
         with self.lock:
@@ -107,14 +162,22 @@ def create_server(extension):
     def get_setup_status() -> dict:
         """Check active mode and optional model download progress. No architecture review is performed."""
         return {"extension_version": VERSION, "engine_version": ENGINE_VERSION,
-                "setup": extension.setup.status(), "whole_architecture_certification": False}
+                "variant": extension.variant, "setup": extension.setup.status(),
+                "whole_architecture_certification": False}
 
     @server.tool()
     def retry_model_setup() -> dict:
         """Retry/resume setup only if the user enabled Laya in the extension's installation settings."""
         if not extension.setup.enabled:
-            return {"status": "not_requested", "message": "Enable Laya in extension settings to authorize its download."}
+            message = ("Replace this Rules bundle with the Laya CPU bundle to enable the optional model."
+                       if extension.variant == "rules" else "Enable Laya in extension settings to authorize its download.")
+            return {"status": "not_requested", "message": message}
         return extension.setup.start()
+
+    @server.tool()
+    def cancel_model_setup() -> dict:
+        """Pause unfinished model setup. Retain verified files and resumable download data."""
+        return extension.setup.cancel()
 
     @server.tool()
     def get_review_schema() -> dict:

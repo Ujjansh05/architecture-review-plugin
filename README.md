@@ -12,11 +12,11 @@
 Find missing details. Check backend risks. See what changes after a clarification.
 
 [![CI](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Ujjansh05/archrivet/actions/workflows/ci.yml)
-[![Preview](https://img.shields.io/badge/release-experimental_preview-f4bc72)](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1)
+[![Preview](https://img.shields.io/badge/release-experimental_preview-f4bc72)](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a2)
 [![Code license: MIT](https://img.shields.io/badge/code-MIT-65ead4)](LICENSE)
 [![Rules: no GPU required](https://img.shields.io/badge/rules-no_GPU_required-7ca5ff)](#try-it)
 
-**[Download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1) · [Quick start](#try-it) · [Demo](#one-question-changes-the-review) · [How it works](#how-it-works) · [Benchmarks](#measured-improvement)**
+**[Download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a2) · [Quick start](#try-it) · [Demo](#one-question-changes-the-review) · [How it works](#how-it-works) · [Benchmarks](#measured-improvement)**
 
 </div>
 
@@ -27,6 +27,8 @@ ArchRivet is an open-source, local **MCP plugin for system-design reviews**. You
 | Get the exact missing detail to supply. | See the affected requirement and supporting references. | See which changed fact changed the finding. |
 
 Useful for product backends, payment flows, caches, notifications, and system-design discussions. Start with local rules; optionally enable the **322M Laya model**.
+
+**New in 0.3.0a2:** a lighter rules download, clearer model-loading status, and confirmation questions when the assistant's interpretation cannot be checked against the source. A matching quote alone never verifies its meaning. [What changed and how to verify it](docs/reliability-preview.md).
 
 ## One question changes the review
 
@@ -42,7 +44,7 @@ ArchRivet asks: **“During an outage, how old may a cached value become?”**
 
 ![Connect ArchRivet to Codex, review a price cache, and answer its missing-detail question.](docs/assets/archrivet-codex.gif)
 
-*Edited walkthrough of actual Codex and MCP results, using rules mode. Timing is shortened. [Read the full example and answers](docs/demo-comparison.md).*
+*Recorded with 0.3.0a1 in rules mode; timing is shortened. The newer version also asks you to confirm unresolved prose interpretations before using them. [Read the recorded example and answers](docs/demo-comparison.md).*
 
 <details>
 <summary><strong>Compare Codex with and without the plugin</strong></summary>
@@ -93,18 +95,20 @@ The amber node identifies the optional model path measured below.
 
 ## Measured improvement
 
-**769 of 780 correct decisions. Incorrect approvals reduced from 222 to 3.**
+**The new Laya deployment improved over the previous model. Rules alone still score highest on this synthetic set.**
 
 These are **synthetic final-test results for the optional Laya classifier**, comparing the previous release with the new preview on the same cases. They do not measure the whole assistant or accuracy on real production architectures.
 
-| Measure — same 780 cases | Previous model deployment | New preview deployment |
-|---|---:|---:|
-| Correct decisions ↑ | 294 / 780 | **769 / 780** |
-| Accuracy ↑ | 37.7% | **98.6%** |
-| Incorrect approvals ↓ | 222 | **3** |
-| Recognized missing-information cases ↑ | 64 / 260 | **259 / 260** |
+| Measure — same 780 cases | Previous model deployment | Optional preview model | Rules alone |
+|---|---:|---:|---:|
+| Correct decisions | 294 / 780 | 769 / 780 | 780 / 780 |
+| Accuracy | 37.7% | 98.6% | 100% |
+| Incorrect approvals | 222 | 3 | 0 |
+| Recognized missing-information cases | 64 / 260 | 259 / 260 | 260 / 260 |
 
 An incorrect approval is a `supported` answer for a flawed or incomplete case. The improvement covers **model weights, input formatting, and context changes together**. The test shares synthetic mechanisms with training, has no independent human review, and still contains incorrect approvals. Strict release gates remain unmet; the model stays optional and experimental.
+
+The finite cases closely match the rules. **Neither 100% nor 98.6% is a real-world accuracy claim.** This set does not demonstrate that adding Laya improves on rules or the host assistant. These public cases are now regressions, not an untouched test for future training. [Reproduce the rules baseline](docs/benchmarks/2026-10-preview.md#rules-baseline).
 
 **[Full results and remaining failures](docs/benchmarks/2026-10-preview.md) · [780 test cases](docs/benchmarks/2026-10-final-test.jsonl) · [Raw results](docs/benchmarks/2026-10-preview.json) · [Reproduce the comparison](docs/benchmarks/2026-10-preview.md#reproduce-the-final-test-decision-counts)**
 
@@ -124,12 +128,15 @@ One local pass on an i7-13700H: 16 decisions per version, FP32, four threads, on
 
 ## Try it
 
+For complete local reviews of eight fixed checks, the current CPU measurements are **33 ms median in rules mode** and **2.39 s with Laya** after loading. These exclude the AI host's answer and do not establish an accuracy advantage. [Samples, p95, startup and RAM measurements](docs/benchmarks/2026-10-runtime.md).
+
 | Your setup | Start here |
 |---|---|
-| Codex on Windows x64 | [Download ZIP](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a1/archrivet-windows-x64-0.2.0-alpha.2.zip), extract, then follow the [one-time connection steps](docs/quick-start-preview.md). |
-| Desktop host supporting MCPB 0.4 with UV | [Download MCP extension](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a1/archrivet-windows-x64-0.2.0-alpha.2.mcpb) and install through the host's extension settings. |
+| Codex on Windows x64 | [Download lightweight rules ZIP](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a2/archrivet-windows-x64-rules-0.3.0-alpha.1.zip), extract, then follow the [one-time connection steps](docs/quick-start-preview.md). |
+| Desktop host supporting MCPB 0.4 with UV | [Download rules MCP extension](https://github.com/Ujjansh05/archrivet/releases/download/v0.3.0a2/archrivet-windows-x64-rules-0.3.0-alpha.1.mcpb) and install through the host's extension settings. |
+| Optional Laya CPU model | Choose the **laya-cpu** bundle from the [release downloads](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a2), replacing the rules installation. |
 
-Start in **rules mode**: no model download or GPU is required. Optional Laya runs on CPU; the Python runtime also supports CUDA. Complete merged model weights are a separate [release download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1).
+Start in **rules mode**: no Torch, Laya, model download or GPU is required. The separate Laya bundle uses CPU; the Python runtime also supports CUDA. Model weights are unchanged in this runtime update and remain a separate [release download](https://github.com/Ujjansh05/archrivet/releases/tag/v0.3.0a1).
 
 Once connected, try:
 
@@ -155,6 +162,8 @@ Your assistant maps your description to these checks. ArchRivet does not indepen
 ## Know what the answer means
 
 “Supported” means the supplied facts satisfy a listed check. It does not certify the whole system. Unknown facts, rule/model disagreements, and source limitations stay visible. Workload calculations estimate demand; production capacity needs a matching load test. Model confidence is not production failure risk.
+
+The assistant's prose interpretations require confirmation unless they match an explicit typed source declaration. Confirming a fact records your intended design; it does not verify deployed behavior.
 
 ArchRivet runs checks locally. Your AI assistant still follows its own provider and conversation-storage settings.
 

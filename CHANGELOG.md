@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0a2 — fact verification and lighter installation
+
+- Withhold unverified machine-extracted facts before rules and Laya; retain proposed values, quotes and focused confirmation questions. Exact prose quotes establish provenance, not semantic support.
+- Match typed JSON declarations by check, scope, field and value; detect conflicting declarations, duplicate keys and boolean/number substitutions.
+- Separate lightweight Rules and optional Laya CPU desktop bundles. Both use the same plugin identity; switching replaces the installation.
+- Distinguish downloaded/verified files from a loaded model, with asynchronous setup, status, cancellation and retry.
+- Filter and limit evidence in SQLite and load only selected record bodies. Stream additional evidence rather than retaining the full corpus in memory.
+- Add review-stage, queue, worker startup/inference and CUDA allocator measurements; CPU-only paths do not probe GPU drivers.
+- Publish the missing rules baseline (780/780 on the public synthetic cases) and scripts for repeated complete-review timing. The baseline does not prove general architecture accuracy or Laya advantage.
+- Keep the existing Laya weights experimental. No new training or model promotion is part of this runtime update; the second real-host GUI test remains pending.
+
 ## 0.3.0a1 — experimental preview
 
 - Preserve scoped decisions, missing facts and capacity limits in a deterministic review summary; verify retention through MCP and one real AI host.

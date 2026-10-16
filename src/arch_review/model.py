@@ -35,6 +35,7 @@ def _worker(connection, settings_dict):
     # This worker uses PyTorch only; MCP hosts may strip optional parent env flags.
     os.environ["USE_TF"] = "0"
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    started = time.perf_counter()
     try:
         with contextlib.redirect_stdout(sys.stderr):
             from .checkpoint import configure_checkpoint_loading
@@ -43,6 +44,7 @@ def _worker(connection, settings_dict):
             import laya
             import torch
 
+            imported = time.perf_counter()
             torch.set_num_threads(settings.threads)
             checkpoint = Path(settings.checkpoint).resolve()
             if not checkpoint.is_dir():
@@ -52,24 +54,37 @@ def _worker(connection, settings_dict):
                 device = "cuda" if torch.cuda.is_available() else "cpu"
             if device == "cuda" and not torch.cuda.is_available():
                 raise RuntimeError("CUDA was requested but this PyTorch environment has no available CUDA device")
+            loading = time.perf_counter()
             agent = laya.load(str(checkpoint), device=device)
+            loaded = time.perf_counter()
             metadata = model_metadata(str(checkpoint))
             from .model_contract import verify_contract
             contract = verify_contract(checkpoint, settings.model_context_tokens)
+            verified = time.perf_counter()
             if metadata.get("inference_precision") == "float32" and metadata.get("autocast") is False:
                 # Merged experiments were evaluated in FP32, including their calibration.
                 agent.amp_enabled, agent.dtype = False, torch.float32
             connection.send({"ready": True, "device": device,
                              "inference_precision": str(agent.dtype).removeprefix("torch."),
-                             "autocast": agent.amp_enabled})
+                             "autocast": agent.amp_enabled,
+                             "runtime_metrics": {"startup": {
+                                 "import_seconds": round(imported - started, 6),
+                                 "model_load_seconds": round(loaded - loading, 6),
+                                 "contract_verification_seconds": round(verified - loaded, 6),
+                                 "total_seconds": round(verified - started, 6),
+                                 **_device_memory(torch, device)}}})
             while True:
                 if not connection.poll(settings.idle_seconds):
                     break
                 payloads = connection.recv()
                 if payloads is None:
                     break
-                results = {}
+                request_started = time.perf_counter()
+                if device == "cuda":
+                    torch.cuda.reset_peak_memory_stats()
+                results, timings = {}, {}
                 for key, payload in payloads.items():
+                    decision_started = time.perf_counter()
                     try:
                         if contract is not None and json.loads(payload["state"]).get("input_contract") != contract["input_contract"]:
                             raise ValueError("Input does not use this model's evaluated fact formatter")
@@ -93,6 +108,13 @@ def _worker(connection, settings_dict):
                         results[key] = {"verdict": label.value, "probabilities": probabilities}
                     except Exception as exc:
                         results[key] = {"error": f"{type(exc).__name__}: {exc}"}
+                    finally:
+                        if device == "cuda":
+                            torch.cuda.synchronize()
+                        timings[key] = round(time.perf_counter() - decision_started, 6)
+                results["_runtime_metrics"] = {
+                    "inference_seconds": round(time.perf_counter() - request_started, 6),
+                    "decision_seconds": timings, **_device_memory(torch, device)}
                 connection.send(results)
     except (EOFError, BrokenPipeError):
         pass
@@ -105,19 +127,45 @@ def _worker(connection, settings_dict):
         connection.close()
 
 
+def _device_memory(torch, device):
+    """Measure only this worker's CUDA allocator; CPU never probes a driver."""
+    if device != "cuda":
+        return {"cuda_peak_allocated_bytes": None, "cuda_peak_reserved_bytes": None}
+    return {"cuda_peak_allocated_bytes": torch.cuda.max_memory_allocated(),
+            "cuda_peak_reserved_bytes": torch.cuda.max_memory_reserved()}
+
+
 class ModelWorker:
     def __init__(self, settings: Settings):
         self.settings = settings
         self.process = None
         self.connection = None
         self.lock = threading.Lock()
+        self._ready = threading.Event()
         self.metadata = model_metadata(settings.checkpoint)
 
     @property
     def pid(self):
-        return self.process.pid if self.process is not None and self.process.is_alive() else None
+        process = self.process
+        try:
+            return process.pid if process is not None and process.is_alive() else None
+        except (ValueError, OSError, AssertionError):
+            # Status polling must not fail while another thread closes the process.
+            return None
+
+    @property
+    def is_ready(self):
+        """A live process is usable only after its current initialization handshake."""
+        process = self.process
+        if process is None or not self._ready.is_set():
+            return False
+        try:
+            return process.is_alive() and self.process is process and self._ready.is_set()
+        except (ValueError, OSError, AssertionError):
+            return False
 
     def _stop(self):
+        self._ready.clear()
         if self.process is not None:
             if self.process.is_alive():
                 self.process.terminate()
@@ -132,11 +180,44 @@ class ModelWorker:
         with self.lock:
             self._stop()
 
-    def _receive(self, deadline):
-        remaining = deadline - time.monotonic()
-        if remaining <= 0 or not self.connection.poll(remaining):
-            raise TimeoutError("Local model load/inference exceeded its time budget.")
-        return self.connection.recv()
+    def _receive(self, deadline, cancelled=None):
+        while True:
+            if cancelled is not None and cancelled():
+                raise InterruptedError("Model initialization cancelled")
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError("Local model load/inference exceeded its time budget.")
+            if self.connection.poll(min(remaining, .2) if cancelled is not None else remaining):
+                return self.connection.recv()
+
+    def _ensure_ready(self, deadline, cancelled=None):
+        if self.process is None or not self.process.is_alive():
+            self._stop()
+            context = mp.get_context("spawn")
+            self.connection, child_connection = context.Pipe()
+            self.process = context.Process(target=_worker, args=(child_connection, self.settings.model_dump()), daemon=True)
+            self.process.start()
+            child_connection.close()
+            ready = self._receive(deadline, cancelled)
+            if not ready.get("ready"):
+                raise RuntimeError(ready.get("error", "Model failed to initialize."))
+            self.metadata["active_device"] = ready.get("device", "unknown")
+            self.metadata["active_precision"] = ready.get("inference_precision", "unknown")
+            self.metadata["active_autocast"] = ready.get("autocast")
+            self.metadata["runtime_metrics"] = ready.get("runtime_metrics", {})
+            self._ready.set()
+
+    def ensure_ready(self, cancelled=None):
+        """Load and verify without scoring a design; initialization errors remain visible."""
+        if not self.settings.checkpoint:
+            raise RuntimeError("No Laya checkpoint configured")
+        with self.lock:
+            try:
+                self._ensure_ready(time.monotonic() + self.settings.inference_timeout_seconds, cancelled)
+                return dict(self.metadata)
+            except (OSError, EOFError, RuntimeError, TimeoutError):
+                self._stop()
+                raise
 
     def predict(self, payloads: dict) -> tuple[dict[str, ModelDecision], dict[str, str]]:
         if not self.settings.checkpoint:
@@ -144,21 +225,14 @@ class ModelWorker:
         with self.lock:
             deadline = time.monotonic() + self.settings.inference_timeout_seconds
             try:
-                if self.process is None or not self.process.is_alive():
-                    self._stop()
-                    context = mp.get_context("spawn")
-                    self.connection, child_connection = context.Pipe()
-                    self.process = context.Process(target=_worker, args=(child_connection, self.settings.model_dump()), daemon=True)
-                    self.process.start()
-                    child_connection.close()
-                    ready = self._receive(deadline)
-                    if not ready.get("ready"):
-                        raise RuntimeError(ready.get("error", "Model failed to initialize."))
-                    self.metadata["active_device"] = ready.get("device", "unknown")
-                    self.metadata["active_precision"] = ready.get("inference_precision", "unknown")
-                    self.metadata["active_autocast"] = ready.get("autocast")
+                self._ensure_ready(deadline)
                 self.connection.send(payloads)
                 raw = self._receive(deadline)
+                metrics = self.metadata.setdefault("runtime_metrics", {})
+                metrics["last_request"] = raw.pop("_runtime_metrics", {})
+                metrics["request_count"] = metrics.get("request_count", 0) + 1
+                metrics["total_inference_seconds"] = round(metrics.get("total_inference_seconds", 0)
+                    + metrics["last_request"].get("inference_seconds", 0), 6)
             except (OSError, EOFError, RuntimeError, TimeoutError) as exc:
                 exit_code = self.process.exitcode if self.process is not None else None
                 self._stop()

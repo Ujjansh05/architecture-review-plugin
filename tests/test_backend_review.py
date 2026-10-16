@@ -98,7 +98,7 @@ class Extractor:
         return len(text.split())
     def complete(self, instructions, data, schema):
         section = data["section"]
-        value = "old writer can commit" in section
+        value = json.loads(section)["facts"]["old_writer_can_commit_after_promotion"]
         return {"facts": [{"check_id": "failover_safety", "path": "old_writer_can_commit_after_promotion",
                            "value": value, "quote": section}]}
     def metadata(self):
@@ -108,8 +108,11 @@ class Extractor:
 
 
 def test_distant_conflicts_are_not_hidden_by_merge(evidence):
-    req = DesignReviewRequest(documents=[Document(id="a", text="old writer can commit"),
-                                        Document(id="b", text="old writer cannot commit")],
+    def source(value):
+        return json.dumps({"check_id": "failover_safety", "scope_id": "design",
+                           "facts": {"old_writer_can_commit_after_promotion": value}})
+    req = DesignReviewRequest(documents=[Document(id="a", text=source(True)),
+                                        Document(id="b", text=source(False))],
                               requested_checks=["failover_safety"])
     items, coverage, conflicts = extract_documents(req, Extractor())
     assert not coverage["unprocessed"]

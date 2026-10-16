@@ -1,0 +1,4735 @@
+{
+  "format": "rules",
+  "input_sha256": "0ef150ff77d1cb19568c31c1292e6fcb5db7666d8651c3b34d563d7265c51de8",
+  "count": 780,
+  "correct": 780,
+  "accuracy": 1.0,
+  "incorrect_approvals": 0,
+  "per_check": {
+    "retry_safety": {
+      "count": 210,
+      "correct": 210,
+      "incorrect_approvals": 0
+    },
+    "ack_durability": {
+      "count": 60,
+      "correct": 60,
+      "incorrect_approvals": 0
+    },
+    "cache_freshness": {
+      "count": 150,
+      "correct": 150,
+      "incorrect_approvals": 0
+    },
+    "queue_overload": {
+      "count": 60,
+      "correct": 60,
+      "incorrect_approvals": 0
+    },
+    "transaction_atomicity": {
+      "count": 60,
+      "correct": 60,
+      "incorrect_approvals": 0
+    },
+    "replica_consistency": {
+      "count": 60,
+      "correct": 60,
+      "incorrect_approvals": 0
+    },
+    "failover_safety": {
+      "count": 120,
+      "correct": 120,
+      "incorrect_approvals": 0
+    },
+    "dependency_resilience": {
+      "count": 60,
+      "correct": 60,
+      "incorrect_approvals": 0
+    }
+  },
+  "results": [
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-10-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-10-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-10-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-11-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-11-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-11-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-12-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-12-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-12-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-13-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-13-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-13-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-14-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-14-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-14-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-15-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-15-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-15-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-16-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-16-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-16-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-17-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-17-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-17-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-18-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-18-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-18-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-19-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-19-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-retry_safety-cross_region_handoff_replay-19-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-0-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-0-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-0-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-1-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-1-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-1-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-2-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-2-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-2-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-3-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-3-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-3-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-4-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-4-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-4-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-5-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-5-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-5-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-6-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-6-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-6-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-7-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-7-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-7-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-8-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-8-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-8-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-9-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-9-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-9-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-10-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-10-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-10-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-11-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-11-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-11-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-12-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-12-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-12-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-13-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-13-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-13-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-14-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-14-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-14-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-15-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-15-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-15-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-16-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-16-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-16-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-17-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-17-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-17-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-18-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-18-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-18-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-19-supported",
+      "check_id": "ack_durability",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-19-contradicted",
+      "check_id": "ack_durability",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-ack_durability-snapshot_restore_acceptance_cut-19-insufficient_information",
+      "check_id": "ack_durability",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-0-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-0-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-0-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-1-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-1-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-1-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-2-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-2-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-2-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-3-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-3-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-3-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-4-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-4-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-4-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-5-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-5-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-5-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-6-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-6-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-6-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-7-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-7-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-7-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-8-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-8-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-8-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-9-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-9-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-9-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-10-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-10-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-10-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-11-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-11-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-11-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-12-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-12-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-12-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-13-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-13-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-13-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-14-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-14-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-14-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-15-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-15-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-15-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-16-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-16-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-16-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-17-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-17-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-17-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-18-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-18-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-18-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-19-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-19-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-cache_freshness-negative_entry_refresh_outage-19-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-0-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-0-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-0-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-1-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-1-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-1-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-2-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-2-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-2-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-3-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-3-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-3-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-4-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-4-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-4-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-5-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-5-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-5-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-6-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-6-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-6-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-7-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-7-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-7-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-8-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-8-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-8-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-9-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-9-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-9-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-10-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-10-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-10-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-11-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-11-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-11-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-12-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-12-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-12-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-13-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-13-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-13-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-14-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-14-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-14-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-15-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-15-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-15-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-16-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-16-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-16-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-17-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-17-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-17-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-18-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-18-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-18-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-19-supported",
+      "check_id": "queue_overload",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-19-contradicted",
+      "check_id": "queue_overload",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-queue_overload-recovery_burst_admission-19-insufficient_information",
+      "check_id": "queue_overload",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-0-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-0-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-0-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-1-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-1-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-1-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-2-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-2-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-2-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-3-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-3-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-3-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-4-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-4-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-4-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-5-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-5-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-5-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-6-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-6-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-6-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-7-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-7-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-7-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-8-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-8-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-8-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-9-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-9-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-9-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-10-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-10-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-10-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-11-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-11-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-11-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-12-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-12-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-12-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-13-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-13-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-13-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-14-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-14-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-14-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-15-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-15-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-15-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-16-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-16-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-16-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-17-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-17-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-17-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-18-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-18-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-18-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-19-supported",
+      "check_id": "transaction_atomicity",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-19-contradicted",
+      "check_id": "transaction_atomicity",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-transaction_atomicity-multi_item_order_visibility-19-insufficient_information",
+      "check_id": "transaction_atomicity",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-0-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-0-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-0-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-1-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-1-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-1-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-2-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-2-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-2-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-3-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-3-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-3-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-4-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-4-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-4-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-5-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-5-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-5-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-6-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-6-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-6-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-7-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-7-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-7-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-8-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-8-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-8-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-9-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-9-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-9-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-10-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-10-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-10-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-11-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-11-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-11-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-12-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-12-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-12-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-13-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-13-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-13-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-14-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-14-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-14-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-15-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-15-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-15-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-16-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-16-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-16-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-17-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-17-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-17-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-18-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-18-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-18-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-19-supported",
+      "check_id": "replica_consistency",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-19-contradicted",
+      "check_id": "replica_consistency",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-replica_consistency-follower_rejoin_read_barrier-19-insufficient_information",
+      "check_id": "replica_consistency",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-0-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-0-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-0-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-1-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-1-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-1-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-2-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-2-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-2-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-3-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-3-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-3-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-4-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-4-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-4-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-5-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-5-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-5-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-6-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-6-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-6-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-7-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-7-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-7-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-8-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-8-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-8-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-9-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-9-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-9-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-10-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-10-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-10-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-11-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-11-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-11-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-12-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-12-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-12-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-13-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-13-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-13-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-14-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-14-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-14-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-15-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-15-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-15-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-16-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-16-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-16-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-17-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-17-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-17-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-18-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-18-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-18-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-19-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-19-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-failover_safety-storage_gateway_epoch_fence-19-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-0-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-0-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-0-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-1-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-1-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-1-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-2-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-2-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-2-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-3-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-3-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-3-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-4-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-4-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-4-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-5-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-5-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-5-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-6-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-6-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-6-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-7-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-7-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-7-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-8-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-8-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-8-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-9-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-9-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-9-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-10-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-10-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-10-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-11-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-11-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-11-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-12-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-12-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-12-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-13-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-13-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-13-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-14-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-14-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-14-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-15-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-15-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-15-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-16-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-16-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-16-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-17-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-17-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-17-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-18-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-18-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-18-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-19-supported",
+      "check_id": "dependency_resilience",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-19-contradicted",
+      "check_id": "dependency_resilience",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "next-dependency_resilience-token_refresh_budget-19-insufficient_information",
+      "check_id": "dependency_resilience",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_identity-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_constraint-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_atomicity-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_expiry-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-0-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-0-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-0-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-1-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-1-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-1-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-2-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-2-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-2-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-3-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-3-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-3-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-4-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-4-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-4-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-5-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-5-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-5-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-6-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-6-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-6-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-7-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-7-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-7-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-8-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-8-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-8-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-retry_external-9-supported",
+      "check_id": "retry_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-retry_external-9-contradicted",
+      "check_id": "retry_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-retry_external-9-insufficient_information",
+      "check_id": "retry_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-0-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-0-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-0-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-1-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-1-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-1-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-2-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-2-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-2-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-3-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-3-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-3-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-4-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-4-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-4-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-5-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-5-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-5-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-6-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-6-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-6-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-7-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-7-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-7-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-8-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-8-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-8-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-9-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-9-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_normal-9-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-0-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-0-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-0-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-1-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-1-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-1-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-2-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-2-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-2-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-3-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-3-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-3-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-4-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-4-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-4-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-5-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-5-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-5-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-6-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-6-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-6-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-7-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-7-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-7-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-8-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-8-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-8-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-9-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-9-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_zero_age-9-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-0-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-0-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-0-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-1-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-1-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-1-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-2-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-2-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-2-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-3-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-3-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-3-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-4-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-4-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-4-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-5-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-5-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-5-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-6-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-6-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-6-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-7-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-7-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-7-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-8-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-8-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-8-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-9-supported",
+      "check_id": "cache_freshness",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-9-contradicted",
+      "check_id": "cache_freshness",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-cache_fallback-9-insufficient_information",
+      "check_id": "cache_freshness",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-0-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-0-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-0-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-1-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-1-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-1-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-2-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-2-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-2-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-3-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-3-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-3-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-4-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-4-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-4-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-5-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-5-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-5-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-6-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-6-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-6-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-7-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-7-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-7-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-8-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-8-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-8-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-9-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-9-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_restart-9-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-0-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-0-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-0-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-1-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-1-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-1-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-2-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-2-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-2-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-3-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-3-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-3-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-4-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-4-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-4-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-5-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-5-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-5-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-6-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-6-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-6-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-7-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-7-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-7-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-8-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-8-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-8-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-9-supported",
+      "check_id": "failover_safety",
+      "expected": "supported",
+      "predicted": "supported"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-9-contradicted",
+      "check_id": "failover_safety",
+      "expected": "contradicted",
+      "predicted": "contradicted"
+    },
+    {
+      "id": "targeted-final_test-failover_storage-9-insufficient_information",
+      "check_id": "failover_safety",
+      "expected": "insufficient_information",
+      "predicted": "insufficient_information"
+    }
+  ],
+  "dataset_role": "public_regression",
+  "independent_real_world_accuracy": null,
+  "note": "Finite synthetic mechanisms closely match the rules. This does not establish general architecture accuracy or model advantage."
+}

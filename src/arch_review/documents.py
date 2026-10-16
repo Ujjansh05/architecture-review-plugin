@@ -5,6 +5,7 @@ from collections import defaultdict
 import httpx
 from pydantic import Field, JsonValue
 
+from .fact_verification import matches_type, parse_sources, same_value, verify_fact
 from .registry import REGISTRY
 from .schema import StrictModel
 from .schema_v2 import MAX_DOCUMENT_TOKENS, REQUIREMENTS_DOCUMENT_ID, CheckInput, Document, Span
@@ -110,12 +111,7 @@ def chunks(document, count_tokens=None, size=1536, overlap=128, cancelled=lambda
 
 def extract_documents(request, backend, cancelled=lambda: False, progress=lambda **_: None):
     values, spans, conflicts = {}, defaultdict(dict), defaultdict(set)
-    applicability = {}
-    for item in request.checks:
-        key = item.scope_id, item.check_id
-        values[key] = flatten(item.facts)
-        spans[key] = dict(item.fact_spans)
-        applicability[key] = item.applicable
+    applicability, origins = {}, defaultdict(dict)
     documents = list(request.documents)
     if request.requirements.strip():
         documents.insert(0, Document(id=REQUIREMENTS_DOCUMENT_ID, text=request.requirements))
@@ -124,18 +120,66 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                 "tokens": None, "token_count_method": "unavailable", "unprocessed": [], "extraction_errors": [],
                 "fact_provenance": "machine_extracted_unverified" if documents else "caller_supplied",
                 "scope_discovery": "model_extracted_unverified" if documents else "caller_supplied",
-                "chunk_target_tokens": 1536, "overlap_target_tokens": 128}
+                "chunk_target_tokens": 1536, "overlap_target_tokens": 128,
+                "fact_verification": {"method": "typed_json_declaration_v1", "source_matched": [],
+                                      "deployment_verified": False}, "unverified_facts": []}
+    sources = {doc.id: doc.text for doc in documents}
+    source_records = parse_sources(sources)
+    specifications = {check_id: fact_fields(check_id)
+                      for check_id in {*request.requested_checks, *(c.check_id for c in request.checks)}}
+
+    def accept_machine(key, path, value, references):
+        scope_id, check_id = key
+        if matches_type(value, specifications[check_id].get(path)):
+            status, reason = verify_fact(check_id, scope_id, path, value, references, sources, source_records)
+        else:
+            status, reason = "unverified", "The proposal does not use the decision field's explicit JSON type."
+        record = {"scope_id": scope_id, "check_id": check_id, "fact_path": path,
+                  "proposed_value": value, "origin": "host_extracted", "status": status,
+                  "reason": reason, "supporting_spans": [s.model_dump() for s in references]}
+        records = (coverage["fact_verification"]["source_matched"] if status == "source_matched"
+                   else coverage["unverified_facts"])
+        if record not in records:
+            records.append(record)
+        if status == "conflicting":
+            conflicts[key].add(path)
+        return status == "source_matched"
+
+    for item in request.checks:
+        key = item.scope_id, item.check_id
+        values[key] = {}
+        applicability[key] = item.applicable
+        for path, value in flatten(item.facts).items():
+            references = item.fact_spans.get(path, [])
+            # Legacy plain structured inputs remain declarations. A sourced value
+            # without an origin must not silently become a user declaration.
+            origin = item.fact_origins.get(path, "host_extracted" if references else "user_declared")
+            if origin == "host_extracted" and not accept_machine(key, path, value, references):
+                continue
+            values[key][path] = value
+            origins[key][path] = origin
+            if references:
+                spans[key][path] = list(references)
+
+    def supplied_items():
+        return [CheckInput.model_validate({**item.model_dump(),
+                                        "facts": unflatten(values[(item.scope_id, item.check_id)]),
+                                        "fact_spans": dict(spans[(item.scope_id, item.check_id)]),
+                                        "fact_quotes": {},
+                                        "fact_origins": dict(origins[(item.scope_id, item.check_id)])})
+                for item in request.checks]
+
     if request.input_mode == "supplied_facts":
         coverage.update(input_mode="supplied_facts", fact_provenance="caller_declared_origins_unverified",
                         scope_discovery="caller_supplied", reference_only_documents=[d.id for d in documents],
                         document_content_reviewed=False)
-        return request.checks, coverage, conflicts
+        return supplied_items(), coverage, conflicts
     if not documents:
-        return request.checks, coverage, conflicts
+        return supplied_items(), coverage, conflicts
     if not hasattr(backend, "complete"):
         coverage["unprocessed"] = [d.id for d in documents]
         coverage["extraction_errors"] = ["Document extraction requires the optional local generative backend. Supply structured checks for rules/Laya."]
-        return request.checks, coverage, conflicts
+        return supplied_items(), coverage, conflicts
     count = backend.tokenize
     total = 0
     for doc in documents:
@@ -148,7 +192,7 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
     fields = {}
     for check_id in request.requested_checks:
         definition = REGISTRY[check_id]
-        fields[check_id] = {"definition": definition.definition, "allowed_paths": fact_fields(check_id)}
+        fields[check_id] = {"definition": definition.definition, "allowed_paths": specifications[check_id]}
     # Requirements are processed as a source, not repeated/truncated in every call.
     for doc in documents:
         size = min(1536, max(128, getattr(backend, "context_tokens", 4096) - 2304))
@@ -182,7 +226,7 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                         # Reject unknown fields, incorrect types and invalid nested messaging facts.
                         candidate = CheckInput(check_id=check_id, facts=unflatten({fact.path: fact.value}))
                         cleaned = flatten(candidate.facts)
-                        if fact.path not in cleaned or cleaned[fact.path] != fact.value:
+                        if fact.path not in cleaned or not same_value(cleaned[fact.path], fact.value):
                             raise ValueError("Extracted fact does not round-trip through its schema")
                         key = fact.scope_id, check_id
                         if key not in values and len(values) >= 128:
@@ -190,13 +234,16 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                         target = values.setdefault(key, {})
                         offset = start + text.index(fact.quote)
                         reference = Span(document_id=doc.id, start=offset, end=offset + len(fact.quote))
+                        if not accept_machine(key, fact.path, fact.value, [reference]):
+                            continue
                         if fact.path in conflicts[key]:
                             continue
-                        if fact.path in target and target[fact.path] != fact.value:
+                        if fact.path in target and not same_value(target[fact.path], fact.value):
                             conflicts[key].add(fact.path)
                             target.pop(fact.path)
                         else:
                             target[fact.path] = fact.value
+                            origins[key].setdefault(fact.path, "host_extracted")
                             spans[key].setdefault(fact.path, []).append(reference)
                 except (ValueError, RuntimeError, KeyError, TypeError, httpx.HTTPError) as exc:
                     okay = False
@@ -223,9 +270,12 @@ def extract_documents(request, backend, cancelled=lambda: False, progress=lambda
                         facts.pop(path, None)
                     elif path not in conflicts[key]:
                         facts[path] = global_value
+                        origins[key][path] = origins[global_key].get(path, "user_declared")
                         spans[key].setdefault(path, []).extend(spans[global_key].get(path, []))
         items.append(CheckInput(check_id=check_id, scope_id=scope, facts=unflatten(facts),
-                                fact_spans=spans[key], applicable=applicability.get(key, True),
+                                fact_spans={p: refs for p, refs in spans[key].items() if p in facts},
+                                fact_origins={p: origin for p, origin in origins[key].items() if p in facts},
+                                applicable=applicability.get(key, True),
                                 context=next((c.context for c in request.checks
                                               if (c.scope_id, c.check_id) == key), "")))
     return items, coverage, conflicts

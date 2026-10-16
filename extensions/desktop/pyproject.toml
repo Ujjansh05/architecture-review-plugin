@@ -1,19 +1,13 @@
 [project]
 name = "archrivet-desktop-extension"
-version = "0.2.0a1"
-description = "Standalone MCP launcher for the ArchRivet preview engine"
+version = "0.3.0a1"
+description = "ArchRivet rules standalone MCP extension"
 requires-python = ">=3.12,<3.13"
-dependencies = ["architecture-review-plugin[model]==0.3.0a1", "torch==2.6.0+cpu"]
+dependencies = ["architecture-review-plugin==0.3.0a2"]
 
 [tool.uv]
 package = false
 environments = ["sys_platform == 'win32' and platform_machine == 'AMD64'"]
 
 [tool.uv.sources]
-architecture-review-plugin = { path = "vendor/architecture_review_plugin-0.3.0a1-py3-none-any.whl" }
-torch = { index = "pytorch-cpu" }
-
-[[tool.uv.index]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-explicit = true
+architecture-review-plugin = { path = "vendor/architecture_review_plugin-0.3.0a2-py3-none-any.whl" }
